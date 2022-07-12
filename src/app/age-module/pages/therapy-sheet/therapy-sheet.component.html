@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>
+	{{'age.administrationTherapy' | translate}}
+</h1>
+<mat-dialog-content>
+	<div class="flex flex-wrap">
+		<field-viewer label="common.patient" class="w-full sm:w-48-pc mb-4" mode="Default">
+			{{data?.patientDto.name}} {{data?.patientDto.surname}} {{data?.patientDto.birthDate | date}}
+		</field-viewer>
+		<field-viewer label="age.administrationDate" class=" sm:w-48-pc w-full" mode="Default">
+			{{data?.dateTimeRequest | date}} {{data?.dateTimeRequest | smalltime}}
+		</field-viewer>
+	</div>
+	<div class="flex flex-wrap justify-between w-full mt-4">
+		<input-string [(ngModel)]="filterAIC" label="AICCode" class="flex-auto"></input-string>
+		<button mat-raised-button (click)="searchAicCode()" class="ml-2 mt-2">{{'common.search' | translate}}</button>
+	</div>
+	<div class="w-full">
+		<list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions" [defaultActionsNumberToShow]="4">
+		</list-table>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button (click)="close()">
+		{{'common.close' | translate}}
+	</button>
+</mat-dialog-actions>

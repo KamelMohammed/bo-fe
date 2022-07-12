@@ -1,0 +1,22 @@
+<page-content label="{{'mef.houseAssistance.evaluation.pageTitle' | translate}}">
+	<ng-container header>
+	</ng-container>
+	<ng-container content>
+		<div class="flex-col" *ngIf="dataLoaded && _accessProposalResponse">
+			<mef-filtered-documents-list
+				title="Schede di valutazione di tipo D"
+				[readonly]="!canUploadD"
+				[filteredFileType]="filteredDocumentsTypeD"
+				[documentService]="documentServiceFileD"
+				[accessProposal]="_accessProposalResponse"
+				[templateDocuments]="templateDocumentsD"
+				(attachmentUpdates)="onAttachUpdates($event)"
+			>
+
+			</mef-filtered-documents-list>
+		</div>
+		<div *ngIf="!dataLoaded">
+			Nessuna proposta d'accesso
+		</div>
+	</ng-container>
+</page-content>

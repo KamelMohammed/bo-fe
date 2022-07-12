@@ -1,0 +1,16 @@
+<page-content [label]="'icp.pai.listPai.pageTitle' | translate">
+  <ng-container header>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a mat-tab-link (click)="selectedIndex=0" [active]="selectedIndex==0">
+        {{'icp.pai.listPai.currentLabel' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=1" [active]="selectedIndex==1">
+        {{'icp.pai.listPai.historyLabel' | translate }}</a>
+    </nav>
+  </ng-container>
+  <ng-container content>
+    <mat-tab-nav-panel #tabPanel>
+      <app-pai-page *ngIf="selectedIndex ==0" [current]="true" [configuration]="true"></app-pai-page>
+      <app-pai-page *ngIf="selectedIndex ==1" [history]="true" [configuration]="true"></app-pai-page>
+    </mat-tab-nav-panel>
+  </ng-container>
+</page-content>

@@ -1,0 +1,32 @@
+<mat-form-field class="example-chip-list" appearance="fill">
+    <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip
+                *ngFor="let fruit of partecipantiSelected"
+                (removed)="remove(fruit)">
+            {{fruit}}
+            <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip>
+        <input  [readOnly]="!readonly"
+                placeholder="{{'common.diagnostic' | translate}}"
+                [(ngModel)]="valueInput" [value]="valueInput"
+                (input)="change()"
+                #fruitInput
+                [formControl]="partecipantiCtrl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <div *ngIf="goo">
+        <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+            {{fruit}}
+        </mat-option>
+        </div>
+    </mat-autocomplete>
+</mat-form-field>
+<mat-error *ngIf="!valid">
+    Scegli un quesito diagnostico
+</mat-error>

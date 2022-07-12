@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+<mat-dialog-content>
+	<div class="flex flex-wrap justify-between" [formGroup]="createPasOnTheFlyForm" *ngIf="createPasOnTheFlyForm">
+		<input-string class="w-full" formControlName="name" label="Nome" required="true">
+		</input-string>
+		<select-box class="w-full" formControlName="careLevelId" label="Livello di cura" [items]="careLevelItems"
+			required="true" [readonly]="true">
+		</select-box>
+		<select-box [multiple]="true" class="w-full" formControlName="pathologiesId" label="Patologie" required="true"
+			[items]="pathologiesItems" [readonly]="true"></select-box>
+	</div>
+	<div fxLayoutAlign=" center" *ngIf="paiId">
+		<app-pas-activity-page [itemId]="paiId" [pai_pas]="pai_pas" [readonly]="true">
+		</app-pas-activity-page>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!createPasOnTheFlyForm || !createPasOnTheFlyForm.valid">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

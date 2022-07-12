@@ -1,0 +1,14 @@
+{
+	"tct": {
+		"surveys":"Rilevazioni",
+		"alertParameters":"Soglie",
+		"AddVitalParamter": "Aggiungi parametri vitali",
+		"addAlert":"Aggiungi soglia",
+		"editAlert":"Modifica soglia",
+		"configuration":"Configurazione",
+		"freq":"Intervallo temporale",
+		"alertName":"Nome Soglia",
+		"minValue":"Valore minimo",
+		"maxValue":"Valore massimo"
+	}
+}

@@ -1,0 +1,13 @@
+<button mat-button *ngFor="let action of firstActions" (click)="action.funcToInvoke(data)" [disabled]="!action.enableFunc(data)">
+	<mat-icon color="primary" [svgIcon]="action.icon"></mat-icon>{{action.label | translate}}
+</button>
+<button mat-button *ngIf="otherActions" [matTooltip]="'common.moreActions' | translate" [matMenuTriggerFor]="cardMenu" (click)="$event.stopPropagation()">
+	<mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #cardMenu="matMenu">
+	<ng-container *ngFor="let action of (otherActions || [])">
+		<button mat-menu-item  *ngIf="action.alwaysVisible || action.enableFunc(data)" (click)="action.funcToInvoke(data)" [disabled]="!action.enableFunc(data)">
+			<mat-icon color="primary" [svgIcon]="action.icon"></mat-icon> {{action.label | translate}}
+		</button>
+	</ng-container>
+</mat-menu>

@@ -1,0 +1,15 @@
+<div [fxLayout]="getFxLayout(field?.label?.position)" fxLayoutAlign="space-between center" [formGroup]="form">
+  <mat-label *ngIf="!field?.label?.hidden" class="margin-right-5x" fxFlex="25">
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <mat-form-field appearance="outline" fxFlex="65">
+    <mat-select [formControlName]="field.id">
+      <mat-option *ngFor="let option of field.comboBox.options" [value]="option.value"
+        [class.mat-option-text-right]="field.comboBox.position === optionPosition.RIGHT"
+        [class.mat-option-text-center]="field.comboBox.position === optionPosition.CENTER">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

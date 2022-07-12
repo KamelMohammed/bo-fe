@@ -1,0 +1,11 @@
+export * from './administration.service';
+import { AdministrationService } from './administration.service';
+export * from './drugs.service';
+import { DrugsService } from './drugs.service';
+export * from './pathology.service';
+import { PathologyService } from './pathology.service';
+export * from './protocol.service';
+import { ProtocolService } from './protocol.service';
+export * from './therapy.service';
+import { TherapyService } from './therapy.service';
+export const APIS = [AdministrationService, DrugsService, PathologyService, ProtocolService, TherapyService];

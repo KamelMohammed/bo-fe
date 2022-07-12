@@ -1,0 +1,21 @@
+<h1 mat-dialog-title *ngIf="isNew">{{'md.addTherapy' | translate}}</h1>
+<h1 mat-dialog-title *ngIf="!isNew">{{'md.editTherapy' | translate}}</h1>
+<mat-dialog-content>
+  <div class="flex flex-wrap justify-between items-center" [formGroup]="form" *ngIf="form">
+    <input-string formControlName="description" class="w-full" label="common.description"></input-string>
+    <autocomplete [loader]="loadPathologies" (onSelectedItem)="onSelectedPathology($event)" [resetOnItemSelected]="true"
+      class="w-full" label="md.pathologies"></autocomplete>
+    <chips class="w-full mb-6" (remove)="onRemovePathology($event)" [items]="pathologies"></chips>
+    <input-date formControlName="startDate" class="w-full w-29-pc" label="md.startDate"></input-date>
+    <input-slide formControlName="durationInDays" class="w-full w-19-pc" label="md.durationInDays"></input-slide>
+    <input-int formControlName="duration" class="w-full w-19-pc" label="md.days"></input-int>
+    <input-slide formControlName="mandatoryOrder" class="w-full  w-29-pc" label="md.mandatoryOrder"> </input-slide>
+    <input-string formControlName="notes" [rows]="4" label="common.note" class="w-full"></input-string>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+  <button mat-raised-button (click)="close()"><span>{{'common.undo' | translate}}</span></button>
+  <button mat-raised-button (click)="save()" color="primary"><span>{{'common.save' |
+      translate}}</span></button>
+</mat-dialog-actions>

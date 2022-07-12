@@ -1,0 +1,63 @@
+<mat-table class="table-table" [ngClass]="{'border':bordered}" [dataSource]="items" fusePerfectScrollbar matSort
+    (matSortChange)="changeSort($event)">
+    <!-- ID Column -->
+    <ng-container *ngFor="let column of columns; let i = index">
+        <ng-container [matColumnDef]="column.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable"
+                [style]="getAlignment(column, i)" class="text-primary pr-4">{{column.label | translate}}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style]="getAlignment(column, i)" class="pr-4">
+                <ng-container [dataTableCellTemplate]="column" [dataTableCellTemplateRowData]="row"></ng-container>
+            </mat-cell>
+        </ng-container>
+    </ng-container>
+
+    <ng-container matColumnDef="actions" *ngIf="actions.length > 0">
+        <mat-header-cell *matHeaderCellDef style="justify-content:flex-end" class="text-primary ">{{'common.actions' |
+            translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let data" style="justify-content:flex-end; overflow: visible;" aria-label="actions">
+            <button mat-icon-button *ngFor="let action of firstActions" (click)="action.funcToInvoke(data)"
+                [disabled]="!action.enableFunc(data)" [matTooltip]="action.label | translate">
+                <mat-icon [svgIcon]="action.icon"></mat-icon>
+                <!-- <span>{{action.label | translate}}</span> -->
+            </button>
+            <div *ngIf="otherActions">
+                <button mat-icon-button [matTooltip]="'common.moreActions' | translate" [matMenuTriggerFor]="menu"
+                    (click)="$event.stopPropagation()">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <ng-container *ngFor="let action of otherActions">
+                        <!-- <button mat-menu-item (click)="action.funcToInvoke(data)" [disabled]="!action.enableFunc(data)"
+                            *ngIf="action.alwaysVisible || action.enableFunc(data)">
+                            <mat-icon [svgIcon]="action.icon"></mat-icon>
+                            <span>{{action.label | translate}}</span>
+                        </button> -->
+						<button mat-menu-item (click)="action.funcToInvoke(data)" [disabled]="!action.enableFunc(data)">
+                            <mat-icon [svgIcon]="action.icon"></mat-icon>
+                            <span>{{action.label | translate}}</span>
+                        </button>
+                    </ng-container>
+                </mat-menu>
+            </div>
+            <!-- <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <ng-container *ngFor="let action of actions">
+                    <button mat-menu-item (click)="action.funcToInvoke(data)" [disabled]="!action.enableFunc(data)"
+                        *ngIf="action.alwaysVisible || action.enableFunc(data)">
+                        <mat-icon [svgIcon]="action.icon"></mat-icon>
+                        <span>{{action.label | translate}}</span>
+                    </button>
+                </ng-container>
+            </mat-menu> -->
+        </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="columnNames; sticky:true"></mat-header-row>
+
+    <mat-row *matRowDef="let data; columns: columnNames;" matRipple (click)="onRowClick(data)" [ngClass]="{'row-deleted': deletedRow(data)}">
+    </mat-row>
+</mat-table>

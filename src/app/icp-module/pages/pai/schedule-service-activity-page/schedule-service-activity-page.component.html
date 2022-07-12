@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+
+	<div class="py-6" [formGroup]="scheduleServiceActivityForm" *ngIf="scheduleServiceActivityForm">
+		<div class="flex flex-wrap justify-between">
+			<select-box class="w-full" formControlName="operatorId" label="Operatore" [items]="operatorItems"
+				required="true" [readonly]="readonly"></select-box>
+			<div formArrayName="dates">
+				<div *ngFor="let date of dates.controls; let i= index" class="form-group">
+					<input-datetime [dateFilter]="dateGTNowFilter" class="w-full" formControlName="{{i}}"
+						label="Data e orario" [readonly]="readonly">
+					</input-datetime>
+				</div>
+			</div>
+		</div>
+	</div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!formValid || readonly">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

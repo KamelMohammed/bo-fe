@@ -1,0 +1,15 @@
+.position-relative {
+	position: relative;
+}
+
+.map-preview-action-buttons {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: auto;
+	height: auto;
+	background: transparent;
+	text-align: right;
+    padding: 10px;
+}
+

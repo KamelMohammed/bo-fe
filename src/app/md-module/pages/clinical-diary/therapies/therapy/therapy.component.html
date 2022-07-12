@@ -1,0 +1,39 @@
+<page-content [label]="'DASHBOARD' | translate">
+	<ng-container header *ngIf="therapy">
+		<div class="flex justify-between items-center">
+			<h1 class="text-xl font-bold">{{therapy.description}}</h1>
+			<div class="text-right">
+				<button mat-raised-button color="primary" (click)="editTherapy()">{{'common.edit' | translate}}</button>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container content *ngIf="therapy">
+		<div class="flex flex-wrap justify-start border p-4 rounded-xl">
+			<field-viewer label="md.pathologies" class="w-full mb-4" mode="Left">
+				<chips [removable]="false" [items]="pathologies"></chips>
+			</field-viewer>
+			<field-viewer label="md.startDate" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{therapy.startDate | date}}
+			</field-viewer>
+			<field-viewer label="md.durationInDays" *ngIf="therapy.duration != null"
+				class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{therapy.duration}}
+			</field-viewer>
+			<field-viewer label="md.mandatoryOrder" class="w-full sm:w-auto" mode="Default">
+				{{(therapy.mandatoryOrder ? 'common.yes' : 'common.no') | translate}}
+			</field-viewer>
+			<field-viewer label="common.note" class="w-full" mode="Default">
+				{{therapy.note}}
+			</field-viewer>
+		</div>
+		<div class="w-full mt-16">
+			<div class="text-right">
+				<button mat-raised-button color="primary" (click)="add()">{{'common.add' | translate}}</button>
+			</div>
+		</div>
+		<div class="w-full mt-4">
+			<list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+			</list-table>
+		</div>
+	</ng-container>
+</page-content>

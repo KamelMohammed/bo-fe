@@ -1,0 +1,20 @@
+<mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" class="w-full"
+    [class.mat-form-field-invalid]="!valid">
+    <mat-label>{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+    <input [id]="id" matInput [matDatepicker]="picker"
+		[matDatepickerFilter]="dateFilter"
+        placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}" [(ngModel)]="value"
+        [disabled]="disabled" [readonly]="readonly">
+    <mat-datepicker-toggle matSuffix [for]="picker" *ngIf="!readonly"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <span matSuffix>
+        <button mat-icon-button *ngIf="helpText != null">
+            <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()" #tooltip="matTooltip"
+                [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+            </mat-icon>
+        </button>
+    </span>
+</mat-form-field>
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error>

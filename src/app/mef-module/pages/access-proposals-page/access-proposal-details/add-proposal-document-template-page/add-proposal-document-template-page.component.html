@@ -1,0 +1,12 @@
+<div>
+	<ng-container header>
+		<div class="basis-3/12  text-right">
+			<add-button-component (onAddButtonClick)="create()"
+				tooltip="mef.templateDocument.listTemplateDocuments.addTemplateDocument"></add-button-component>
+		</div>
+	</ng-container>
+	<ng-container content>
+		<list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+		</list-table>
+	</ng-container>
+</div>

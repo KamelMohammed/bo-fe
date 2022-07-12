@@ -1,0 +1,94 @@
+<!-- checkbox-field -->
+<app-checkbox-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.CHECKBOX"
+></app-checkbox-field>
+<!-- combobox-field -->
+<app-combobox-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.COMBOBOX"
+></app-combobox-field>
+<!-- selectbox-field -->
+<app-selectbox-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.SELECTBOX"
+></app-selectbox-field>
+<!-- datepicker-field -->
+<app-datepicker-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.DATEPICKER"
+></app-datepicker-field>
+<!-- numeric-field -->
+<app-numeric-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.NUMERIC"
+></app-numeric-field>
+<!-- radio-field -->
+<app-radio-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.RADIO"
+></app-radio-field>
+<!-- switch-button-field -->
+<app-switch-button-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.SWITCHBUTTON"
+></app-switch-button-field>
+<!-- text-field -->
+<app-text-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.TEXT"
+></app-text-field>
+<!-- text-area-field -->
+<app-text-area-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.TEXTAREA"
+></app-text-area-field>
+<!-- height-field -->
+<app-height-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.HEIGHT"
+></app-height-field>
+<!-- weight-field -->
+<app-weight-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.WEIGHT"
+></app-weight-field>
+<!-- static-text-field -->
+<app-static-text-field
+  [field]="field"
+  *ngIf="field.type === FieldType.STATICTEXT"
+></app-static-text-field>
+<!-- section-field -->
+<app-section-field
+  [field]="field"
+  *ngIf="field.type === FieldType.SECTION"
+></app-section-field>
+<!-- diagnosis-field -->
+<app-diagnosis-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.DIAGNOSIS"
+></app-diagnosis-field>
+<!-- activesubstanceallergies-field -->
+<app-active-substance-allergies-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.ACTIVESUBSTANCEALLERGIES"
+></app-active-substance-allergies-field>
+<!-- commercialdrugallergies-field -->
+<app-commercial-drug-allergies-field
+  [field]="field"
+  [form]="form"
+  *ngIf="field.type === FieldType.COMMERCIALDRUGALLERGIES"
+></app-commercial-drug-allergies-field>

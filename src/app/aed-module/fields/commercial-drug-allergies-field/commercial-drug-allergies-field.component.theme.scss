@@ -1,0 +1,13 @@
+@mixin app-commercial-drug-allergies-field() {
+  app-commercial-drug-allergies-field {
+    .mat-chip-list-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+
+      .mat-chip {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}

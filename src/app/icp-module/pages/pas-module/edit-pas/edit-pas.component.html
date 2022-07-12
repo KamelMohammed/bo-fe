@@ -1,0 +1,29 @@
+<page-content label="{{pageTitle | translate}}">
+	<ng-container content [formGroup]="createPasForm" *ngIf="createPasForm">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-full" formControlName="name" label="Nome" required="true" [readonly]="readonly"></input-string>
+			<select-box class="w-full" formControlName="careLevelId" label="Livello di cura" [items]="careLevelItems" required="true" [readonly]="!canChangeCareLevel">
+			</select-box>
+			<select-box [multiple]="true" class="w-full" formControlName="pathologiesId" label="Patologie" required="true" [items]="pathologieItems" [readonly]="readonly" [autocomplete]="true"></select-box>
+		</div>
+		<div fxLayoutAlign=" center" *ngIf="edit">
+			<app-pas-activity-page
+			[itemId]="id"
+			[pai_pas]="pai_pas"
+			(pasActivitiesCounter)="setPasActivitiesCounter($event)"
+			[readonly]="!canUpdatePasActivities"
+			></app-pas-activity-page>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button class="mt-2" (click)="back()" >
+				{{'common.back' | translate}}
+			</button>
+			&nbsp;
+			<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!createPasForm || !createPasForm.valid || readonly">
+				{{'common.save' | translate}}
+			</button>
+		</div>
+	</ng-container>
+</page-content>

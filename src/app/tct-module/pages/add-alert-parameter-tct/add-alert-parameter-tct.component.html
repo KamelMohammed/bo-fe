@@ -1,0 +1,20 @@
+<h1 mat-dialog-title *ngIf="data.alertConfig == null">{{'tct.addAlert' | translate}}</h1>
+<h1 mat-dialog-title *ngIf="data.alertConfig != null">{{'tct.editAlert' | translate}}</h1>
+<mat-dialog-content>
+	<div class="py-6 flex flex-wrap justify-between" [formGroup]="form">
+		<input-string formControlName="note" class="w-full" label="tct.alertName"></input-string>
+		<div class="w-full sm:w-45-pc flex items-center">
+			<input-decimal formControlName="minValue" class="w-80-pc" label="tct.minValue"></input-decimal>
+			<span class="w-20-pc pl-2 font-semibold" *ngIf="data.vitalParameter && data.vitalParameter.measurementUnit">{{data.vitalParameter.measurementUnit.symbol}}</span>
+		</div>
+		<div class="w-full sm:w-45-pc flex items-center">
+			<input-decimal formControlName="maxValue" class="w-80-pc" label="tct.maxValue"></input-decimal>
+			<span class="w-20-pc pl-2 font-semibold" *ngIf="data.vitalParameter && data.vitalParameter.measurementUnit">{{data.vitalParameter.measurementUnit.symbol}}</span>
+		</div>
+	</div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button (click)="close()"><span>{{'common.undo' | translate}}</span></button>
+	<button mat-raised-button (click)="save()" color="primary" [disabled]="!validForm"><span>{{'common.save' | translate}}</span></button>
+</mat-dialog-actions>

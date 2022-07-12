@@ -1,0 +1,43 @@
+<page-content label="md.clinicalDiaries">
+  <ng-container header>
+	<div class="flex flex-row">
+		<div class="basis-9/12">
+			<extended-filter-bar [filterFielsDescription]="filterDef" (requestFilterUpdate)="onFiltersUpdate($event)" [filterValue]="filters"></extended-filter-bar>
+		</div>
+		<div class="basis-3/12  text-right">
+			<add-button-component (onAddButtonClick)="add()" tooltip="common.add"></add-button-component>
+		</div>
+	</div>
+</ng-container>
+
+  <ng-container content>
+    <data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions" [showList]="false">
+      <div *cardItemTable="let item"
+        class="bg-card w-full sm:w-47-pc md:w-31-pc lg:w-23-pc xl:w-18-pc  border rounded-xl px-4 pt-2 mr-0 sm:mr-4 md:mr-5 lg:mr-6 mb-6 text-primary">
+        <p class="font-bold text-xl break-all mb-2">{{item.patient.name}} {{item.patient.surname}}</p>
+        <p>{{'common.nosological' | translate}}: {{item.nosological}}</p>
+        <p>{{'common.birthDate' | translate}}: {{item.patient.birthDate | date}}</p>
+        <p>{{'common.code' | translate}}: {{item.patient.code}}</p>
+        <p>{{'common.status' | translate}}: {{item.status | uppercase}}</p>
+        <div class="border-t pt-2 my-2 w-full">
+          <button mat-icon-button (click)="navigateTo(item)">
+            <mat-icon color="primary">
+              folder
+            </mat-icon>
+          </button>
+          <button mat-icon-button [disabled]="isPatient || item?.status.toUpperCase() === 'CHIUSA'"
+            (click)="navigateTo(item, true)">
+            <mat-icon color="primary" [class.closed-status]="item?.status.toUpperCase() === 'CHIUSA'">
+              check_circle
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+    </data-table>
+  </ng-container>
+  <ng-container footer>
+    <div class="w-full text-right">
+
+    </div>
+  </ng-container>
+</page-content>

@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+
+    <div class="py-6" [formGroup]="createProfessionalForm" *ngIf="createProfessionalForm">
+        <div class="flex flex-wrap justify-between">
+			<select-box class="w-full" formControlName="professionalId" label="Figura professionale" required="true" [items]="professionalItems" [readonly]="readonly"></select-box>
+			<select-box class="w-full" formControlName="frequency" label="Frequenza" required="true" [items]="frequencyItems" [readonly]="readonly"></select-box>
+			<input-decimal class="w-32-pc"  formControlName="duration" label="Durata (in minuti)" required="true" [readonly]="readonly"></input-decimal>
+			<input-decimal class="w-32-pc" formControlName="minAccessNumber" label="Numero di accessi minimo" required="true" [readonly]="readonly"></input-decimal>
+			<input-decimal class="w-32-pc" formControlName="maxAccessNumber" label="Numero di accessi massimo" required="true" [readonly]="readonly"></input-decimal>
+		</div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button   class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!formValid || readonly">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>
+<!-- 
+<page-content label="{{'icp.careLevel.createProfessional.pageTitle' | translate}}">
+	<ng-container content [formGroup]="createProfessionalForm" *ngIf="createProfessionalForm">
+		<div class="flex flex-wrap justify-between">
+			<select-box class="w-full" formControlName="professionalId" label="Figura professionale" [items]="professionalItems"></select-box>
+			<select-box class="w-full" formControlName="frequency" label="Frequenza" [items]="frequencyItems" ></select-box>
+			<input-decimal class="w-full" formControlName="duration" label="Durata (in minuti)"></input-decimal>
+			<input-decimal class="w-full" formControlName="minAccessNumber" label="Numero di accessi minimo" ></input-decimal>
+			<input-decimal class="w-full" formControlName="maxAccessNumber" label="Numero di accessi massimo"></input-decimal>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button   class="mt-2"  (click)="back()">
+                {{'common.back' | translate}}
+            </button>
+			&nbsp;
+            <button mat-raised-button color="primary" class="mt-2"  (click)="save()">
+                {{'common.save' | translate}}
+            </button>
+        </div>
+    </ng-container>
+</page-content>
+ -->

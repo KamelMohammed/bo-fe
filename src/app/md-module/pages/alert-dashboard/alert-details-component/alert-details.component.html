@@ -1,0 +1,19 @@
+<!-- <div class="w-full text-center text-lg border-b pb-2">
+	<span class="font-bold">{{ 'common.patient' | translate }}:</span>
+	<span *ngIf="medicalRecord && medicalRecord.patient">
+		{{ medicalRecord.patient.surname }} {{ medicalRecord.patient.name }}
+	</span>
+</div> -->
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+	<a mat-tab-link (click)="selectedIndex=1" [active]="selectedIndex==1" [disabled]="medicalRecord === undefined">{{ 'common.vitalParameters' | translate }}</a>
+	<a mat-tab-link (click)="selectedIndex=2" [active]="selectedIndex==2" [disabled]="medicalRecord === undefined">{{ 'Telecontrollo' | translate }}</a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+	<app-vital-parameters-home [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+		*ngIf="selectedIndex === 1" class="w-full"></app-vital-parameters-home>
+
+	<app-tct-home [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+		*ngIf="selectedIndex === 2" class="w-full">
+	</app-tct-home>
+</mat-tab-nav-panel>

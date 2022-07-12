@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>
+	{{'age.viewDrugNote' | translate}}
+</h1>
+<mat-dialog-content>
+	<div class="flex flex-wrap justify-between" [formGroup]="form">
+		<input-string formControlName="drugNote" label="age.drugNote" class="w-full" [rows]="6" [readonly]="true">
+		</input-string>
+		<input-string formControlName="administrationNote" label="age.administrationNote" class="w-full" [rows]="6">
+		</input-string>
+		<input-slide formControlName="alreadyRead" label="age.markAsRead" class="w-full"></input-slide>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button (click)="close()">
+		{{(canSave ? 'common.undo' : 'common.close') | translate}}
+	</button>
+	<button mat-raised-button color="primary" (click)="save()" *ngIf="canSave">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

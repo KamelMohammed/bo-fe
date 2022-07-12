@@ -1,0 +1,22 @@
+<page-content label="{{actionTitle | translate}}">
+	<ng-container content [formGroup]="createGlossaryForm" *ngIf="createGlossaryForm">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-full" formControlName="name" [readonly]="edit" label="Nome" required="true"></input-string>
+			<input-string class="w-full" formControlName="description" [readonly]="edit" label="Descrizione">
+			</input-string>
+			<select-box class="w-full" formControlName="type" label="Tipo" required="true"
+				[items]="glossaryTypes" [readonly]="edit"></select-box>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button class="mt-2" (click)="back()">
+				{{'common.back' | translate}}
+			</button>
+			&nbsp;
+			<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="edit">
+				{{'common.save' | translate}}
+			</button>
+		</div>
+	</ng-container>
+</page-content>

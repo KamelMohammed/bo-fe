@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>
+  {{ data.medicalRecord.patient.name }} {{ data.medicalRecord.patient.surname }}
+  <span class="block">Età: {{ getPatientAge() }}</span>
+</h1>
+
+<mat-dialog-content>
+  <div [formGroup]="filterForm">
+    <select-box formControlName="filter" [items]="freq" class="flex-grow" label="tct.freq"></select-box>
+  </div>
+  <div #chart class="chart"></div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+  <button mat-raised-button mat-dialog-close>{{'common.close' | translate}}</button>
+</mat-dialog-actions>

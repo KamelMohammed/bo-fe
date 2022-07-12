@@ -1,0 +1,21 @@
+<mat-accordion>
+	<mat-expansion-panel [expanded]="true">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'md.surveys' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-vital-parameters [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+			class="w-full"></app-vital-parameters>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'md.alertParameters' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-alert-parameters [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+			class="w-full"></app-alert-parameters>
+	</mat-expansion-panel>
+</mat-accordion>

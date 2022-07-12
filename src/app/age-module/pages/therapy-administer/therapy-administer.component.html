@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>
+	{{'age.makeAdministration' | translate}}
+</h1>
+<mat-dialog-content>
+	<div class="flex flex-wrap justify-between" [formGroup]="form">
+		<input-date formControlName="date" label="common.date" class="w-48-pc" [utc]="false"></input-date>
+		<input-time formControlName="time" label="common.time" class="w-48-pc"></input-time>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button (click)="close()">
+		{{'common.undo' | translate}}
+	</button>
+	<button mat-raised-button color="primary" (click)="save()">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

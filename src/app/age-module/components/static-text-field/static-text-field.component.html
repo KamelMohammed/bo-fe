@@ -1,0 +1,20 @@
+<div
+  fxFlex="grow"
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  fxLayoutAlign="space-between start"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <div
+    fxFlex="70"
+    class="static-text"
+  >
+    {{ field?.staticText.value }}
+  </div>
+</div>

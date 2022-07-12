@@ -1,0 +1,291 @@
+<!--  -->
+<div class="absolute inset-0 flex flex-col">
+	<div class="w-full flex-auto pr-2" [formGroup]="form" fuseScrollbar>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mb-3">{{'md.general' | translate
+			|uppercase}}
+		</h1>
+		<div class="flex flex-wrap justify-between">
+			<div class="flex justify-between w-full md:w-31-pc">
+				<input-string formControlName="code" [maxLength]="CODE_LENGTH" label="md.idCode" class="flex-auto">
+				</input-string>
+				<button mat-flat-button color="primary"
+					[disabled]="updateMode || form.controls.teamCode.value?.length > 0" class="ml-2 mt-3"
+					(click)="searchFiscalCode(this.form.controls.code.value)">
+					{{ 'SEARCH' | translate}}
+				</button>
+			</div>
+			<input-string formControlName="teamCode" label="md.teamCode" [maxLength]="TEAM_CODE_LENGTH"
+				[readonly]="readOnly || form.controls.code.value?.length > 0" class="w-full sm:w-48-pc md:w-31-pc">
+			</input-string>
+
+			<input-string formControlName="healthInsuranceCard" label="md.HEALTH_INSURANCE_CARD" [readonly]="readOnly"
+				class="w-full sm:w-48-pc md:w-31-pc"></input-string>
+			<input-string formControlName="name" label="common.name" [readonly]="readOnly" required="true"
+				class="w-full sm:w-48-pc md:w-31-pc">
+			</input-string>
+			<input-string formControlName="surname" label="common.surname" [readonly]="readOnly" required="true"
+				class="w-full sm:w-48-pc md:w-31-pc">
+			</input-string>
+			<input-date formControlName="birthDate" label="md.birthdate" [readonly]="readOnly" required="true"
+				class="w-full sm:w-48-pc md:w-31-pc" [utc]="false">
+			</input-date>
+			<select-box formControlName="nationalityController" label="md.NATIONALITY" [items]="nationality$ | async"  required="true"
+				[readonly]="readOnly" class="w-full sm:w-48-pc md:w-31-pc" itemKey="uuid" itemLabel="designationIt">
+			</select-box>
+			<select-box formControlName="gender" label="md.GENDER" [items]="genderFilteredList" [readonly]="readOnly" required="true"
+				class="w-full sm:w-48-pc md:w-31-pc" itemKey="id" itemLabel="description">
+			</select-box>
+			<div class="hidden md:block md:w-31-pc"></div>
+		</div>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.birth' | translate | uppercase}}
+		</h1>
+		<div class="flex flex-wrap justify-between">
+			<select-box formControlName="stateOfBday" label="md.STATEOFBDAY" [items]="statesFilteredList$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				required="true"
+				>
+			</select-box>
+			<select-box formControlName="regionOfBdayController" label="md.REGIONOFBDAY" [items]="regionBDay$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateOfBday')"
+				>
+			</select-box>
+			<select-box formControlName="provinceOfBdayController" label="md.PROVINCEOFBDAY"
+				[items]="provinceBday$ | async" [readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc"
+				itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateOfBday')"
+				>
+			</select-box>
+			<select-box formControlName="districtOfBday" label="md.DISTRICTOFBDAY" [items]="districtsBDay$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateOfBday')"
+				>
+			</select-box>
+		</div>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.residence' | translate
+			|uppercase}}
+		</h1>
+		<div class="flex flex-wrap justify-between">
+			<select-box formControlName="stateAddressController" label="md.STATE" [items]="statesFilteredList$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid"
+				itemLabel="description"
+				required="true"
+				>
+			</select-box>
+			<select-box formControlName="regionAddressController" label="md.REGION" [items]="regionsAddress$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid"
+				itemLabel="description"
+				[required]="isItaly('stateAddressController')"
+				>
+			</select-box>
+			<select-box formControlName="provinceAddressController" label="md.PROVINCE"
+				[items]="provinceAddress$ | async" [readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc"
+				itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateAddressController')"
+				>
+			</select-box>
+			<select-box formControlName="districtAddressController" label="md.DEPART"
+				[items]="districtsAddress$ | async" [readonly]="readOnly"
+				class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateAddressController')"
+				>
+			</select-box>
+
+			<input-string formControlName="addressController" label="md.ADDRESS" [readonly]="readOnly" required="true"
+				class="w-full sm:w-48-pc md:w-66-pc md:pl-1 lg:p-0 lg:w-36-pc">
+			</input-string>
+			<input-string formControlName="cvNumberController" label="md.CV" [readonly]="readOnly" required="true"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-12-pc">
+			</input-string>
+			<input-string formControlName="capController" label="common.cap" [readonly]="readOnly"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc">
+			</input-string>
+			<select-box formControlName="quarterAddressController" label="md.QUARTER"
+				[items]="neighborhoodAddress$ | async" [readonly]="readOnly"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				helpText="md.tooltips.quarter">
+			</select-box>
+		</div>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.domicile' | translate |uppercase}}
+		</h1>
+		<div class="flex flex-wrap justify-between">
+			<input-slide class="w-full" formControlName="checkDomicilieController" label="md.domus"></input-slide>
+			<select-box formControlName="stateDomicileController" label="md.STATE" [items]="statesFilteredList$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid"
+				[required]="domusEnabled"
+				itemLabel="description">
+			</select-box>
+			<select-box formControlName="regionDomicileController" label="md.REGION" [items]="regionDomicile$ | async"
+				[readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid"
+				itemLabel="description"
+				[required]="isItaly('stateDomicileController') && domusEnabled"
+				>
+			</select-box>
+			<select-box formControlName="provinceDomicileController" label="md.PROVINCE"
+				[items]="provinceDomicile$ | async" [readonly]="readOnly" class="w-full sm:w-48-pc lg:w-24-pc"
+				itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateDomicileController') && domusEnabled"
+				>
+			</select-box>
+			<select-box formControlName="districtDomicileController" label="md.DEPART"
+				[items]="districtsDomicile$ | async" [readonly]="readOnly"
+				class="w-full sm:w-48-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				[required]="isItaly('stateDomicileController') && domusEnabled"
+				>
+			</select-box>
+			<input-string formControlName="addressDomicileController" label="md.ADDRESS" [readonly]="readOnly" [required]="domusEnabled"
+				class="w-full sm:w-48-pc md:w-66-pc md:pl-1 lg:p-0 lg:w-36-pc">
+			</input-string>
+			<input-string formControlName="cvNumberDomicileController" label="md.CV" [readonly]="readOnly" [required]="domusEnabled"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-12-pc">
+			</input-string>
+			
+			<input-string formControlName="capDomicileController" label="common.cap" [readonly]="readOnly"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc"
+				>
+
+			</input-string>
+			<select-box formControlName="quarterDomicileController" label="md.QUARTER"
+				[items]="neighborhoodAddress$ | async" [readonly]="readOnly"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc" itemKey="uuid" itemLabel="description"
+				helpText="md.tooltips.quarter">
+			</select-box>
+		</div>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.asl' | translate
+			|uppercase}}
+		</h1>
+		<div class="flex flex-wrap justify-between">
+			<select-box formControlName="aslController" label="md.ASL" [items]="asl$ | async" [readonly]="readOnly" [required]="aslEnabled"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc" itemKey="uuid" itemLabel="description">
+			</select-box>
+			<select-box formControlName="districtController" label="md.DISTRICT" [items]="aslDistrict$ | async" [required]="aslEnabled"
+				[readonly]="readOnly" class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc" itemKey="uuid"
+				itemLabel="description">
+			</select-box>
+			<autocomplete formControlName="mmgController" label="md.MMG" [loader]="searchDoctors"  required="true"
+				class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc" itemKey="label" (onSelectedItem)="mmgSelected($event)"
+				[initialItem]="initialDoctor">
+			</autocomplete>
+			
+			<select-box formControlName="assistenzaController" label="md.ASSISTENZA" [items]="assistenzaValues" [readonly]="readOnly"
+				class="w-full sm:w-48-pc md:w-full lg:w-24-pc">
+			</select-box>
+		</div>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.otherInfo' | translate
+			|uppercase}}
+		</h1>
+		<div class="flex flex-wrap justify-between">
+			<select-box formControlName="maritalstatusController" label="md.MARITALSTATUS" [items]="maritalStatuses"
+				[readonly]="readOnly" class="w-full sm:w-49-pc" itemKey="id" itemLabel="description">
+			</select-box>
+			<select-box formControlName="degreeController" label="md.DEGREE" [items]="study$ | async"
+				[readonly]="readOnly" class="w-full sm:w-49-pc" itemKey="uuid" itemLabel="description">
+			</select-box>
+		</div>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.personalContacts' |
+			translate
+			|uppercase}}
+		</h1>
+		<ng-container formArrayName="personalReferences">
+			<ng-container *ngFor="let control of getFormArray(form.controls.personalReferences).controls; let i = index"
+				[formGroupName]="i">
+				<div class="flex flex-wrap justify-between">
+					<div class="w-full md:w-31-pc flex flex-col items-center"
+						*ngFor="let reference of personalReferences" [formArrayName]="reference.arrayName">
+						<div class="w-full flex justify-between" *ngFor="let referenceControl of getFormArrayFromFormGroup(control,
+							reference.arrayName).controls; let referenceIndex = index">
+							<ng-container [formGroupName]="referenceIndex">
+								<input-string [formControlName]="reference.controlName" [label]="reference.label"
+									[ngClass]="{'w-full':readOnly || closeMRMode || reference.controlName === 'email',
+									'w-80-pc':!readOnly && !closeMRMode && reference.controlName !== 'email'}"
+									[required]="reference.controlName === 'email'"
+									>
+								</input-string>
+							</ng-container>
+							<div class="w-20-pc flex pt-3"
+								*ngIf="!readOnly && !closeMRMode && reference.controlName !== 'email'">
+								<button mat-icon-button color="primary"
+									(click)="addFormControl(control, reference.arrayName, reference.controlName)">
+									<mat-icon>add_circle</mat-icon>
+								</button>
+								<button mat-icon-button color="accent" *ngIf="referenceIndex > 0"
+									(click)="deleteFormControl(control, reference.arrayName, referenceIndex)">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-container>
+		</ng-container>
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3">{{'md.otherContacts' |
+			translate
+			|uppercase}}
+		</h1>
+		<ng-container formArrayName="references">
+			<div class="w-full text-right" *ngIf="!readOnly && !getFormArray(form.controls.references).controls.length">
+				<button mat-icon-button color="primary" (click)="addReference()">
+					<mat-icon>add_circle</mat-icon>
+				</button>
+			</div>
+			<ng-container *ngFor="let control of getFormArray(form.controls.references).controls; let i = index"
+				[formGroupName]="i">
+				<div class="w-full text-right" *ngIf="!readOnly && !closeMRMode">
+					<button mat-icon-button color="primary" (click)="addReference()">
+						<mat-icon>add_circle</mat-icon>
+					</button>
+					<button mat-icon-button *ngIf="getFormArray(form.controls.references).controls.length > 1"
+						color="primary" (click)="deleteReference(i)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</div>
+				<div class="w-full flex flex-wrap justify-between">
+					<input-string formControlName="name" [readonly]="readOnly" label="common.name"
+						class="w-full md:w-49-pc"></input-string>
+					<input-string formControlName="surname" [readonly]="readOnly" label="common.surname"
+						class="w-full md:w-49-pc"></input-string>
+				</div>
+				<div class="flex flex-wrap justify-between">
+					<div class="w-full md:w-31-pc flex flex-col items-center" *ngFor="let reference of references"
+						[formArrayName]="reference.arrayName">
+						<div class="w-full flex justify-between"
+							*ngFor="let referenceControl of getFormArrayFromFormGroup(control, reference.arrayName).controls; let referenceIndex = index">
+
+
+							<ng-container [formGroupName]="referenceIndex">
+								<input-string [formControlName]="reference.controlName" [label]="reference.label"
+									[ngClass]="{'w-full':readOnly || closeMRMode || reference.controlName === 'email',
+									'w-80-pc':!readOnly && !closeMRMode && reference.controlName !== 'email'}">
+								</input-string>
+							</ng-container>
+							<div class="w-20-pc flex pt-3"
+								*ngIf="!readOnly && !closeMRMode && reference.controlName !== 'email'">
+								<button mat-icon-button color="primary"
+									(click)="addFormControl(control, reference.arrayName, reference.controlName)">
+									<mat-icon>add_circle</mat-icon>
+								</button>
+								<button mat-icon-button color="primary" *ngIf="referenceIndex > 0"
+									(click)="deleteFormControl(control, reference.arrayName, referenceIndex)">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-container>
+		</ng-container>
+	</div>
+
+	<div class="w-full flex justify-end py-4" [hidden]="readOnly">
+		<button mat-raised-button class="mr-4" routerLink="/md/clinical-diaries">
+			{{ 'common.cancel' | translate}}
+		</button>
+		<button *ngIf="!closeMRMode && !profile.isPatient" mat-raised-button color="primary" (click)="save()">
+			{{ 'common.save' | translate}}
+		</button>
+		<button *ngIf="closeMRMode && medicalRecord?.status !== 'CHIUSA' && !profile.isPatient" mat-raised-button
+			(click)="closeMedicalRecord()">
+			{{ 'common.close' | translate}}
+		</button>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<!-- Button -->
+<button mat-icon-button [matTooltip]="tooltip || 'Toggle Fullscreen'" (click)="toggleFullscreen()" class="bg-card mr-1">
+    <ng-container [ngTemplateOutlet]=" iconTpl || defaultIconTpl"></ng-container>
+</button>
+
+<!-- Default icon -->
+<ng-template #defaultIconTpl>
+    <mat-icon [svgIcon]="'heroicons_outline:arrows-expand'" class="text-primary"></mat-icon>
+</ng-template>

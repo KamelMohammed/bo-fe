@@ -1,0 +1,35 @@
+<ng-container *ngIf="show$|async">
+    <mat-form-field [floatLabel]="'always'" [appearance]="appearance" class="w-full"
+        [class.mat-form-field-invalid]="!valid">
+        <input [class.mat-form-field-invalid]="!valid" matInput [id]="id" (input)="onTextChange($event.target.value)" [ngModel]="initialText"
+            placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}"
+            [disabled]="disabled" [matAutocomplete]="autocomplete" [readonly]="readonly" />
+        <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]="displayValue"
+            (optionSelected)="onSelect($event.option.value)">
+            <mat-option *ngFor="let item of items | async" [value]="item">
+                {{item[itemLabel]}}
+            </mat-option>
+        </mat-autocomplete>
+        <div matSuffix style="display:flex;align-items:center;">
+            <mat-progress-spinner *ngIf="loading" mode="indeterminate" diameter="20"></mat-progress-spinner>
+            <button mat-icon-button [matMenuTriggerFor]="menuItems" *ngIf="actionItems.length>0">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="helpText != null">
+                <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()"
+                    #tooltip="matTooltip" [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+                </mat-icon>
+            </button>
+        </div>
+    </mat-form-field>
+
+    <mat-error *ngIf="!valid">
+        {{errorMessage}}
+    </mat-error>
+
+    <mat-menu #menuItems="matMenu">
+        <button mat-menu-item *ngFor="let actionItem of visibleActionItems">
+            <span (click)="actionItem.callback()">{{actionItem.label | translate}}</span>
+        </button>
+    </mat-menu>
+</ng-container>

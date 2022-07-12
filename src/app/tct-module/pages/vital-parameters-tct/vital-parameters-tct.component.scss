@@ -1,0 +1,74 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+  }
+  
+  .fid-default-table-container {
+    flex-grow: 1;
+  }
+  
+  tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+  }
+  
+  .element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .element-detail-table {
+    border: 1px solid #eeeeee;
+  }
+  
+  .element-detail-header {
+    background-color: #eeeeee;
+  }
+  
+  .element-detail-header-cell {
+    border-left: 1px solid #eeeeee;
+  }
+  
+  .element-detail-header-cell:first-child {
+    border-top: none;
+    border-left: none;
+  }
+  
+  .element-detail-row {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: scroll;
+    height: 147px;
+  }
+  
+  .element-detail-row-cell {
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+  }
+  
+  .element-detail-row-cell:first-child {
+    border-left: none;
+  }
+  
+  .measureUnitSymbol {
+    font-weight: 500;
+  }
+  
+  .add-new-measurement-container {
+    background-color: aliceblue;
+  }
+  
+  .info-icon {
+    cursor: pointer;
+  }
+  

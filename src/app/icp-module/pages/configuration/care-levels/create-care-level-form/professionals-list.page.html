@@ -1,0 +1,18 @@
+<div>
+	<ng-container header>
+        <div class="w-full text-right">
+            <add-button-component (onAddButtonClick)="add()"></add-button-component>
+        </div>
+    </ng-container>
+    <ng-container content>
+        <list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+            <div *cardItemTable="let item" class="bg-card w-20-pc border shadow mr-6 mb-6">
+                <p>{{item.professionalName}}</p>
+                <p>{{item.frequency}}</p>
+                <p>{{item.duration}}</p>
+				<p>{{item.minAccessNumber}}</p>
+				<p>{{item.maxAccessNumber}}</p>
+            </div>
+        </list-table>
+    </ng-container>
+</div>

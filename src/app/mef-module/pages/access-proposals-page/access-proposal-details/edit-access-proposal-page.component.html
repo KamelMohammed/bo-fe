@@ -1,0 +1,81 @@
+<h1 mat-dialog-title>Dettaglio della proposta di accesso. Stato {{proposalState | translate}}</h1>
+
+<mat-dialog-content>
+	<div class="w-full flex justify-center" *ngIf="loading">
+		caricamento in corso! Attendi qualche secondo.
+	</div>
+	<div  *ngIf="!loading">
+		<div *ngIf="!canShowProposal()">
+			<div *ngIf="memershipToConfirm">
+				<h1>Prima di visualizzare la proposta di accesso devi accettare l'invito come membro del gruppo UVI</h1>
+			</div>
+			<div *ngIf="memershipRefused">
+				<h1>Non puoi visualizzare la proposta di accesso perchè hai rifiutato la convocazione come membro del gruppo UVI</h1>
+			</div>
+		</div>
+		<div *ngIf="canShowProposal()">
+			<div class="flex flex-wrap justify-between" [formGroup]="baseAccessProposalForm" *ngIf="baseAccessProposalForm">
+				<input-slide class="w-30-pc" formControlName="palliativeAccessProposal" [readonly]="!canEditBaseFlags" label="Cure Palliative e Terapia del Dolore" (onValueChanged)="setPalliativeAccessProposal($event)"> </input-slide>
+				<input-slide class="w-30-pc" formControlName="protectDischarge" [readonly]="!canEditBaseFlags" label="Dimissione Protetta" (onValueChanged)="setProtectDischarge($event)"> </input-slide>
+				<input-slide class="w-30-pc" formControlName="disability" [readonly]="!canEditBaseFlags" label="Disabilità"> </input-slide>
+			</div>
+			<div *ngIf="created">
+				<h1 class="bg-primary text-white">Allega documentazione</h1>
+				<div class="flex items-stretch my-4 min-h-full">
+					<button  *ngFor="let template of templateDocuments" (click)="downloadDocumentTemplate(template)" mat-button class="w-auto outline outline-primary mx-2 ">Download Modello<br>{{template.type}}</button>
+				</div>
+				<div *ngIf="canUpdateFiles" class="basis-3/12  text-right">
+					<add-button-component (onAddButtonClick)="addAttachment()" tooltip="Allega documento"></add-button-component>
+				</div>
+				<div class="w-full">
+					<list-table
+						[columns]="attachTableColumns"
+						[manager]="attachTabledataTableManager"
+						[actions]="attachTabletableActions"
+						[defaultActionsNumberToShow]="attachTabletableActions.length"
+						>
+					</list-table>
+				</div>
+		
+			</div>
+		
+			<div *ngIf="created">
+				<h1 class="bg-primary text-white my-4">Spazio riservato alla PUA</h1>
+				<div class="flex flex-wrap justify-between" [formGroup]="puaForm" *ngIf="puaForm">
+					<input-date [dateFilter]="dateGTNowFilter" class="w-48-pc" formControlName="protocolDate" label="Data di presa in carico" [readonly]="!canEditPuaData"></input-date>
+					<input-string formControlName="protocolNumber" label="N° Protocollo" formControlName="protocolNumber" class="w-48-pc" [readonly]="!canEditPuaData"></input-string>
+					<input-slide class="w-48-pc" formControlName="complexNeed" [readonly]="!canEditAdditionalPuaData" label="Assegna Bisogno Complesso" (onValueChanged)="setComplexNeed($event)"> </input-slide>
+					<input-slide class="w-48-pc" formControlName="simpleNeed" [readonly]="!canEditAdditionalPuaData" label="Assegna Bisogno Semplice" (onValueChanged)="setSimpleNeed($event)"> </input-slide>
+		
+					<input-slide class="w-48-pc" formControlName="proposalNotValid" [readonly]="!canEditAdditionalPuaData" label="Proposta Rigettata" (onValueChanged)="setProposalNotValid($event)"> </input-slide>
+					<input-slide class="w-48-pc" formControlName="needNotPresent" [readonly]="!canEditAdditionalPuaData" label="Non è presente un Bisogno" (onValueChanged)="setNeedNodPresent($event)"> </input-slide>
+		
+					<input-string class="w-full" label="Note" formControlName="note" [required]="notesRequired" [readonly]="!canEditAdditionalPuaData" [rows]="5"></input-string>
+		
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+   
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="close()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button *ngIf="canShowProposal()" mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!canSave()">
+		{{'common.save' | translate}}
+	</button>
+	
+	<button *ngIf="memershipToConfirm && enableMembershipUpdate" mat-raised-button color="warn" class="mt-2" (click)="rejectConvocation()">
+		Rifiuta convocazione
+	</button>
+	&nbsp;
+	<button  *ngIf="memershipToConfirm && enableMembershipUpdate" mat-raised-button color="primary" class="mt-2" (click)="confirmMembership()">
+		Aderisci ora
+	</button>
+</mat-dialog-actions>
+

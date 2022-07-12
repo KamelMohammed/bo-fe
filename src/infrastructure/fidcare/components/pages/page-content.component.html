@@ -1,0 +1,12 @@
+<div class="absolute inset-0 m-4 md:m-6 p-4 bg-white flex flex-col rounded-xl  overflow-hidden">
+    <div class="w-full mb-4">
+        <ng-content select="[header]"></ng-content>
+    </div>
+    <div class="w-full flex-auto pr-5" fuseScrollbar
+        [fuseScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+        <ng-content select="[content]"></ng-content>
+    </div>
+    <div class="w-full mt-4">
+        <ng-content select="[footer]"></ng-content>
+    </div>
+</div>

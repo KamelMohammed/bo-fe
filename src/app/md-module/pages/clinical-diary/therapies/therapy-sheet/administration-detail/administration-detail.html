@@ -1,0 +1,104 @@
+<h2
+    class="header-dialog"
+    mat-dialog-title
+>Somministrazione "{{detail.drugName}}"</h2>
+<mat-dialog-content class="mat-typography">
+    <div
+        fxLayout="column"
+        class="full-height-container"
+    >
+        <div
+            fxLayout="column"
+            class="margin-top-6x"
+            fxLayoutAlign="center stretch"
+        >
+            <div fxLayoutAlign="start center">
+                <mat-label fxFlex=20>{{'md.preparedDrugNote'|translate}}</mat-label>
+                <div fxFlex=2></div>
+                <mat-form-field
+                    fxFlex="1 1 auto"
+                    class="custom-form-field"
+                    appearance="outline"
+                >
+                    <input
+                        matInput
+                        readonly
+                        [value]="detail.ptComponentNote"
+                    >
+                </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="start center">
+                <mat-label fxFlex=20>{{'md.administrationState'|translate}}</mat-label>
+                <div fxFlex=2></div>
+                <mat-form-field
+                    fxFlex="1 1 auto"
+                    class="custom-form-field"
+                    appearance="outline"
+                >
+                    <input
+                        matInput
+                        readonly
+                        [value]="state"
+                    >
+                </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="start center">
+                <mat-label fxFlex=20>{{'md.administrationDateTime'|translate}}</mat-label>
+                <div fxFlex=2></div>
+                <mat-form-field
+                    fxFlex="1 1 auto"
+                    class="custom-form-field"
+                    appearance="outline"
+                >
+                    <input
+                        matInput
+                        readonly
+                        [value]="administrationDateTime" 
+                    >
+                </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="start center">
+                <mat-label fxFlex=20>{{'md.administrationNotes'|translate}}</mat-label>
+                <div fxFlex=2></div>
+                <mat-form-field
+                    fxFlex="1 1 auto"
+                    class="custom-form-field"
+                    appearance="outline"
+                >
+                    <input
+                        matInput
+                        readonly
+                        [value]="detail.administration.notes"
+                    >
+                </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="start center">
+                <mat-label fxFlex=20>{{'md.administrationOperator'| translate}}</mat-label>
+                <div fxFlex=2></div>
+                <mat-form-field
+                    fxFlex="1 1 auto"
+                    class="custom-form-field"
+                    appearance="outline"
+                >
+
+                    <input
+                        matInput
+                        readonly
+                        [value]="detail.patient.name + ' ' + detail.patient.surname"
+                    >
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button
+        mat-flat-button
+        color="primary"
+        mat-dialog-close
+    >{{ 'OK' | translate }}</button>
+</mat-dialog-actions>

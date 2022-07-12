@@ -1,0 +1,24 @@
+<div
+  fxFlex="grow"
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  [fxLayoutAlign]="getFxLayoutAlign(field?.label?.position)"
+  [formGroup]="form"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <mat-form-field
+    appearance="outline"
+    fxFlex="70"
+  >
+    <textarea
+      matInput
+      [formControlName]="field.id"
+    ></textarea>
+  </mat-form-field>
+</div>

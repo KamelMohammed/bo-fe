@@ -1,0 +1,28 @@
+<ng-container *ngIf="mode==viewerModes.DEFAULT">
+    <p class="w-full font-bold mb-0">{{label | translate}}</p>
+    <p class="w-full mb-0">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </p>
+</ng-container>
+
+<ng-container *ngIf="mode==viewerModes.LEFT">
+    <p class="w-full mb-0">
+        <span class="font-bold">{{label | translate}}</span>
+        <span>
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </span>
+    </p>
+</ng-container>
+
+<ng-container *ngIf="mode==viewerModes.CENTERED">
+    <p class="w-full mb-0 flex justify-between text-xl">
+
+        <span class="font-bold w-49-pc text-right">{{label | translate}}</span>
+        <span class="text-left w-49-pc">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </span>
+    </p>
+</ng-container>
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>

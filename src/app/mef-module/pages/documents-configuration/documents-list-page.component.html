@@ -1,0 +1,32 @@
+<page-content label="{{'mef.templateDocument.listTemplateDocuments.pageTitle' | translate}}">
+	<ng-container header>
+		<div class="basis-3/12  text-right">
+			<add-button-component (onAddButtonClick)="create()"
+				tooltip="mef.templateDocument.listTemplateDocuments.addTemplateDocument"></add-button-component>
+		</div>
+	</ng-container>
+	<ng-container content>
+		<data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions" [defaultActionsNumberToShow]="tableActions.length">
+			<div fxLayout="row">
+				<mat-card class="rounded-3xl m-2" *cardItemTable="let item">
+					<mat-card-title>
+						<mat-icon color="primary" svgIcon="heroicons_outline:briefcase"></mat-icon>
+						{{item.fileName}}
+					</mat-card-title>
+					<mat-card-content>
+						<p>{{'mef.templateDocument.listTemplateDocuments.typeLabel' | translate}}:
+							<strong>{{item.type}}</strong>
+						</p>
+						<p>{{'mef.templateDocument.listTemplateDocuments.fileReferenceLabel' | translate}}:
+							<strong>{{item.fileReference}}</strong>
+						</p>
+					</mat-card-content>
+					<mat-card-footer>
+						<mat-divider inset></mat-divider>
+						<card-actions [actions]="tableActions" [data]="item" ></card-actions>
+					</mat-card-footer>
+				</mat-card>
+			</div>
+		</data-table>
+	</ng-container>
+</page-content>

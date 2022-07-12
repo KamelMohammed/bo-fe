@@ -1,0 +1,11 @@
+<mat-chip-list class="w-full block" style="padding-left:4px;padding-right:4px;"
+    [ngClass]="{'mat-chip-list-stacked':!horizontal}">
+    <mat-chip *ngFor="let item of items" [color]="item.color || color || 'standard'" [selected]="true"
+        [removable]="removable" (click)="onClick(item)" (removed)="onRemove(item.data)">
+        <ng-container *ngIf="isObject">{{item.data[itemLabel]}}</ng-container>
+        <ng-container *ngIf="!isObject">{{item.data}}</ng-container>
+        <button matChipRemove *ngIf="removable">
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-chip>
+</mat-chip-list>

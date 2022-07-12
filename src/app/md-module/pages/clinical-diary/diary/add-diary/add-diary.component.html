@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{'md.addClinicalDiary' | translate}}</h1>
+<mat-dialog-content>
+  <div class="py-6 flex flex-wrap justify-between" [formGroup]="form">
+    <input-datetime formControlName="activityDate" class="w-full" label="common.date"></input-datetime>
+    <input-string [rows]="8" formControlName="activity" class="w-full" label="common.note"></input-string>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+  <button mat-raised-button (click)="close()"><span>{{'common.undo' | translate}}</span></button>
+  <button mat-raised-button (click)="save()" color="primary"><span>{{'common.save' |
+      translate}}</span></button>
+</mat-dialog-actions>

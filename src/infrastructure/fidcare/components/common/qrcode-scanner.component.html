@@ -1,0 +1,20 @@
+<div class=" flex flex-wrap" >
+    <div class="w-full flex justify-between items-center">
+		<div [ngClass]="{'code-invalid':!dataValidate,'code-valid':dataValidate, 'scanner-border': scanComplete}">
+			<div *ngIf="showSwitchDevice" class="switch-cam-button" (click)="changeCam()">
+				<button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+					<mat-icon [svgIcon]="iconCamera"></mat-icon>
+				</button>
+			</div>
+			<zxing-scanner
+				#scanner
+				[(device)]="desiredDevice"
+				(scanComplete)="onScanComplete($event)"
+				(camerasFound)="camerasFound($event)"
+				(camerasNotFound)="camerasNotFound($event)"
+				(scanSuccess)="onScanQRCodeSuccess($event)">
+			</zxing-scanner>
+		</div>
+    </div>
+	<div *ngIf="errorMessage"><mat-icon color="warn" [svgIcon]="iconMessage"></mat-icon>&nbsp;{{errorMessage | translate}}</div>
+</div>

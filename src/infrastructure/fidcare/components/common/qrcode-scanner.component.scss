@@ -1,0 +1,23 @@
+.scanner-border {
+	position: relative;
+	border-style: solid;
+	border-width: 5px;
+  	border-radius: 10px;
+	overflow: hidden;
+}
+.code-valid {
+	border-color: rgb(5, 98, 5);
+}
+
+.code-invalid {
+	border-color: rgb(179, 46, 19);
+}
+
+.switch-cam-button {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 50px;
+	height: 50px;
+	z-index: 1000;
+}

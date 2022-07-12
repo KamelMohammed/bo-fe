@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+
+    <div class="py-6" [formGroup]="createPasActivityForm">
+        <div class="flex flex-wrap justify-between">
+			<select-box class="w-49-pc" formControlName="professionalId" label="Figura professionale" [items]="professionalItems" required="true" [readonly]="readonly || history"></select-box>
+			<input-string class="w-49-pc" formControlName="frequency" label="Frequenza" [readonly]="true" required="true">
+			</input-string>
+			<select-box class="w-full" [multiple]="true" formControlName="servicesId" label="Prestazioni" [items]="_serviceItems" [readonly]="readonly || history" [autocomplete]="true"></select-box>
+			<select-box class="w-full" [multiple]="true" formControlName="activitiesId" label="Attività" [items]="_activityItems" [readonly]="readonly || history  || !professionalSelected" [autocomplete]="true">
+			</select-box>
+			<input-decimal class="w-32-pc" formControlName="duration" label="Durata (in minuti)" [readonly]="durationReadOnly || readonly || history" required="true"></input-decimal>
+			<input-decimal class="w-32-pc" formControlName="minAccessNumber" label="Numero di accessi minimo" required="true" [readonly]="readonly || history  || !professionalSelected">
+			</input-decimal>
+			<input-decimal class="w-32-pc" formControlName="maxAccessNumber" label="Numero di accessi massimo" required="true" [readonly]="readonly || history  || !professionalSelected">
+			</input-decimal>
+			<input-string class="w-full" formControlName="therapy" label="Terapia" rows="5" [readonly]="readonly || history  || !professionalSelected"></input-string>
+		</div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!formValid || readonly || history">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

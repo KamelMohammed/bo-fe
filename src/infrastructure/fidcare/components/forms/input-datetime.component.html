@@ -1,0 +1,44 @@
+<div class="w-full flex justify-between">
+    <mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" [class.mat-form-field-invalid]="!valid"
+        class="w-50-pc">
+        <mat-label>{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+        <input [id]="id" matInput [matDatepicker]="picker"
+			[matDatepickerFilter]="dateFilter"
+            placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}" [(ngModel)]="date"
+            [disabled]="disabled" [readonly]="readonly">
+        <mat-datepicker-toggle matSuffix [for]="picker" *ngIf="!readonly"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <span matSuffix>
+            <button mat-icon-button *ngIf="helpText != null">
+                <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()"
+                    #tooltip="matTooltip" [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+                </mat-icon>
+            </button>
+        </span>
+    </mat-form-field>
+    <mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" [class.mat-form-field-invalid]="!valid"
+        class="w-20-pc">
+        <mat-label>{{'common.hours' | translate}}{{(required)?'*':''}}</mat-label>
+        <mat-select placeholder="{{'common.hours' | translate}}{{(required)?'*':''}}" [(ngModel)]="hours" [id]="id"
+            [disabled]="disabled || readonly">
+            <mat-option>{{'common.select' | translate}}</mat-option>
+            <mat-option *ngFor="let item of hoursItems" [value]="item.id">
+                {{item.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" [class.mat-form-field-invalid]="!valid"
+        class="w-20-pc">
+        <mat-label>{{'common.minutes' | translate}}{{(required)?'*':''}}</mat-label>
+        <mat-select placeholder="{{'common.minutes' | translate}}{{(required)?'*':''}}" [(ngModel)]="minutes" [id]="id"
+            [disabled]="disabled || readonly">
+            <mat-option>{{'common.select' | translate}}</mat-option>
+            <mat-option *ngFor="let item of  minutesItems" [value]="item.id">
+                {{item.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error>

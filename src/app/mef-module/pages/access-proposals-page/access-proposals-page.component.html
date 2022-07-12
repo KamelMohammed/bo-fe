@@ -1,0 +1,16 @@
+<page-content [label]="'mef.accessProposal.listAccessProposals.pageTitle' | translate">
+  <ng-container header>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a mat-tab-link (click)="selectedIndex=0" [active]="selectedIndex==0">
+        {{'mef.accessProposal.listAccessProposals.currentLabel' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=1" [active]="selectedIndex==1">
+        {{'mef.accessProposal.listAccessProposals.historyLabel' | translate }}</a>
+    </nav>
+  </ng-container>
+  <ng-container content>
+    <mat-tab-nav-panel #tabPanel>
+      <app-list-access-proposals-page (proposalUpdates)="onProposalUpdates($event)" *ngIf="selectedIndex ==0" [patientId]="patientId" [canAddProposal]="canAddProposal"></app-list-access-proposals-page>
+      <app-list-access-proposals-page *ngIf="selectedIndex ==1" [history]="true" [patientId]="patientId" [canAddProposal]="false"></app-list-access-proposals-page>
+    </mat-tab-nav-panel>
+  </ng-container>
+</page-content>

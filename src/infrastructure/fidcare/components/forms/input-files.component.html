@@ -1,0 +1,24 @@
+<mat-form-field floatLabel="always" appearance="outline" class="w-full file-upload"
+    [class.mat-form-field-invalid]="!valid">
+    <mat-label>{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+    <input type="text" matInput class="hidden" />
+    <input hidden type="file" #fileInput (change)="onFilesSelected($event.target.files)" [attr.accept]="accept" />
+    <div class="flex justify-between  mb-2" *ngFor="let attachment of value;index as i">
+        <button mat-flat-button class="w-48-pc" color="accent"
+            [secure-click]="downloadCallback(attachment)">{{'common.view' |
+            translate}}</button>
+        <button mat-flat-button class="w-48-pc" color="warn" (click)="remove(i)">{{'common.delete' |
+            translate}}</button>
+    </div>
+    <button mat-flat-button class="w-full" color="primary" (click)="fileInput.click()">{{'common.upload' | translate}}</button>
+    <span matSuffix>
+        <button mat-icon-button *ngIf="helpText != null">
+            <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()" #tooltip="matTooltip"
+                [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+            </mat-icon>
+        </button>
+    </span>
+</mat-form-field>
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error>

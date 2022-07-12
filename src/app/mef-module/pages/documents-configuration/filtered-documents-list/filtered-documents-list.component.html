@@ -1,0 +1,20 @@
+<div class="flex-col">
+	<div class="my-5">
+		<h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mb-3">{{title}}
+		</h1>
+		<div class="flex items-stretch my-4 min-h-full">
+			<button *ngFor="let template of templateDocuments" (click)="downloadDocumentTemplate(template)"
+				mat-button class="w-auto outline outline-primary mx-2 ">Download Modello<br>{{template.type}}</button>
+		</div>
+		<div>
+			<div class="basis-3/12  text-right">
+				<add-button-component (onAddButtonClick)="addAttachment()" tooltip="Allega documentosssss" [disabled]="!canUploadNewFile">
+				</add-button-component>
+			</div>
+			<div class="w-full">
+				<list-table [columns]="attachTableColumns" [manager]="attachTabledataTableManagerB" [actions]="attachTabletableActions" [defaultActionsNumberToShow]="attachTabletableActions.length">
+				</list-table>
+			</div>
+		</div>
+	</div>
+</div>

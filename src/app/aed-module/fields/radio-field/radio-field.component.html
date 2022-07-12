@@ -1,0 +1,12 @@
+<div [fxLayout]="getFxLayout(field?.label?.position)" fxLayoutAlign="space-between center" [formGroup]="form"
+  class="margin-top-2x">
+  <mat-label *ngIf="!field?.label?.hidden" class="margin-right-5x" fxFlex="25">
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <mat-radio-group [fxLayout]="getFxLayout(field?.radio?.position)" [formControlName]="field.id">
+    <ng-container *ngFor="let option of field?.radio?.options">
+      <mat-label class="margin-right-5x">{{ option.label }}</mat-label>
+      <mat-radio-button [value]="option.value" color="primary"></mat-radio-button>
+    </ng-container>
+  </mat-radio-group>
+</div>

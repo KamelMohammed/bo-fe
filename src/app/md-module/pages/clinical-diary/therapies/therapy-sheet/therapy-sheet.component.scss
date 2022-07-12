@@ -1,0 +1,102 @@
+:host {
+    flex-grow: 1;
+    overflow: auto;
+  }
+  
+  .viewType {
+    align-self: flex-end;
+    width: fit-content;
+  }
+  
+  .therapy-table {
+    width: 100%;
+    background: transparent;
+  }
+  
+  .paginator-container {
+    margin-top: auto;
+  }
+  
+  .state-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pathologies-borders-row {
+    border: solid 1px #1a9776;
+  }
+  
+  .pathologies-borders-cell {
+    border: solid 1px #1a9776;
+    padding: 0 10px;
+  }
+  
+  .green-time {
+    color: green;
+    cursor: pointer;
+  }
+
+  .green-time:hover{
+    opacity: 0.5;
+  }
+  
+  .red-underline-time {
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .orange-time {
+    color: #FF9933;
+    cursor: pointer;
+  }
+
+  .orange-time:hover{
+    opacity: 0.5;
+  }
+  
+  .to-somm {
+    cursor: pointer;
+  }
+
+  .to-somm:hover{
+    opacity: 0.5;
+  }
+  
+  .red-time {
+    color: red;
+    cursor: pointer;
+  }
+
+  .red-time:hover{
+    opacity: 0.5;
+  }
+
+  .yellow-time {
+    color: yellow;
+    cursor: pointer;
+  }
+
+  .yellow-time:hover{
+    opacity: 0.5;
+  }
+  
+  .strikethrough {
+    position: relative;
+  }
+  .strikethrough:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 1px solid;
+    border-color: inherit;
+  
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+  }
+  

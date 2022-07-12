@@ -1,0 +1,247 @@
+{
+	"icp": {
+		"welcome-back": "Hoşgeldin",
+		"Project": "Proje",
+		"Analytics": "Analitik",
+		"saveOperationResult":"Esito operazione di salvataggio",
+		"updateOperationResult":"Esito operazione di aggiornamento",
+		"careLevel": {
+			"careLevelSaved": "Livello di cura salvato correttamente",
+			"listCareLevel": {
+				"pageTitle": "Elenco dei Livelli di cura",
+				"idLable": "Identificativo",
+				"nameLabel": "Nome",
+				"levelLabel": "Livello assistenziale",
+				"profileLabel": "Profilo di cura",
+				"filterNameLabel": "filtra per nome",
+				"filterLevelLabel": "filtra per lvello assistenziale",
+				"addCareLevelButtonLabel": "Aggiungi nuovo Livello di Cura",
+				"confirmDeleteCareLevelTitle": "Elimina un livello di cura",
+				"confirmDeleteCareLevelMessage": "Sei sicuro di vole eliminare il livello di cura selezionato?"
+			},
+			"listProfessional": {
+				"pageTitle": "Aggiungi professionista",
+				"professionalNameLabel": "Figura professionale",
+				"frequencyLabel": "Frequenza",
+				"durationLabel": "Durata (in minuti)",
+				"minAccessNumberLabel": "Numero minimo di accessi",
+				"maxAccessNumberLabel": "Numero massimo di accessi"
+			},
+			"createCareLevel": {
+				"pageTitle": "Dettagli livello di cura"
+			},
+			"createProfessional": {
+				"pageTitle": "Crea figura professionale",
+				"pageDetailTitle": "Dettagli della figura professionale"
+			}
+		},
+		"service": {
+			"serviceSaved":"Prestazione salvata correttamente",
+			"listService": {
+				"pageTitle": "Elenco Prestazioni",
+				"idLabel": "Identificativo",
+				"serviceLabel": "Prestazione",
+				"typeLabel": "Tipologia di prestazione",
+				"shortAccessCostLabel": "Costo della prestazione",
+				"accessCostLabel": "Costo della prestazione (in euro)",
+				"professionalsLabel": "Figure professionali",
+				"filterNameLabel":"filtra per tipologia di prestazione",
+				"filterByNameLabel":"filtra per nome",
+				"addServiceButton": "Aggiungi una nuova prestazione"
+			},
+			"createService": {
+				"pageTitle": "Dettaglio prestazione"
+			}
+		},
+		"glossary": {
+			"glossarySaved":"Elemento di glossario salvato correttamente",
+			"listGlossary": {
+				"pageTitle": "Glossario",
+				"idLabel": "Identificativo",
+				"nameLabel": "Nome",
+				"typeLabel": "Tipo",
+				"descriptionLabel": "Descrizione",
+				"filterGlossaryTypeLabel":"filtra per tipo",
+				"addGlossaryButton": "Aggiungi un nuovo elemento di glossario"
+			}
+		},
+		"activity": {
+			"activitySaved":"Attività salvata correttamente",
+			"listActivity": {
+				"pageTitle": "Elenco attività",
+				"idLabel": "Identificativo",
+				"activityLabel": "Attività",
+				"typeLabel": "Tipologia di prestazione",
+				"accessCostLabel": "Costo della prestazione (in euro)",
+				"professionalsLabel": "Professionisti",
+				"filterNameLabel":"filtra per tipologia di prestazione",
+				"filterByNameLabel":"filtra per nome attività",
+				"durationLabel": "Durata (in minuti)",
+				"addActivityButton": "Aggiungi una nuova attività"
+			},
+			"createActivity": {
+				"pageTitle": "Crea attività"
+			}
+		},
+		"pas":{
+			"createPasTitlePage": "Crea un nuovo PAS",
+			"editPasTitlePage": "Dettagli del PAS",
+			"pasSaved":"PAS salvato correttamente",
+			"pasUpdated": "PAS aggiornato correttamente",
+			"listPas":{
+				"pageTitle": "Elenco PAS",
+				"idLabel": "Identificativo",
+				"nameLabel":"Nome",
+				"pathologiesLabel":"Patologie",
+				"activeLabel":"Attivo",
+				"careLevelLabel": "Livello di cura",
+				"addPasButton": "Aggiungi un nuovo PAS"
+			},
+			
+			"listPasActivity":{
+				"deletePasActivityConfirmTitle": "Conferma la cancellazione",
+				"deletePasActivityConfirmDescription": "Vuoi davvero eliminare la sessione prestazioni/attività?",
+				"modalCreatePasActivityTitle": "Creazione sessione prestazioni/attività",
+				"modalViewPasActivityTitle": "Dettagli sessione prestazioni/attività",
+				"modalEditPasActivityTitle": "Modifica sessione prestazioni/attività",
+				"durationLabel":"Durata(in minuti)",
+				"minAccessNumberLabel": "Numero minimo di accessi",
+				"maxAccessNumberLabel":"Numero massimo di accessi",
+				"servicesNameLabel":"Prestazioni",
+				"activityNameLabel":"Attività",
+				"professionalNameLabel":"Professionista",
+				"frequencyLabel":"Frequenza"
+			},
+			"validation": {
+				"maxGtMin": "Il Numero massimo di accessi deve essere superiore al minimo numero di accessi",
+				"maxLtMin": "Il numero minimo di accessi deve essre inferiore al numero massimo di accessi",
+				"maxDuration": "La durata deve essere inferiore a {0} minuti, ovvero alla durata massima definita per la figura profesisonale selezionata.",
+				"activityOrServiceSelected": "devi selezionare almeno uno tra prestazione e attività"
+			}
+		},
+		"pai":{
+			"paiSaved":"PAI salvato correttamente",
+			"paiUpdated":"PAI aggiornato correttamente",
+			"paiDeleted":"PAI eliminato correttamente",
+			"confirmDeleteTitle":"Sei sicuro di voler eliminare il PAI selezionato?",
+			"confirmDeleteDescription":"Confermando cancellerai il PAI",
+			"listPai":{
+				"pageTitle": "Elenco PAI",
+				"idLabel": "Identificativo",
+				"nameLabel":"Nome",
+				"careLevelLabel": "Livello di cura",
+				"careProfileLabel": "Profilo di cura",
+				"caseManagerLabel":"Case manager",
+				"startDateLabel": "Data di inizio",
+				"endDateLabel":"Data di fine",
+				"addPaiButtonLabel":"Aggiungi pai",
+				"stateLabel":"stato",
+				"historyLabel":"Storico",
+				"currentLabel":"Correnti",
+				"addPAIButtonLabel": "Aggiungi PAI",
+				"patientIdLabel":"Paziente"
+			},
+			"createPasOnTheFly":{
+				"createPageTitle":"Crea PAS al volo"
+			},
+			"createPai":{
+				"pageTitle":"Crea PAI"
+			},
+			"editPai":{
+				"pageTitle":"Modifica PAI",
+				"deleteMidtermEvaluationConfirmTitle":"Confermi l'eliminazione delle valutazioni intermedie?",
+				"deleteMidtermEvaluationConfirmDescription": "Confermando l'aggiornamento della durata del PAI verrano eliminate tutte le valutazioni intermedie/finali che sono state definitie dopo la nuova data di fine PAI.",
+				"deleteFinalEvaluationConfirmTitle":"Confermi l'eliminazione delle valutazioni finali?",
+				"deleteFinalEvaluationConfirmDescription": "Confermando l'aggiornamento della durata del PAI verrano eliminate tutte le valutazioni finali.",
+				"deleteMidtermEvaluationStartDateConfirmDescription": "Confermando l'aggiornamento della data di inizio del PAI verrano eliminate tutte le valutazioni intermedie/finali che sono state definitie prima della nuova data di fine PAI.",
+				"deleteServiceActivityConfirmTitle":"Confermi l'eliminazione delle prestazioni/attività legate al PAI?",
+				"deleteServiceActivityConfirmDescription": "Confermando l'aggiornamento del livello di cura del PAI verrano eliminate tutte le prestazioni/attività che sono state definitie per il PAI corrente."
+			},
+			"electCaseManager":{
+				"pageTitle":"Elezione Case Manager"
+			},
+			"listEvaluation":{
+				"dateLabel":"Data valutazione",
+				"uviMemberIdLabel":"Membro uvi",
+				"editPageTitle": "Compila Valutazione",
+				"createPageTitle": "Definisci Valutazione"
+			},
+			"listPaiAttachment":{
+				"nameLabel":"Nome documento",
+				"userLabel": "Utente",
+				"createPageTitle": "Carica Allegato"
+			},
+			"listNotes":{
+				"userLabel":"Utente",
+				"dateLabel":"Data",
+				"actionLabel":"Azione",
+				"pageTitle": "Visualizza Note",
+				"createPageTitle":"Aggiungi Nota",
+				"editPageTitle": "Dettaglio Nota"
+			},
+			"scheduleServiceActivity":{
+				"createSession":"Calendarizza sessione"
+			}
+		},
+		"pai_pas":{
+			"activitySaved":"Sessione prestazione/attività salvata correttamente",
+			"activityUpdated":"Sessione prestazione/attività aggiornata correttamente",
+			"validation":{
+				"maxAccess":"Numero di accessi massimo superato per il professionista selezionato"
+			}
+		},
+		"patientDiary":{
+			"listDiaryActivities":{
+				"deleteDiaryActivityConfirmTitle": "Conferma la cancellazione",
+				"deleteDiaryActivityConfirmDescription": "Vuoi davvero eliminare la sessione prestazioni/attività?",
+				"effectiveDurationLabel":"Durata effettiva",
+				"expectedDurationLabel":"Durata attesa",
+				"servicesNameLabel":"Prestazioni",
+				"activityNameLabel":"Attività",
+				"professionalNameLabel":"Professionista",
+				"notesLabel":"Note",
+				"operator":"Operatore"
+			}
+		},
+		"unicDiary":{
+			"diaryServiceActivity":{
+				"createPageTitle":"Aggiungi sezione prestazione/attività al diario unico ",
+				"editPageTitle":"modifica sezione prestazione/attività"
+			}
+		},
+		"sessions":{
+			"scanCodeForStartSessionTitle": "Scansiona il QRCode di inizio attività generato dall'app",
+			"scanCodeForTerminateSessionTitle": "Scansiona il QRCode di fine attività generato dall'app",
+			"closeSessionButtonLabel": "Chiudi Sessione",
+			"provisions":{
+				"nameLabel":"Nome",
+				"durationLabel":"Durata",
+				"dateLabel":"Data",
+				"operatorLabel":"Operatore",
+				"notesLabel":"Note",
+				"stateLabel":"stato",
+				"notProvidePageTitle":"Erogazione non avvenuta",
+				"providePageTitle":"Erogazione"
+			}
+		},
+		"age":{
+			"sessions":{
+				"editPageTitle":"Dettaglio sessione"
+			}
+		}
+	},
+	"enums": {
+		"GlossaryType": {
+			"PROFESSIONALS": "Professionista",
+			"CARE_LEVEL": "Livello di Cura",
+			"CARE_PROFILE": "Profilo di cura",
+			"SERVICE_TYPES": "Tipo di servizio",
+			"PATHOLOGIES":	"Patologia"
+		},
+		"ProvisionState": {
+			"PROVIDED":"Erogata",
+			"NOT_PROVIDED": "Non erogata",
+			"NEW": "nessuna informazione"
+		}
+	}
+}

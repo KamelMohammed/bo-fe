@@ -1,0 +1,30 @@
+<div
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  fxLayoutAlign="space-between center"
+  [formGroup]="form"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <mat-form-field
+    appearance="outline"
+    fxFlex="70"
+  >
+    <input
+      matInput
+      [matDatepicker]="initialdate"
+      [formControlName]="field.id"
+      readonly="true"
+    >
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="initialdate"
+      *ngIf="!field?.datepicker?.readonly"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #initialdate></mat-datepicker>
+  </mat-form-field>
+</div>

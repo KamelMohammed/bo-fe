@@ -1,0 +1,104 @@
+<h1 mat-dialog-title *ngIf="isNew">{{'md.addDrug' | translate}}</h1>
+<h1 mat-dialog-title *ngIf="!isNew">{{'md.editDrug' | translate}}</h1>
+<mat-dialog-content *ngIf="form">
+	<div class="py-4 flex flex-wrap justify-between" *ngIf="step==0">
+		<div class="w-full md:w-48-pc">
+			<input-string class="w-full" label="md.abstractDrug" (onKeyUp)="loadAbstracts($event)"
+				[(ngModel)]="abstract"></input-string>
+			<ng-container [ngTemplateOutlet]="list" [ngTemplateOutletContext]="{drugs:abstracts,abstract:true}">
+			</ng-container>
+		</div>
+		<div class="w-full md:w-48-pc">
+			<input-string class="w-full" label="md.commercialDrug" (onKeyUp)="loadCommercials($event)"
+				[(ngModel)]="commercial"></input-string>
+			<ng-container [ngTemplateOutlet]="list" [ngTemplateOutletContext]="{drugs:commercials,abstract:false}">
+			</ng-container>
+		</div>
+		<ng-container [formGroup]="form">
+			<input-string class="w-full mt-4" formControlName="reason" label="md.reasonCommercialDrugUse" [rows]="6"
+				*ngIf="!form.controls.reason.disabled">
+			</input-string>
+		</ng-container>
+	</div>
+	<div class="py-4 " *ngIf="step==1" [formGroup]="form">
+		<div class="flex flex-wrap justify-between items-center">
+			<p class="w-full font-bold text-xl text-center">{{selectedDrug.name}}</p>
+			<input-int class="w-full sm:w-49-pc md:w-20-pc" formControlName="quantity" label="md.quantity">
+			</input-int>
+			<input-slide class="w-full sm:w-49-pc md:w-31-pc" formControlName="notReplaceable"
+				label="md.notReplaceable">
+			</input-slide>
+			<select-box class="w-full md:w-42-pc" formControlName="administrationRoute"
+				[items]="selectedDrug.administrationRoutes" itemKey="description" itemLabel="description"
+				label="md.administrationRoute">
+			</select-box>
+		</div>
+		<div class="flex flex-wrap justify-between items-center">
+
+			<select-box class="w-full sm:w-80-pc md:w-38-pc" formControlName="posology" [items]="posologyItems"
+				label="md.posology">
+			</select-box>
+			<input-int class="w-full sm:w-18-pc md:w-10-pc" formControlName="posologyTimes" label="md.times"
+				*ngIf="form.controls.posology.value == 'DAYS_OF_WEEK' || form.controls.posology.value == 'DAYS_OF_MONTH'">
+			</input-int>
+			<select-box class="w-full md:w-50-pc" formControlName="posologyWeekday" [items]="posologyWeekDaysItems"
+				label="md.startFrom" [sort]="false" *ngIf="form.controls.posology.value == 'DAYS_OF_WEEK'">
+			</select-box>
+			<select-box class="w-full md:w-50-pc" panelClass="flex flex-wrap justify-start items-center select-14"
+				formControlName="posologyMonthDay" [items]="posologyMonthDaysItems" label="md.startFrom" [sort]="false"
+				*ngIf="form.controls.posology.value == 'DAYS_OF_MONTH'">
+			</select-box>
+			<select-box [multiple]="true" class="w-full md:w-60-pc" formControlName="posologyWeekdays"
+				[items]="posologyWeekDaysItems" label="md.daysOfWeek" [sort]="false"
+				*ngIf="form.controls.posology.value == 'EXACT_DAYS_OF_WEEK'">
+			</select-box>
+			<select-box [multiple]="true" class="w-full md:w-60-pc"
+				panelClass="flex flex-wrap justify-start items-center select-14" formControlName="posologyMonthDays"
+				[items]="posologyMonthDaysItems" label="md.daysOfMonth" [sort]="false"
+				*ngIf="form.controls.posology.value == 'EXACT_DAYS_OF_MONTH'">
+			</select-box>
+		</div>
+		<div class="flex flex-wrap justify-between items-center">
+
+			<select-box class="w-full md:w-38-pc" formControlName="timing" [items]="timingItems" label="md.timing">
+			</select-box>
+			<ng-container *ngIf="form.controls.timing.value == 'EVERY_HOURS'">
+				<input-int class="w-full sm:w-20-pc md:w-10-pc" formControlName="timingTimes" label="md.hours">
+				</input-int>
+				<select-box class="w-full md:w-50-pc" formControlName="timingHour" [items]="timingHoursItems"
+					label="md.startFrom" [sort]="false" *ngIf="form.controls.timing.value == 'EVERY_HOURS'">
+				</select-box>
+			</ng-container>
+			<select-box [multiple]="true" class="w-full md:w-60-pc" formControlName="timingHours"
+				[items]="timingHoursItems" label="md.hours" [sort]="false"
+				*ngIf="form.controls.timing.value == 'SPECIFIC_HOUR'">
+			</select-box>
+
+			<input-string class="w-full" formControlName="note" label="common.note" [rows]="6">
+			</input-string>
+		</div>
+	</div>
+	<!-- <div class="py-6 flex flex-wrap justify-between" [formGroup]="form">
+		<input-datetime formControlName="activityDate" class="w-full" label="common.date"></input-datetime>
+		<input-string [rows]="8" formControlName="activity" class="w-full" label="common.note"></input-string>
+	</div> -->
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button (click)="close()"><span>{{'common.undo' | translate}}</span></button>
+	<button mat-raised-button (click)="next()" color="accent" *ngIf="step==0"><span>{{'common.next' |
+			translate}}</span></button>
+	<button mat-raised-button (click)="save()" color="primary" *ngIf="step==1"><span>{{'common.save' |
+			translate}}</span></button>
+</mat-dialog-actions>
+
+<ng-template #list let-drugs="drugs" let-abstract="abstract">
+	<mat-selection-list class="w-full h-64 pr-2" [multiple]="false" fuseScrollbar
+		[fuseScrollbarOptions]="{suppressScrollX: true}">
+		<mat-list-option *ngFor="let drug of drugs"
+			[ngClass]="{'bg-primary text-on-primary':selectedDrug?.code === drug.code}" class="rounded-md"
+			(click)="onSelectedDrug(drug,abstract)">
+			{{drug.description}}
+		</mat-list-option>
+	</mat-selection-list>
+</ng-template>

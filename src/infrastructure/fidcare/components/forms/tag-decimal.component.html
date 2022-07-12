@@ -1,0 +1,28 @@
+<mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" class="w-full"
+    [class.mat-form-field-invalid]="!valid">
+    <mat-label>{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+    <mat-chip-list #chipList multiple>
+        <mat-chip *ngFor="let item of value; index as i" [selected]="keyword" [value]="keyword"
+            [removable]="(!readonly && !disabled)" (removed)="removeItem(i)">
+            {{item}}
+            <mat-icon class="icon-size-4" matChipRemove *ngIf="(!readonly && !disabled)"
+                [svgIcon]="'heroicons_solid:x'"></mat-icon>
+        </mat-chip>
+        <input matInput [id]="id"
+            placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}"
+            [disabled]="disabled" decimal [readonly]="readonly" [matChipInputFor]="chipList"
+            (matChipInputTokenEnd)="addItem($event)" />
+    </mat-chip-list>
+    <span matSuffix>
+        <button mat-icon-button *ngIf="helpText != null">
+            <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()" #tooltip="matTooltip"
+                [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+            </mat-icon>
+        </button>
+    </span>
+
+</mat-form-field>
+
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error>

@@ -1,0 +1,13 @@
+export * from './basicErrorController.service';
+import { BasicErrorControllerService } from './basicErrorController.service';
+export * from './departmentController.service';
+import { DepartmentControllerService } from './departmentController.service';
+export * from './operationHandler.service';
+import { OperationHandlerService } from './operationHandler.service';
+export * from './submissionController.service';
+import { SubmissionControllerService } from './submissionController.service';
+export * from './templateController.service';
+import { TemplateControllerService } from './templateController.service';
+export * from './webMvcLinksHandler.service';
+import { WebMvcLinksHandlerService } from './webMvcLinksHandler.service';
+export const APIS = [BasicErrorControllerService, DepartmentControllerService, OperationHandlerService, SubmissionControllerService, TemplateControllerService, WebMvcLinksHandlerService];

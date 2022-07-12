@@ -1,0 +1,25 @@
+<div [fxLayout]="getFxLayout(field?.label?.position)" fxLayoutAlign="space-between center" [formGroup]="form">
+  <mat-label *ngIf="!field?.label?.hidden" class="margin-right-5x" fxFlex="25">
+    {{ 'older.FORM_CONFIGURATION.COMMERCIALDRUGALLERGIES' | translate }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <mat-form-field appearance="outline" fxFlex="65">
+    <mat-chip-list #chipList>
+      <mat-chip [disabled]="formControl.disabled" *ngFor="let option of selectedOptions" selectable="true"
+        removable="true" (removed)="remove(option)">
+        {{ option.value }}
+        <mat-icon matChipRemove *ngIf="true">
+          cancel
+        </mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+    <input class="margin-top-3x" [placeholder]="'older.FORM_CONFIGURATION.SEARCH_COMMERCIALDRUGALLERGIES' | translate"
+      #optionInput [formControl]="formControl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let option of options$ | async" [value]="option">
+        {{ option.value }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

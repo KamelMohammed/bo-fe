@@ -1,0 +1,414 @@
+{
+  "id": "d90a9be2-76b2-4af1-9528-0e7a848b02d9",
+  "ward": "ward1",
+  "type": "ANAMNESIS",
+  "name": "form1",
+  "fields": [{
+      "id": "a25ed545-8f1d-4f6f-88a8-5bc3152f2992",
+      "name": "a25ed545-8f1d-4f6f-88a8-5bc3152f2992",
+      "label": {
+        "label": "Text",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "TEXT",
+      "text": {
+        "hasDefaultValue": false,
+        "readonly": false,
+        "value": "test"
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 0,
+      "x": 0,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "f284b09b-2f6b-4b05-b33a-5a639e36de6d",
+      "name": "f284b09b-2f6b-4b05-b33a-5a639e36de6d",
+      "label": {
+        "label": "Datepicker",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "DATEPICKER",
+      "datepicker": {
+        "readonly": false,
+        "value": "2020-10-07T22:00:00.000Z"
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 0,
+      "x": 30,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "dad55bdf-7d07-418f-b252-128d0505656c",
+      "name": "dad55bdf-7d07-418f-b252-128d0505656c",
+      "label": {
+        "label": "Radio",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "RADIO",
+      "radio": {
+        "options": [{
+            "label": "Label 1",
+            "value": "Label 1",
+            "hasDefaultValue": false
+          },
+          {
+            "label": "Label 2",
+            "value": "Label 2",
+            "hasDefaultValue": false
+          }
+        ],
+        "position": "LEFT",
+        "readonly": false,
+        "value": "Label 2"
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 5,
+      "x": 0,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "471a6562-4bfc-4fa3-b035-ef89f6390b9a",
+      "name": "471a6562-4bfc-4fa3-b035-ef89f6390b9a",
+      "label": {
+        "label": "Checkbox",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "CHECKBOX",
+      "checkbox": {
+        "readonly": false,
+        "value": true
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 5,
+      "x": 15,
+      "minItemCols": 10,
+      "minItemRows": 4,
+      "maxItemRows": 6
+    },
+    {
+      "id": "40bfba8c-09aa-4395-9561-f55f47c3f273",
+      "name": "40bfba8c-09aa-4395-9561-f55f47c3f273",
+      "label": {
+        "label": "Combobox",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "COMBOBOX",
+      "comboBox": {
+        "options": [{
+            "label": "Label 1",
+            "value": "Label 1",
+            "hasDefaultValue": false
+          },
+          {
+            "label": "Label 2",
+            "value": "Label 2",
+            "hasDefaultValue": false
+          }
+        ],
+        "position": "LEFT",
+        "readonly": false,
+        "value": "Label 1"
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 5,
+      "x": 30
+    },
+    {
+      "id": "bd684cc5-aee6-4443-851b-ff7dbe8010bd",
+      "name": "bd684cc5-aee6-4443-851b-ff7dbe8010bd",
+      "label": {
+        "label": "Numerico",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "NUMERIC",
+      "numeric": {
+        "hasDefaultValue": false,
+        "hasUnitOfMeasure": false,
+        "readonly": false,
+        "value": 1
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 0,
+      "x": 15,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "024a7174-ace2-4640-846e-ca627313ab3a",
+      "name": "024a7174-ace2-4640-846e-ca627313ab3a",
+      "label": {
+        "label": "Switch Button",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "SWITCHBUTTON",
+      "switchButton": {
+        "options": [{
+            "label": "Label 1",
+            "value": "false",
+            "hasDefaultValue": false
+          },
+          {
+            "label": "Label 2",
+            "value": "true",
+            "hasDefaultValue": false
+          }
+        ],
+        "position": "LEFT",
+        "readonly": false,
+        "value": true
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 10,
+      "x": 30
+    },
+    {
+      "id": "7a6cccc5-9614-41b0-812d-42abb45e8279",
+      "name": "7a6cccc5-9614-41b0-812d-42abb45e8279",
+      "label": {
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "HEIGHT",
+      "height": {
+        "readonly": false,
+        "value": 1
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 15,
+      "x": 30,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "b059d256-cfcb-463d-8bc6-8d82ea2a657e",
+      "name": "b059d256-cfcb-463d-8bc6-8d82ea2a657e",
+      "label": {
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "WEIGHT",
+      "weight": {
+        "readonly": false,
+        "value": 1
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 20,
+      "x": 30,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "2d169708-d09b-40f5-9c63-584e3f5edd84",
+      "name": "2d169708-d09b-40f5-9c63-584e3f5edd84",
+      "label": {
+        "label": "Allergie farmaci commerciali",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "COMMERCIALDRUGALLERGIES",
+      "commercialdrugallergies": {
+        "readonly": false,
+        "values": [{
+          "label": "Label 1",
+          "value": "Label 1"
+        }]
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 30,
+      "rows": 5,
+      "y": 10,
+      "x": 0,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "d7132d88-88dc-40cd-aa84-b57555236290",
+      "name": "d7132d88-88dc-40cd-aa84-b57555236290",
+      "label": {
+        "label": "Allergie principi attivi",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "ACTIVESUBSTANCEALLERGIES",
+      "activesubstanceallergies": {
+        "readonly": false,
+        "values": [{
+          "label": "Label 2",
+          "value": "Label 2"
+        }]
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 30,
+      "rows": 5,
+      "y": 15,
+      "x": 0,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "3c81b55c-7b48-41fd-85e4-53965575a3b4",
+      "name": "3c81b55c-7b48-41fd-85e4-53965575a3b4",
+      "label": {
+        "label": "Diagnosi",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "DIAGNOSIS",
+      "diagnosis": {
+        "readonly": false,
+        "values": [{
+          "label": "Label 3",
+          "value": "Label 4"
+        }]
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 30,
+      "rows": 5,
+      "y": 20,
+      "x": 0,
+      "minItemCols": 10,
+      "minItemRows": 5,
+      "maxItemRows": 6
+    },
+    {
+      "id": "44c26045-c44d-4d88-bda6-ec49f80d00e4",
+      "name": "44c26045-c44d-4d88-bda6-ec49f80d00e4",
+      "label": {
+        "label": "Select boxes",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "SELECTBOX",
+      "selectBox": {
+        "options": [{
+            "label": "Label 1",
+            "value": "Label 1",
+            "hasDefaultValue": false
+          },
+          {
+            "label": "Label 2",
+            "value": "Label 2",
+            "hasDefaultValue": false
+          }
+        ],
+        "position": "LEFT",
+        "readonly": false,
+        "values": [
+          "Label 1",
+          "Label 2"
+        ]
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 5,
+      "y": 25,
+      "x": 0
+    },
+    {
+      "id": "0c8059a8-be2c-463f-8b7c-2c5ddcb08f51",
+      "name": "0c8059a8-be2c-463f-8b7c-2c5ddcb08f51",
+      "label": {
+        "label": "Textarea",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "TEXTAREA",
+      "textarea": {
+        "readonly": false,
+        "value": "test"
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 30,
+      "rows": 15,
+      "y": 25,
+      "x": 15,
+      "minItemCols": 10
+    },
+    {
+      "id": "5dafb012-8101-4956-adfb-568fc27e017e",
+      "name": "5dafb012-8101-4956-adfb-568fc27e017e",
+      "label": {
+        "label": "Testo statico",
+        "hidden": false,
+        "position": "LEFT"
+      },
+      "type": "STATICTEXT",
+      "staticText": {
+        "value": "Testo statico Prova"
+      },
+      "required": true,
+      "sdo": false,
+      "sda": false,
+      "cols": 15,
+      "rows": 8,
+      "y": 30,
+      "x": 0,
+      "minItemCols": 10
+    }
+  ]
+}

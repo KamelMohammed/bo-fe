@@ -1,0 +1,45 @@
+
+export const iconTrash = "mat_outline:delete_outline";
+export const iconEdit = "mat_outline:edit";
+export const iconSave = "mat_outline:save";
+export const iconRefresh = "mat_outline:refresh";
+export const iconCancel = "mat_outline:cancel";
+export const iconAdd = "mat_outline:add_circle";
+export const iconPublish = "mat_outline:publish";
+export const iconShare = "mat_outline:share";
+export const iconUserAdd = "mat_outline:person_add";
+export const iconUserRemove = "mat_outline:person_remove";
+export const iconMoreUsers = "mat_outline:people";
+export const iconElementView = "mat_outline:preview";
+export const iconPropertiesEdit = "mat_outline:settings";
+export const iconMap = "mat_outline:map";
+export const iconQRCode = "mat_outline:qr_code_scanner";
+export const iconBeacon = "mat_outline:tablet_android";
+export const iconSpaces = "fas fa-landmark";
+export const iconMonument = "fas fa-monument";
+export const iconPolygon = "mat_outline:draw";
+export const iconCenter = "fas fa-map-marker";
+export const iconDuplicate = "mat_outline:content_copy";
+export const iconActivate="mat_outline:check_circle";
+export const iconDeactivate="mat_solid:radio_button_unchecked";
+export const iconTerminate="mat_solid:close";
+export const iconSuspend="mat_solid:access_time_filled";
+export const iconReactivate="mat_solid:radio_button_unchecked";
+export const iconApprove="mat_solid:check_box";
+export const iconNotes="mat_solid:notes";
+export const iconDisapprove="mat_solid:check_box_outline_blank";
+export const iconInterrupt ="mat_solid:stop";
+export const iconCalendar = "heroicons_solid:calendar";
+export const iconDownload = "mat_solid:download";
+export const iconFolder = "mat_solid:folder";
+export const iconCircleCheck = "mat_solid:check_circle";
+export const iconReset = "mat_solid:history";
+export const iconProvide ="mat_solid:check";
+export const iconNotProvide="mat_solid:close";
+export const iconViewDetails="mat_solid:preview";
+export const iconReplace="mat_outline:find_replace";
+export const iconCameraSwitch="mat_solid:repeat";
+export const iconInfo="heroicons_solid:exclamation-circle";
+export const iconError="heroicons_solid:information-circle";
+
+

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title *ngIf="configuration.localize">{{data.title | translate}}</h1>
+<h1 mat-dialog-title *ngIf="!configuration.localize">{{data.title}}</h1>
+<mat-dialog-content>
+    <div class="py-6">
+        <p *ngIf="configuration.localize">{{(data.message | translate).format(data.messageParams)}}</p>
+        <p *ngIf="!configuration.localize">{{data.message}}</p>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+    <button mat-raised-button (click)="close()"><span>{{'common.close' | translate}}</span></button>
+</mat-dialog-actions>

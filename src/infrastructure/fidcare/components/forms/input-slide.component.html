@@ -1,0 +1,18 @@
+<mat-form-field [floatLabel]="floatLabel" class="w-full" [ngClass]="{'no-borders':!borders}"
+    [class.mat-form-field-invalid]="!valid">
+    <mat-label *ngIf="!horizontal">{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+    <mat-slide-toggle [id]="id" [(ngModel)]="value" [disabled]="disabled || readonly">
+        <ng-container *ngIf="horizontal">{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</ng-container>
+    </mat-slide-toggle>
+    <span matSuffix>
+        <button mat-icon-button *ngIf="helpText != null">
+            <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()" #tooltip="matTooltip"
+                [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+            </mat-icon>
+        </button>
+    </span>
+    <input matInput hidden>
+</mat-form-field>
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error>

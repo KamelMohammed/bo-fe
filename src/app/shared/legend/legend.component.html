@@ -1,0 +1,19 @@
+<mat-tab-group mat-align-tabs="start" animationDuration="0ms">
+  <mat-tab *ngFor="let legend of legends" [label]="getLabel(legend.title)">
+    <div fxLayout="row" fxLayoutAlign="start start" class="legend-icon-container padding-6x">
+      <div fxFlex="20" fxLayoutAlign="start center" class="legend-action-container"
+        *ngFor="let action of legend.actions">
+        <mat-icon class="legend-icon padding-right-2x" *ngIf="legend.actionIcon[action]">
+          <span *ngIf="legend.actionIconClass && legend.actionIconClass[action]; else noClass"
+            class="{{legend.actionIconClass[action]}}">
+            {{ legend.actionIcon[action] }}
+          </span>
+          <ng-template #noClass>{{ legend.actionIcon[action] }}</ng-template>
+        </mat-icon>
+        <span class="legend-label padding-right-6x">
+          {{ getLabel(legend.actionDescription[action]) }}
+        </span>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,5 @@
+<div (click)="fileInput.click()" class="w-full">
+    <input hidden type="file" #fileInput (change)="fileSelected($event.target.files)" [attr.accept]="accept" />
+    <ng-content>
+    </ng-content>
+</div>

@@ -1,0 +1,23 @@
+<div class="flex flex-col overflow-hidden">
+	<div class="w-full mb-4 flex justify-between" [formGroup]="filterForm">
+		<input-string label="common.search" formControlName="filter" class="flex-grow mr-4"></input-string>
+		<input-date label="data" formControlName="dateFilter" class="flex-grow mr-4"></input-date>
+		<button mat-raised-button color="primary" (click)="addDiaryServicesActivity()" class="mt-2" [disabled]="!careTeam">
+			{{'common.add' | translate}}
+		</button>
+	</div>
+	<div class="w-full relative" fuseScrollbar
+		[fuseScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+
+		<div class="w-full border">
+			<div class="w-full flex justify-center" *ngIf="loading">
+				<mat-spinner *ngIf="loading"></mat-spinner>
+			</div>
+			<div class="flex flex-col flex-grow" [hidden]="loading">
+				<app-diary-service-activity-table *ngFor="let data of dataTable | keyvalue;" [activity]="data.value"
+					[date]="data.key" [patientDiaryId]="patientDiaryId" (updateData)="updateData()">
+				</app-diary-service-activity-table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+export * from './basicErrorController.service';
+import { BasicErrorControllerService } from './basicErrorController.service';
+export * from './district.service';
+import { DistrictService } from './district.service';
+export * from './doctor.service';
+import { DoctorService } from './doctor.service';
+export * from './operationHandler.service';
+import { OperationHandlerService } from './operationHandler.service';
+export * from './operatorUsca.service';
+import { OperatorUscaService } from './operatorUsca.service';
+export * from './user.service';
+import { UserService } from './user.service';
+export * from './webMvcLinksHandler.service';
+import { WebMvcLinksHandlerService } from './webMvcLinksHandler.service';
+export const APIS = [BasicErrorControllerService, DistrictService, DoctorService, OperationHandlerService, OperatorUscaService, UserService, WebMvcLinksHandlerService];

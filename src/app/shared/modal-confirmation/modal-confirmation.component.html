@@ -1,0 +1,24 @@
+<h1
+  mat-dialog-title
+  *ngIf="title"
+>{{ title }}</h1>
+<div
+  mat-dialog-content
+  class="no-overflow padding-6x"
+>
+  <div>{{ message }}</div>
+</div>
+<div
+  mat-dialog-actions
+  fxLayoutAlign="flex-end center"
+>
+  <button
+    mat-button
+    (click)="onCancel()"
+  >{{ 'CANCEL' | translate }}</button>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onConfirm()"
+  >{{ 'OK' | translate }}</button>
+</div>

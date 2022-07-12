@@ -1,0 +1,24 @@
+<div
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  fxLayoutAlign="space-between center"
+  [formGroup]="form"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <div
+    fxFlex="70"
+    fxLayout="row"
+    [fxLayoutAlign]="getCheckboxFxLayoutAlign(field?.label?.position)"
+  >
+    <mat-checkbox
+      color="primary"
+      [formControlName]="field.id"
+    ></mat-checkbox>
+  </div>
+</div>

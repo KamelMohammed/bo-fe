@@ -1,0 +1,60 @@
+<div
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  fxLayoutAlign="space-between center"
+  [formGroup]="form"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <ng-container [formGroup]="datetimeForm">
+    <mat-form-field
+      appearance="outline"
+      fxFlex="50"
+    >
+      <input
+        matInput
+        [matDatepicker]="initialdate"
+        formControlName="date"
+        readonly="true"
+      >
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="initialdate"
+        *ngIf="!field?.datetimepicker?.readonly"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #initialdate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      fxFlex="20"
+      class="margin-left-2x"
+    >
+      <mat-select formControlName="hour">
+        <mat-option
+          *ngFor="let option of hours"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      fxFlex="20"
+      class="margin-left-2x"
+    >
+      <mat-select formControlName="minute">
+        <mat-option
+          *ngFor="let option of minutes"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+</div>

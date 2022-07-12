@@ -1,0 +1,26 @@
+<page-content label="{{'icp.careLevel.createCareLevel.pageTitle' | translate}}">
+    <ng-container content [formGroup]="createCareLevelForm" *ngIf="createCareLevelForm">
+		<div class="flex flex-wrap justify-between">
+
+			<input-string class="w-full" formControlName="name" [readonly]="edit" label="Nome" required="true"></input-string>
+			<select-box class="w-full" formControlName="levelId" label="Livello assistenziale" required="true" [items]="careLevelItems" [readonly]="edit"></select-box>
+			<select-box class="w-full" formControlName="careProfileId" label="Profilo Di Cura" required="true" [items]="careProfileItems" [readonly]="edit"></select-box>
+			
+
+		</div>
+		<div fxLayoutAlign=" center" *ngIf="edit">
+			<professionals-list [careLevelId]="id"></professionals-list>
+		</div>
+    </ng-container>
+    <ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button  class="mt-2" [goBack]="defaultBackUrl">
+                {{'common.back' | translate}}
+            </button>
+			&nbsp;
+            <button mat-raised-button color="primary" class="mt-2"  (click)="save()" [disabled]="edit">
+                {{'common.save' | translate}}
+            </button>
+        </div>
+    </ng-container>
+</page-content>

@@ -1,0 +1,33 @@
+@mixin app-table-filter() {
+  app-table-filter {
+    border: 1px solid #afd6ec;
+    border-radius: 30px;
+    margin-top: 15px;
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+      display: none;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+      padding: 0;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+      padding-left: 10px;
+      border: none;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+      padding-left: 15px;
+    }
+    .mat-form-field-flex {
+      place-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+    .mat-form-field-label-wrapper {
+      overflow: inherit;
+    }
+
+    .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+      transform: translateY(-1.58125em) scale(0.75) perspective(100px) translateZ(0.001px);
+    }
+  }
+}

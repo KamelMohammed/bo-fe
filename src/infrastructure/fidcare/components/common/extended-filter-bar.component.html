@@ -1,0 +1,22 @@
+<form [formGroup]="form" *ngIf="form">
+	<div class="flex flex-row gap-4 items-start">
+		<div>
+			<button (click)="showHideFilters()"  mat-icon-button [matTooltip]="filterButtonTooltip | translate" >
+				<mat-icon *ngIf="!filterShown" svgIcon="mat_solid:filter_list" color="primary"></mat-icon>
+				<mat-icon *ngIf="filterShown" svgIcon="mat_outline:close" color="primary"></mat-icon>
+			</button>
+		</div>
+		<div class="flex flex-row gap-4 items-center" *ngIf="filterShown">
+			<div *ngFor="let field of filterFielsDescription" class="basis-1/6">
+				<input-string *ngIf="field.fieldType == 'inputstring'" [formControlName]="field.fieldName" [label]="field.label"></input-string>
+				<select-box  *ngIf="field.fieldType == 'multipleselect'" [formControlName]="field.fieldName"  [label]="field.label" [items]="field.possibleDataValues | async" [multiple]="true"></select-box>
+				<select-box  *ngIf="field.fieldType == 'select'" [formControlName]="field.fieldName"  [label]="field.label" [items]="field.possibleDataValues | async" [multiple]="false"></select-box>
+			</div>
+			<div class="basis-1/6">
+				<button (click)="requestUpdate()" [disabled]="!form.valid"  mat-icon-button [matTooltip]="'common.applyFilterButtonLabel' | translate" >
+					<mat-icon svgIcon="heroicons_outline:search" color="primary"></mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+
+    <div class="py-6" [formGroup]="uploadFileForm" *ngIf="uploadFileForm">
+        <div class="flex flex-wrap justify-between">
+			<select-box class="w-full" formControlName="typeAttach" label="Tipo di documento" required="true" [readonly]="replaceMode" [items]="fileTypes">
+			</select-box>
+			<input type="file" id="file" (change)="handleFileInput($event)" accept=".gif,.jpg,.jpeg,.png,.pdf">
+		</div>
+		<p class="pt-2 text-warn">
+			{{fileErrorMessage}}
+		</p>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!canSave()">
+		{{'common.upload' | translate}}
+	</button>
+</mat-dialog-actions>

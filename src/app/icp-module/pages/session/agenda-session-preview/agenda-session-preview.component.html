@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>{{modalTitle | translate}}</h1>
+<mat-dialog-content>
+	<div class="flex flex-wrap justify-between" *ngIf="scanningMode">
+		<fidcare-qrcode-scanner [dataValidator]="dataValidator" (onDataRead)="onScanQRCodeSuccess($event)">
+		</fidcare-qrcode-scanner>
+	</div>
+	<div class="flex flex-wrap justify-between" *ngIf="!scanningMode">
+		<div *ngIf="session">
+			<p>Operatore: {{session.operator}}</p>
+			<p>Paziente: {{session.patient}}</p>
+			<p>Data: {{session.date | datetime}}</p>
+			<p *ngIf="session.entryTime">Apertura: {{session.entryTime | datetime}}</p>
+			<p *ngIf="session.exitTime">Chiusura: {{session.exitTime | datetime}}</p>
+			<p *ngIf="session.duration">Durata: {{session.duration}} minuti</p>
+			<p *ngIf="session.notes">Note: {{session.notes}}</p>
+		</div>
+	</div>
+
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	
+	<button mat-raised-button class="mt-2" (click)="close()">
+		{{'common.close' | translate}}
+	</button>
+	<button *ngIf="readonly" mat-raised-button class="mt-2" color="primary"  (click)="showDetails()">
+		{{'mostra dettagli' | translate}}
+	</button>
+	<button *ngIf="!readonly" [disabled]="scanningMode" color="primary"  mat-raised-button class="mt-2" (click)="startQRCodeScanning()">
+		{{'Inizia la sessione' | translate}}
+	</button>
+	
+</mat-dialog-actions>

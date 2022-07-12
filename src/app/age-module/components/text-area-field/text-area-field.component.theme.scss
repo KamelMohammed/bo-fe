@@ -1,0 +1,19 @@
+@mixin app-text-area-field() {
+  app-text-area-field {
+    .mat-form-field,
+    .mat-form-field .mat-form-field-flex,
+    .mat-form-field .mat-form-field-wrapper,
+    .mat-form-field textarea {
+      height: 95%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .mat-form-field-infix {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      height: 90%;
+    }
+  }
+}

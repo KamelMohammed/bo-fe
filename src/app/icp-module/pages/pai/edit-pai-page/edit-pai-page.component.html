@@ -1,0 +1,91 @@
+<page-content label="{{pageTitle | translate}}">
+	<ng-container content [formGroup]="createPaiForm" *ngIf="createPaiForm">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-49-pc" formControlName="name" label="Nome" required="true"
+				[readonly]="(!isCSanitario && !isCaseManger) || history"></input-string>
+			<select-box class="w-49-pc" formControlName="careLevelId" label="Livello di cura" [items]="careLevelItems"
+				[readonly]="(!isCSanitario && !isCaseManger) || history || (edit &&!paiSaved)"></select-box>
+			<select-box [autocomplete]="true" [multiple]="true" class="w-full" formControlName="pathologiesId"
+				label="Patologie" [items]="pathologieItems" [readonly]="(!isCSanitario && !isCaseManger) || history">
+			</select-box>
+
+			<select-box class="w-43-pc" formControlName="pasId" label="PAS" [items]="pasItems"
+				[readonly]="(!isCSanitario && !isCaseManger) || history || (edit &&!paiSaved)"></select-box>
+			<div class="w-8 self-center">
+				<add-button-component (onAddButtonClick)="createPas()"
+					[disabled]="!createPasOnTheFly || (!isCSanitario && !isCaseManger) || history">
+				</add-button-component>
+			</div>
+			<input-string class="w-43-pc" formControlName="caseManager" label="Case Manager" [readonly]="true">
+			</input-string>
+			<div class="w-8 self-center">
+				<add-button-component (onAddButtonClick)="electCaseManager()"
+					[disabled]=" !edit || !isCSanitario || history">
+				</add-button-component>
+			</div>
+
+			<input-date [dateFilter]="dateGTNowFilter" class="w-33-pc" [utc]=true formControlName="startDate"
+				label="Data inizio" [readonly]="(edit &&!paiSaved)  || (!isCSanitario && !isCaseManger) || history">
+			</input-date>
+			<input-date class="w-33-pc" formControlName="endDate" label="Data fine" [readonly]="true"></input-date>
+			<input-decimal class="w-33-pc" formControlName="duration" label="Durata in giorni"
+				[readonly]="(edit &&!paiSaved)  || (!isCSanitario && !isCaseManger) || history"></input-decimal>
+
+			<input-string class="w-full" formControlName="healthAssessment" label="Valutazione sanitaria"
+				[readonly]="(edit &&!paiSaved) || (!isCSanitario && !isCaseManger) ||history"></input-string>
+			<input-string class="w-full" formControlName="functionalAssessment" label="Valutazione funzionale"
+				[readonly]="(edit &&!paiSaved) || (!isCSanitario && !isCaseManger) ||history"></input-string>
+			<input-string class="w-full" formControlName="rehabilitationAssessment" label="Valutazione riabilitativa"
+				[readonly]="(edit &&!paiSaved) || (!isCSanitario && !isCaseManger) || history"></input-string>
+			<input-string class="w-full" formControlName="socioRelationalAssessment"
+				label="Valuazione socio relazionale ambientale"
+				[readonly]="(edit &&!paiSaved) || (!isCSanitario && !isCaseManger) || history"></input-string>
+			<input-string class="w-full" formControlName="target" label="Obiettivi e risultati attesi"
+				[readonly]="(edit &&!paiSaved) || (!isCSanitario && !isCaseManger) || history"></input-string>
+			<input-decimal class="w-49-pc" formControlName="expectedGEA" label="GEA ATTESO" [readonly]="true">
+			</input-decimal>
+			<input-decimal class="w-49-pc" formControlName="effectiveGEA" label="GEA EFFETTIVO" [readonly]="true">
+			</input-decimal>
+			<input-decimal class="w-49-pc" formControlName="expectedGDC" label="GDC ATTESO" [readonly]="true">
+			</input-decimal>
+			<input-decimal class="w-49-pc" formControlName="effectiveGDC" label="GDC EFFETTIVO" [readonly]="true">
+			</input-decimal>
+			<input-decimal class="w-49-pc" formControlName="expectedCIA" label="CIA ATTESO" [readonly]="true">
+			</input-decimal>
+			<input-decimal class="w-49-pc" formControlName="effectiveCIA" label="CIA EFFETTIVO" [readonly]="true">
+			</input-decimal>
+		</div>
+		<div fxLayoutAlign=" center" *ngIf="edit">
+			<div *ngIf="canAddPaiServiceActivity">
+				<h1 class="bg-primary text-white">Sessioni Prestazioni/Attività</h1>
+				<app-pas-activity-page [pai_pas]="pai_pas" [itemId]="id" [history]="history" [readonly]="history"
+					(pasActivitiesCounter)="setPasActivitiesCounter($event)" [reloadTable]="reloadTable">
+				</app-pas-activity-page>
+			</div>
+			<div *ngIf="canAddEvaluation">
+				<h1 class="bg-primary text-white my-5">Valutazioni Finali</h1>
+				<app-evaluation-page [paiId]="id" [evaluationType]="finalEvaluationType" [caseMangerId]="caseManagerId"
+					[patientId]="patientId" [history]="history" [reloadTable]="reloadTable"></app-evaluation-page>
+				<h1 class="bg-primary text-white my-5">Valutazioni Intermedie</h1>
+				<app-evaluation-page [paiId]="id" [evaluationType]="midtermEvaluationType"
+					[caseMangerId]="caseManagerId" [patientId]="patientId" [history]="history" [reloadTable]="reloadTable"></app-evaluation-page>
+			</div>
+			<h1 class="bg-primary text-white my-5">Allegati</h1>
+			<app-pai-attachment-page [paiId]="id" [caseMangerId]="caseManagerId" [patientId]="patientId" [reloadTable]="reloadTable"
+				[history]="history">
+			</app-pai-attachment-page>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button class="mt-2" (click)="goBack()">
+				{{'common.back' | translate}}
+			</button>
+			&nbsp;
+			<button mat-raised-button color="primary" class="mt-2" (click)="save()"
+				[disabled]="!createPaiForm || !createPaiForm.valid && isCSanitario&& isCaseManger || history">
+				{{'common.save' | translate}}
+			</button>
+		</div>
+	</ng-container>
+</page-content>

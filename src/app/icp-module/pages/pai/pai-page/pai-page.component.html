@@ -1,0 +1,38 @@
+<div class="flex flex-col">
+    <div class="flex flex-row">
+        <div class="basis-9/12">
+            <extended-filter-bar [filterFielsDescription]="filterDef" (requestFilterUpdate)="onFiltersUpdate($event)"
+                [filterValue]="filters"></extended-filter-bar>
+        </div>
+        <div class="basis-3/12  text-right" *ngIf="!history && !configuration && coordinatoreSanitario">
+            <add-button-component (onAddButtonClick)="create()" tooltip="icp.pai.listPai.addPAIButtonLabel">
+            </add-button-component>
+        </div>
+    </div>
+
+    <div class="w-full relative">
+        <data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions"  [forPage]="false">
+            <div fxLayout="row">
+                <mat-card class="level-box" *cardItemTable="let item">
+                    <mat-card-title>
+                        <mat-icon color="primary" svgIcon="heroicons_outline:briefcase"></mat-icon>
+                        {{item.name}}
+                    </mat-card-title>
+                    <mat-card-content>
+                        <p>{{'icp.pai.listPai.careLevelLabel' | translate}}: <strong>{{item.careLevelName}}</strong></p>
+                        <p>{{'icp.pai.listPai.caseManagerLabel' | translate}}: <strong>{{item.caseManager}}</strong></p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <mat-divider inset></mat-divider>
+                        <!-- <button *ngFor="let button of tableActions" mat-button [disabled]="!button.enableFunc(item)"
+                            (click)="button.funcToInvoke(item)">
+                            <mat-icon color="primary" svgIcon="{{button.icon}}"></mat-icon>
+                            {{button.label}}
+                        </button> -->
+						<card-actions [actions]="tableActions" [data]="item"></card-actions>
+                    </mat-card-footer>
+                </mat-card>
+            </div>
+        </data-table>
+    </div>
+</div>

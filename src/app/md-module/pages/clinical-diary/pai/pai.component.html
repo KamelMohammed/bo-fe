@@ -1,0 +1,28 @@
+<mat-accordion>
+	<mat-expansion-panel [expanded]="true">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'md.currentPai' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-pai-page [medicalRecord]="medicalRecord" [current]="true"></app-pai-page>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'md.historyPai' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-pai-page [medicalRecord]="medicalRecord" [history]="true"></app-pai-page>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'md.unicDiary' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-unic-diary [patientFiscalCode]="patientFiscalCode"></app-unic-diary>
+	</mat-expansion-panel>
+</mat-accordion>

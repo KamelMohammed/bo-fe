@@ -1,0 +1,15 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Main Tailwind file for injecting utilities.
+/* ----------------------------------------------------------------------------------------------------- */
+@tailwind utilities;
+
+mat-card-title {
+	color: var(--fuse-primary);
+}
+
+// .app-card-list {
+// 	@extend .rounded-3xl !optional;
+// 	@extend  .m-2 !optional;
+
+// }
+

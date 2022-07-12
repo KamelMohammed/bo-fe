@@ -1,0 +1,20 @@
+<page-content label="profile.profile" *ngIf="profileService.profile$ | async as profile">
+	<div class="flex flex-wrap justify-center" content>
+		<div class="w-full sm:w-75-pc md:w-50-pc lg:w-40-pc xl:w-30-pc xl2:w-20-px">
+			<field-viewer label="common.firstName" class="mb-4 block">
+				{{profile.firstName}}
+			</field-viewer>
+			<field-viewer label="common.lastName" class="mb-4 block">
+				{{profile.lastName}}
+			</field-viewer>
+			<field-viewer label="common.email">
+				{{profile.email}}
+			</field-viewer>
+		</div>
+	</div>
+	<div class="w-full text-center" footer>
+		<button mat-raised-button color="primary" (click)="changePassword()" class="mt-2">
+			{{'profile.changePassword' | translate}}
+		</button>
+	</div>
+</page-content>

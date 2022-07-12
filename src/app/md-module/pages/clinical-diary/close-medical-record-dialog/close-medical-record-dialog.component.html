@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{ 'CLOSING-MEDICAL-RECORD' | translate }}</h2>
+<mat-dialog-content class="mat-typography">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    class="margin-bottom-5x"
+  >
+    <mat-label fxFlex="75px">{{ 'CLOSING-NOTES' | translate }} *</mat-label>
+    <mat-form-field
+      class="custom-form-field"
+      fxFlex="500px"
+      appearance="outline"
+    >
+      <textarea
+        [formControl]="notes"
+        matInput
+        rows="6"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-stroked-button
+    color="primary"
+    mat-dialog-close
+  >{{ 'CANCEL' | translate }}</button>
+  <button
+    color="primary"
+    mat-flat-button
+    (click)="close()"
+  >{{ 'CLOSE' | translate }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,13 @@
+<ng-container>
+	<autocomplete [class.mat-form-field-invalid]="!valid" [loader]="loader" [itemKey]="itemKey" [itemLabel]="itemLabel" [minChars]="minChars"
+		[label]="label" [required]="required" [readonly]="readonly"
+        [actionItems]="actionItems" [resetOnItemSelected]="resetOnItemSelected" [helpText]="helpText"
+        [helpTextLocalize]="helpTextLocalize" [resetOnItemSelected]="true" (onSelectedItem)="onSelectedItem($event)"
+        [appearance]="appearance"></autocomplete>
+    <chips [removable]="!readonly" class="w-full mt-6" [items]="items" [itemKey]="itemKey" [itemLabel]="itemLabel"
+        (remove)="onRemoveItem($event)"></chips>
+
+	<mat-error *ngIf="!valid">
+		{{errorMessage}}
+	</mat-error>
+</ng-container>

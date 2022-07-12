@@ -1,0 +1,12 @@
+@mixin app-alert-dashboard() {
+	app-alert-dashboard {
+		.mat-expansion-panel-body {
+			height: 700px;
+			overflow: auto;
+
+			app-form {
+				height: 500px;
+			}
+		}
+	}
+}

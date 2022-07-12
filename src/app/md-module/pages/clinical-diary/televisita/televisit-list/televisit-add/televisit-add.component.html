@@ -1,0 +1,70 @@
+<h1 mat-dialog-title *ngIf="isNew ">{{'md.addTelevisit' | translate}}</h1>
+<h1 mat-dialog-title *ngIf="!isNew && !respinta">{{'md.detailsTelevisit' | translate}}</h1>
+<h1 mat-dialog-title *ngIf="!isNew && respinta">Richiesta televisita respinta</h1>
+
+<mat-dialog-content>
+    <div class="flex flex-wrap justify-between items-center" [formGroup]="form" *ngIf="respinta">
+        <input-string [value]="_data.televisitaItem.motivazioneMedico" [readonly]=" true" [rows]="4" label="common.televisitaMotivazione" class="w-full">
+        </input-string>
+    </div>
+
+    <div class="flex flex-wrap justify-between items-center" [formGroup]="form" *ngIf="form && !respinta">
+        <h5 class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3"> Sezione Assistito</h5>
+        <input-string formControlName="medico" readonly="true" class="w-full" label="common.doctorMedicinGeneral"
+        ></input-string>
+        <input-string formControlName="assistito" readonly="true" class="w-full" label="common.televistaAssistito"
+                     ></input-string>
+
+        <input-string formControlName="motivazione" [readonly]=" readonlyInput" [rows]="4" label="common.televisitaMotivazione" class="w-full"></input-string>
+        <app-chips-list [stato]="_data.televisitaItem? _data.televisitaItem.stato:'' " (addSelected)="addContacts($event)" [isNew]="isNew" [label]="'otherContacts'" [isDoctor]="isDoctor"
+                              [alreadySelected]="partecipantiNotNew" [assistito]="assistito" class="w-full"></app-chips-list>
+        <input-string formControlName="note"[readonly]=" readonlyInput" [rows]="4" label="common.televisitaNote" class="w-full"></input-string>
+    </div>
+    <div class="flex flex-wrap justify-between items-center" [formGroup]="formMedico" *ngIf=" (isDoctor && !isNew &&!ritirata && !respinta
+     ) || (  !presentata && !ritirata && !respinta && !isNew)  " >
+
+    <h5  class="w-full bg-primary text-center text-xl text-on-primary py-2 mt-6 mb-3"> Sezione Medico</h5>
+        <button mat-raised-button  *ngIf="isDoctor && showButtons" (click)="close()" class="flex justify-end" style="margin-left: auto;
+                                    margin-right: 1%"><span>Annulla</span></button>
+        <button mat-raised-button *ngIf="!prendiInCarico && isDoctor && showButtons" (click)="prendiIncarico()" color="primary" ><span>Prendi in carico</span></button>
+        <button mat-raised-button *ngIf="prendiInCarico && isDoctor && showButtons" (click)="saveModificheMedico()" color="primary" ><span>{{'common.save' | translate}}</span></button>
+
+        <app-quesiti-diagnostici *ngIf="show || (isDoctor && !prendiInCarico && showButtons)"  [valid]="valid" [readonly]="presentata"
+                                  (addSelected)="addDiagnosi($event)" [isNew]="isNew" [label]="'diagnostic'"
+                        [isDoctor]="isDoctor"  [quesiti]="quesitiNotNew"  class="w-full" style="margin-top: 2%;">
+
+        </app-quesiti-diagnostici>
+        <input-date [readonly]="readonlyDoctor || !showButtons || (isPaziente && !presentata)" formControlName="data" (onValueChanged)="dataChanged($event)" class="w-29-pc" label="md.startDate" > </input-date>
+        <select-box  class="w-29-pc"  [readonly]= "readonlyDoctor || !showButtons|| (isPaziente && !presentata)" formControlName="durata"
+                    label="Durata" [items]="listDurations"
+                    ></select-box>
+        <div ><mat-form-field  appearance="outline" >
+            <mat-label>Ora</mat-label>
+            <input matInput
+                   [disabled]="readonlyDoctor || !showButtons || (isPaziente && !presentata)"
+                   formControlName="ora"
+                   [ngxTimepicker]="toggleTimepicker"
+                   [(ngModel)]="time"
+            >
+            <ngx-material-timepicker-toggle  [disabled]="readonlyDoctor || !showButtons || (isPaziente && !presentata)" class="timepicker" matSuffix [for]="toggleTimepicker">
+            </ngx-material-timepicker-toggle>
+            <ngx-material-timepicker    (timeSet)="changed($event)" class="timepicker" #toggleTimepicker ></ngx-material-timepicker>
+
+        </mat-form-field>
+            <mat-error *ngIf="!oraValid">
+                ora è obbligatorio
+            </mat-error>
+        </div>
+        <input-string  formControlName="nota" [readonly]="readonlyDoctor || !showButtons || (isPaziente && !presentata)" [rows]="4" label="common.televisitaNote"  class="w-full"></input-string>
+
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+    <button mat-raised-button (click)="close()"><span>{{'common.close' | translate}}</span></button>
+    <button mat-raised-button (click)="save()" color="primary" *ngIf="(isNew && isPaziente && (!prensaInCarico || showButtons))
+                                                                    || (!isNew && isPaziente && presentata)"><span>{{'common.save' | translate}}</span></button>
+    <button mat-raised-button (click)="accetta()" color="primary" *ngIf="isPaziente && prensaInCarico && showButtons"><span>Accetta</span></button>
+    <button mat-raised-button (click)="rifiuta()" color="primary" *ngIf="isPaziente && prensaInCarico && showButtons"><span>Rifiuta</span></button>
+
+</mat-dialog-actions>

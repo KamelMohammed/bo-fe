@@ -1,0 +1,124 @@
+{
+	"mef": {
+		"TelevisitastatesEnum": {
+			"REFUSED": "RIFIUTATA",
+			"PRESENTED": "PRESENTATA",
+			"CARRIED-OUT": "EFFETUATA",
+			"ACCEPTED": "ACCETTATA",
+			"EXPIRED": "SCADUTA",
+			"INTERRUPTED": "INTERROTTA",
+			"TAKING CHARGE": "PRESA_IN_CARICO",
+			"REJECTED": "RESPINTA",
+			"IN PROGRESS": "IN_CORSO",
+			"WITHDRAWAL": "RITIRATA"
+		},
+		"welcome-back": "Hoşgeldin",
+		"Project": "Proje",
+		"Analytics": "Analitik",
+		"saveOperationResult":"Esito operazione di salvataggio",
+		"updateOperationResult":"Esito operazione di aggiornamento",
+		"templateDocument":{
+			"listTemplateDocuments":{
+				"pageTitle":"Modulistica",
+				"typeLabel":"Tipo di documento",
+				"fileReferenceLabel":"Link file modello",
+				"addTemplateDocument":"Carica un documento"
+			},
+			"uploadFile":{
+				"title":"Carica un documento"
+			}
+		},
+		"accessProposal":{
+			"details": {
+				"fileReferenceLabel": "Allegato",
+				"typeLabel": "Tipo di documento"
+			},
+			"statesEnum": {
+				"REFUSED": "Rifiutata",
+				"REJECTED": "Rigettata",
+				"CLOSE": "Chiusa",
+				"SAVED": "Salvata",
+				"TO_SEND": "Da inviare",
+				"TO_EVALUATE": "Da valutare",
+				"ACCEPTED_COMPLEX_NEED": "Accettata bisogno complesso",
+				"ACCEPTED_SIMPLE_NEED": "Accettata bisogno semplice"
+			},
+			"listAccessProposals":{
+				"currentLabel":"Correnti",
+				"historyLabel": "Storico",
+				"pageTitle":"Proposte di Accesso",
+				"lastUpdateLabel":"Ultima modifica",
+				"protocolNumberLabel":"Numero di protocollo",
+				"stateLabel":"Stato",
+				"patientSurnameLabel":"Cognome",
+				"patientNameLabel":"Nome",
+				"filterStateLabel":"Filtra per stato",
+				"sendActionLabel": "Invia",
+				"detailsActionLabel": "Dettagli",
+				"withdrawTelevisit": "Ritira richiesta",
+				"Reject": "Respingi"
+			},
+			"log":{
+				"lastUpdateLabel": "Ultimo aggiornamento",
+				"title":"Registro Attività",
+				"activityDateLabel":"Data e Ora",
+				"userLabel":"Utente",
+				"actionLabel":"Operazione",
+				"fieldLabel":"Campo",
+				"oldValueLabel":"Valore Precedente",
+				"newValueLabel":"Valore Attuale"
+			},
+			"uviMembers": {
+				"addMemberDialogTitle": "Aggiungi un membro al gruppo UVI",
+				"memberFormFieldLabel": "Membro"
+			}
+		},
+		"houseAssistance":{
+			"uviMemberTab":"Membri uvi",
+			"accessProposalTab":"Proposta di accesso",
+			"evaluationTab":"Schede di valutazioni",
+			"evaluation":{
+				"pageTitle":"Schede di Valutazioni"
+			},
+			"finalEvaluation":{
+				"pageTitle":"Valutazione Finale"
+			},
+			"uviTab":{
+				"uviGroup":"Gruppo UVI",
+				"finalEvaluation":"Valutazione Finale",
+				"nameLabel":"Nome",
+				"surnameLabel":"Cognome",
+				"roleLabel":"Ruolo",
+				"stateLabel":"Stato"
+			},
+			"listAccessProposals":{
+				"addProposal": "Aggiungi proposta di accesso"
+			}
+		}
+	},
+	"enums": {
+		"AccessProposalStatus": {
+			"REFUSED": "Rifiutata",
+			"REJECTED": "Rigettata",
+			"CLOSE": "Chiusa",
+			"SAVED": "Salvata",
+			"TO_SEND": "Da inviare",
+			"TO_EVALUATE": "Da valutare",
+			"ACCEPTED_COMPLEX_NEED": "Accettata bisogno complesso",
+			"ACCEPTED_SIMPLE_NEED": "Accettata bisogno semplice"
+		},
+		"MemberStatus": {
+			"REGISTRANT": "in registrazione",
+			"CONFIRMANT": "da confermare",
+			"CONFIRMED": "Confermato",
+			"REFUSING": "Rifiutato"
+		},
+		"MemberRole": {
+			"MMG": "Medico Medicina Generale",
+			"SOCIAL_COORDINATOR": "Coordinatore Sociale",
+			"HEALTCARE_COORDINATOR": "Coordinatore sanitario",
+			"OTHER": "Altro"
+		}
+	}
+		
+}

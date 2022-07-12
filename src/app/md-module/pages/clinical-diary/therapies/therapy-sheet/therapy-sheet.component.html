@@ -1,0 +1,144 @@
+<page-content [label]="'md.unique_sheet' | translate">
+	<ng-container header *ngIf="sut">
+		<div class="flex flex-wrap justify-start border p-4 rounded-xl">
+			<field-viewer label="common.description" class="w-full mb-4" mode="Default">
+				{{sut.description}}
+			</field-viewer>
+			<field-viewer label="md.startDate" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.startDate}}
+			</field-viewer>
+			<field-viewer label="md.endDate" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.endDate}}
+			</field-viewer>
+			<field-viewer label="md.duration" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.duration}}
+			</field-viewer>
+			<field-viewer label="md.pathologies" *ngIf="pathologies.any()" class="w-full mb-4" mode="Default">
+				<chips [removable]="false" [items]="pathologies"></chips>
+			</field-viewer>
+			<field-viewer label="md.activatedBy" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.activatedBy}}
+			</field-viewer>
+			<field-viewer label="md.activatedFrom" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.activationDate | date}}
+			</field-viewer>
+			<field-viewer label="md.interruptedBy" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.interruptedBy}}
+			</field-viewer>
+			<field-viewer label="md.interruptedFrom" class="w-full sm:w-auto sm:mr-16 mb-4" mode="Default">
+				{{sut.interruptionDate | date}}
+			</field-viewer>
+
+			<field-viewer label="common.note" class="w-full mb-4" mode="Default">
+				{{sut.notes}}
+			</field-viewer>
+			<field-viewer label="md.allergies" *ngIf="allergies.any()" class="w-full" mode="Default">
+				<chips [removable]="false" [items]="allergies"></chips>
+			</field-viewer>
+		</div>
+
+	</ng-container>
+	<ng-container content *ngIf="sut">
+		<div class="w-full mt-4">
+			<!-- <list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+			</list-table> -->
+
+			<table
+            mat-table
+            [dataSource]="dataSource"
+            multiTemplateDataRows
+            matSort
+            class="therapy-table"
+          >
+
+            <!-- Drug Column -->
+            <ng-container matColumnDef="drug">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                [disableClear]="true"
+                class="text-primary pr-4"
+              > Farmaco </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+              > {{element.drug}} </td>
+            </ng-container>
+
+			<!-- via Column -->
+            <ng-container matColumnDef="via">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="text-primary pr-4"
+            > Via</th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+            > {{element.via}}</td>
+            </ng-container>
+
+            <!-- Quantity Column -->
+            <ng-container matColumnDef="quantity">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="text-primary pr-4"
+              > Quantità</th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+              > {{element.quantity}} </td>
+            </ng-container>
+
+            <!-- dates Column -->
+            <ng-container
+              [matColumnDef]="date"
+              *ngFor="let date of dateColumns;"
+            >
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="text-primary pr-4"
+              > {{date}} </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+              >
+                <div *ngFor="let item of element[date]">
+                  <span
+                    (click)="goToDetails(item)"
+                    [ngClass]="getSommClass(item.type)"
+                  >{{item.time}}</span>
+                </div>
+              </td>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <!-- <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns2;"
+            ></tr> -->
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns;"
+            ></tr>
+          </table>
+		</div>
+	</ng-container>
+	<ng-container footer *ngIf="sut">
+		<div class="flex justify-between">
+			<button mat-raised-button (click)="back()">{{'common.back' |
+				translate}}</button>
+			<div class="w-full flex justify-end">
+				<button mat-raised-button class="mr-8" (click)="previousWeek()">{{'md.previousWeek' |
+					translate}}</button>
+				<button mat-raised-button color="primary" (click)="nextWeek()">{{'md.nextWeek' | translate}}</button>
+			</div>
+
+		</div>
+	</ng-container>
+</page-content>

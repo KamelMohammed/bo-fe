@@ -1,0 +1,28 @@
+<page-content [label]="'icp.pas.listPas.pageTitle' | translate">
+  <ng-container header>
+      <div class="w-full text-right">
+			<add-button-component (onAddButtonClick)="create()" tooltip="icp.pas.listPas.addPasButton" *ngIf="isCSanitario"></add-button-component>
+      </div>
+  </ng-container>
+  <ng-container *ngIf="isCSanitario" content>
+      <data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+        <div fxLayout="row">
+          <mat-card  class="rounded-3xl m-2" *cardItemTable="let item">
+              <mat-card-title>
+                  <mat-icon color="primary" svgIcon="heroicons_outline:briefcase"></mat-icon>
+                  {{item.name}}
+              </mat-card-title>
+              <mat-card-content>
+                  <p>{{'icp.pas.listPas.careLevelLabel' | translate}}: <strong>{{item.careLevelName}}</strong></p>
+                  <p>{{'icp.pas.listPas.pathologiesLabel' | translate}}: <strong>{{patologies(item)}}</strong></p>
+                  <p>{{'icp.pas.listPas.activeLabel' | translate}}: <strong>{{item.active}}</strong></p>
+              </mat-card-content>
+              <mat-card-footer>
+                  <mat-divider inset></mat-divider>
+				  <card-actions [actions]="tableActions" [data]="item"></card-actions>
+              </mat-card-footer>
+          </mat-card>
+      </div>
+      </data-table>
+  </ng-container>
+</page-content>

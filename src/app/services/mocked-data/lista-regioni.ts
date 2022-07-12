@@ -1,0 +1,22 @@
+import { Regioni } from '../../pid/models/acceptance';
+
+export const REGIONI: Regioni[] = [{ codice: 1, nome: 'PIEMONTE' },
+{ codice: 2, nome: 'VALLE D’AOSTA' },
+{ codice: 3, nome: 'LOMBARDIA' },
+{ codice: 4, nome: 'TRENTINO A.A.' },
+{ codice: 5, nome: 'VENETO' },
+{ codice: 6, nome: 'FRIULI V.G' },
+{ codice: 7, nome: 'LIGURIA' },
+{ codice: 8, nome: 'EMILIA ROMAGNA' },
+{ codice: 9, nome: 'TOSCANA' },
+{ codice: 10, nome: 'UMBRIA' },
+{ codice: 11, nome: 'MARCHE' },
+{ codice: 12, nome: 'LAZIO' },
+{ codice: 13, nome: 'ABRUZZI' },
+{ codice: 14, nome: 'MOLISE' },
+{ codice: 15, nome: 'CAMPANIA' },
+{ codice: 16, nome: 'PUGLIE' },
+{ codice: 17, nome: 'BASILICATA' },
+{ codice: 18, nome: 'CALABRIA' },
+{ codice: 19, nome: 'SICILIA' },
+{ codice: 20, nome: 'SARDEGNA' }];

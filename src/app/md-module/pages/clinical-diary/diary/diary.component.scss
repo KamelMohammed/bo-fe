@@ -1,0 +1,23 @@
+@import '../../../../shared/scss/base.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
+
+table {
+  width: 100%;
+  border-bottom: 1px solid #afd6ec;
+
+}
+
+[hidden] {
+  visibility: hidden;
+}
+
+
+.deleted {
+  text-decoration: line-through;
+}

@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.patient-form-container {
+  overflow: auto;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.panelTitle {
+  background-color: #1a9776;
+  padding: 8px 64px 8px 64px;
+  color: white;
+}
+
+.references-container {
+  width: 100%;
+}
+
+.reference-actions-container {
+  border-top: 2px solid whitesmoke;
+}

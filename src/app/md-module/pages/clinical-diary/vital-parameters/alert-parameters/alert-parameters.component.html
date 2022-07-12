@@ -1,0 +1,13 @@
+<div class="w-full flex justify-between " [formGroup]="formFilter">
+  <select-box formControlName="parameterId" [items]="vitalParameters" itemKey="uuid" itemLabel="description"
+    class="flex-grow" label="md.vitalParameter">
+  </select-box>
+  <button [disabled]="!formFilter.controls.parameterId.value || closeMRMode || readOnly" mat-raised-button
+    color="primary" (click)="add()" class="ml-4 mt-2">
+    {{'common.add' | translate}}
+  </button>
+</div>
+<div class="w-full">
+  <list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+  </list-table>
+</div>

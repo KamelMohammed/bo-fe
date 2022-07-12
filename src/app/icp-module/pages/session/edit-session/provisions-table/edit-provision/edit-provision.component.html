@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+	<div class="py-6" [formGroup]="provisionForm" *ngIf="provisionForm">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-full" formControlName="patientId" label="Paziente" [readonly]="true"></input-string>
+			<input-date [utc]="false" class="w-full" formControlName="date" label="Data" [readonly]="true"></input-date>
+			<input-decimal class="w-full" formControlName="duration" label="Durata"></input-decimal>
+			<input-string class="w-full" formControlName="notes" label="note">
+			</input-string>
+		</div>
+	</div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!formValid">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

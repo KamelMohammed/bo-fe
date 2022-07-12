@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+app-gridster {
+  background: transparent !important;
+
+  app-gridster-item,
+  .gridster-column,
+  .gridster-row {
+    transition: none;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}

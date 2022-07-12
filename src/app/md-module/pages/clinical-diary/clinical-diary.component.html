@@ -1,0 +1,187 @@
+<page-content label="md.clinicalDiary">
+  <ng-container header>
+    <div class="w-full text-center text-lg border-b pb-2">
+      <span class="font-bold">{{ 'common.patient' | translate }}:</span>
+      <span *ngIf="medicalRecord && medicalRecord.patient">
+        {{ medicalRecord.patient.surname }} {{
+        medicalRecord.patient.name }}
+      </span>
+      <span *ngIf="!medicalRecord || !medicalRecord.patient">
+        {{ 'common.newPatient' | translate }}
+      </span>
+    </div>
+
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a mat-tab-link (click)="selectedIndex=0" [active]="selectedIndex==0">{{ 'common.patient' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=1" [active]="selectedIndex==1" [disabled]="medicalRecord === undefined">{{
+        'common.anamnesis' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=2" [active]="selectedIndex==2" [disabled]="medicalRecord === undefined">{{
+        'common.physicalExamination' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=3" [active]="selectedIndex==3" [disabled]="medicalRecord === undefined">{{
+        'common.diagnosis' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=4" [active]="selectedIndex==4" [disabled]="medicalRecord === undefined">{{
+        'common.vitalParameters' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=5" [active]="selectedIndex==5" [disabled]="medicalRecord === undefined">{{
+        'common.clinicalDiary' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=6" [active]="selectedIndex==6" [disabled]="medicalRecord === undefined">{{
+        'common.therapies' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=7" [active]="selectedIndex==7" [disabled]="medicalRecord === undefined">{{
+        'common.experimentation' | translate }}</a>
+
+      <a mat-tab-link (click)="selectedIndex=13" [active]="selectedIndex==13"
+        [disabled]="medicalRecord === undefined">{{
+        'common.AccessProposal' | translate }}</a>
+
+      <a *ngIf="showAccessProposalEvaluation" mat-tab-link (click)="selectedIndex=11" [active]="selectedIndex==11"
+        [disabled]="medicalRecord === undefined">{{
+        'common.EvaluationForms' | translate }}</a>
+
+      <a *ngIf="showUvi" mat-tab-link (click)="selectedIndex=12" [active]="selectedIndex==12"
+        [disabled]="medicalRecord === undefined">{{
+        'common.UviGroup' | translate }}</a>
+
+      <a *ngIf="showPai" mat-tab-link (click)="selectedIndex=9" [active]="selectedIndex==9"
+        [disabled]="medicalRecord === undefined">{{
+        'common.pai' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=14" [active]="selectedIndex==14"
+        [disabled]="medicalRecord === undefined">{{
+        'common.tct' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=15" [active]="selectedIndex==15"
+         [disabled]="medicalRecord === undefined">{{
+        'common.tlv' | translate }}</a>
+    </nav>
+  </ng-container>
+  <ng-container content>
+    <mat-tab-nav-panel #tabPanel>
+      <app-patient [medicalRecord]="medicalRecord" (outputMedicalRecord)="onOutputMedicalRecord($event)"
+        [readOnly]="readOnly" [fromAlert]="isAlert" [closeMRMode]="closeMRMode" *ngIf="selectedIndex === 0">
+      </app-patient>
+      <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+        [templateType]="'ANAMNESI'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 1"></app-form>
+      <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+        [templateType]="'ESAME OBIETTIVO'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 2">
+      </app-form>
+      <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+        [templateType]="'DIAGNOSI'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 3"></app-form>
+      <app-vital-parameters-home [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+        *ngIf="selectedIndex === 4" class="w-full"></app-vital-parameters-home>
+      <app-diary [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+        *ngIf="selectedIndex === 5" class="w-full"></app-diary>
+      <app-therapies [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+        *ngIf="selectedIndex === 6" class="w-full">
+      </app-therapies>
+      <app-experimentation [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+        *ngIf="selectedIndex === 7" class="w-full">
+      </app-experimentation>
+      <app-document-area [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+        *ngIf="selectedIndex === 8" class="w-full"></app-document-area>
+      <app-access-proposals-page [patientId]="patientId" *ngIf="selectedIndex === 13" [medicalRecord]="medicalRecord"
+        class="w-full" [canAddProposal]="true"></app-access-proposals-page>
+
+      <app-evaluations-forms-page [medicalRecord]="medicalRecord" [patientId]="patientId"
+        *ngIf="showAccessProposalEvaluation && selectedIndex === 11" class="w-full">
+      </app-evaluations-forms-page>
+
+      <app-uvi-member-page [medicalRecord]="medicalRecord" [patientId]="patientId"
+        *ngIf="showUvi && selectedIndex === 12" class="w-full">
+      </app-uvi-member-page>
+
+      <app-pai [medicalRecord]="medicalRecord" [patientId]="patientId" *ngIf="showPai && selectedIndex === 9"
+        class="w-full"></app-pai>
+
+      <app-tct-home [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+        *ngIf="selectedIndex === 14" class="w-full">
+        </app-tct-home>
+      <app-televisit *ngIf="selectedIndex===15" [medicalRecord]="medicalRecord"></app-televisit>
+    </mat-tab-nav-panel>
+  </ng-container>
+  <!-- <mat-tab-group #tabs selectedIndex="selectedIndex" (selectedTabChange)="selectedTabChange($event)"
+      class="mt-2 no-content">
+      <mat-tab label="{{ 'common.patient' | translate }}">
+      </mat-tab>
+      <mat-tab label="{{ 'common.anamnesis' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+      <mat-tab label="{{ 'common.physicalExamination' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+      <mat-tab label="{{ 'common.diagnosis' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+      <mat-tab label="{{ 'common.vitalParameters' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+      <mat-tab label="{{ 'common.clinicalDiary' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+      <mat-tab label="{{ 'common.therapies' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+      <mat-tab label="{{ 'common.experimentation' | translate }}" [disabled]="medicalRecord === undefined">
+      </mat-tab>
+    </mat-tab-group>
+  </ng-container>
+  <ng-container content>
+    <app-patient [medicalRecord]="medicalRecord" (outputMedicalRecord)="onOutputMedicalRecord($event)"
+      [readOnly]="readOnly" [fromAlert]="isAlert" [closeMRMode]="closeMRMode" *ngIf="selectedIndex === 0">
+    </app-patient>
+    <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+      [templateType]="'ANAMNESI'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 1"></app-form>
+    <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+      [templateType]="'ESAME OBIETTIVO'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 2">
+    </app-form>
+    <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+      [templateType]="'DIAGNOSI'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 3"></app-form>
+    <app-vital-parameters-home [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 4" fxFlex="grow"></app-vital-parameters-home>
+    <app-diary [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 5"></app-diary>
+    <app-therapy [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 6">
+    </app-therapy>
+    <app-experimentation [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 7">
+    </app-experimentation>
+
+    <app-document-area [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 8"></app-document-area>
+  </ng-container> -->
+
+</page-content>
+
+
+<!-- <mat-tab-group #tabs selectedIndex="selectedIndex" (selectedTabChange)="selectedTabChange($event)">
+  <mat-tab label="{{ 'common.patient' | translate }}" fxLayout="column" fxFlex="grow">
+    <app-patient [medicalRecord]="medicalRecord" (outputMedicalRecord)="onOutputMedicalRecord($event)"
+      [readOnly]="readOnly" [fromAlert]="isAlert" [closeMRMode]="closeMRMode" *ngIf="selectedIndex === 0">
+    </app-patient>
+  </mat-tab>
+  <mat-tab label="{{ 'common.anamnesis' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+      [templateType]="'ANAMNESI'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 1"></app-form>
+  </mat-tab>
+  <mat-tab label="{{ 'common.physicalExamination' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+      [templateType]="'ESAME OBIETTIVO'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 2">
+    </app-form>
+  </mat-tab>
+  <mat-tab label="{{ 'common.diagnosis' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-form [closeMRMode]="closeMRMode" [readOnly]="readOnly" [nosologico]="medicalRecord.nosological"
+      [templateType]="'DIAGNOSI'" [patientUuid]="medicalRecord.patient.id" *ngIf="selectedIndex === 3"></app-form>
+  </mat-tab>
+  <mat-tab label="{{ 'common.vitalParameters' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-vital-parameters-home [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 4" fxFlex="grow"></app-vital-parameters-home>
+  </mat-tab>
+  <mat-tab label="{{ 'common.clinicalDiary' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-diary [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 5"></app-diary>
+  </mat-tab>
+  <mat-tab label="{{ 'common.therapies' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-therapy [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 6">
+    </app-therapy>
+  </mat-tab>
+  <mat-tab label="{{ 'common.experimentation' | translate }}" [disabled]="medicalRecord === undefined">
+    <app-experimentation [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 7">
+    </app-experimentation>
+
+    <app-document-area [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+      *ngIf="selectedIndex === 8"></app-document-area>
+  </mat-tab>
+</mat-tab-group> -->

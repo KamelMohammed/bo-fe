@@ -1,0 +1,30 @@
+<mat-accordion>
+	<mat-expansion-panel [expanded]="true">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'tct.surveys' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-vital-parameters-tct [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+			class="w-full"></app-vital-parameters-tct>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'tct.alertParameters' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-alert-parameters-tct [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+			class="w-full"></app-alert-parameters-tct>
+	</mat-expansion-panel>
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<span class="text-primary font-bold">{{'tct.configuration' | translate | uppercase}}</span>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<app-configuration-tct [closeMRMode]="closeMRMode" [readOnly]="readOnly" [medicalRecord]="medicalRecord"
+			class="w-full"></app-configuration-tct>
+	</mat-expansion-panel>
+</mat-accordion>

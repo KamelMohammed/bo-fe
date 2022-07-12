@@ -1,0 +1,50 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  *ngIf="actions"
+>
+  <button
+    mat-icon-button
+    [matTooltip]="getLabel(firstAction.description)"
+    *ngIf="showMatMenu && firstAction"
+    (click)="firstAction.click(index)"
+  >
+    <mat-icon color="primary">{{ firstAction.icon }}</mat-icon>
+  </button>
+  <span *ngIf="showMatMenu && actionList && actionList.length">
+    <button
+      mat-icon-button
+      [matTooltip]="getLabel('MORE_ACTIONS')"
+      [matMenuTriggerFor]="menu"
+    >
+      <mat-icon color="primary">more_vert</mat-icon>
+    </button>
+    <mat-menu
+      #menu="matMenu"
+      xPosition="before"
+    >
+      <div
+        fxLayout="column"
+        fxLayoutAlign="space-around center"
+      >
+        <button
+          mat-menu-item
+          *ngFor="let action of actionList"
+          (click)="action.click(index)"
+        >
+          <mat-icon color="primary">{{ action.icon }}</mat-icon>
+          <span *ngIf="action.description">{{ getLabel(action.description) }}</span>
+        </button>
+      </div>
+    </mat-menu>
+  </span>
+  <span *ngIf="!showMatMenu">
+    <button
+      mat-icon-button
+      *ngFor="let action of actions; trackBy: trackByMethod"
+      (click)="action.click(index)"
+    >
+      <mat-icon color="primary">{{ action.icon }}</mat-icon>
+    </button>
+  </span>
+</div>

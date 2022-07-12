@@ -1,0 +1,12 @@
+// @import '../../scss//base.scss';
+$g: 4px;
+.legend-icon-container {
+  background-color: white;
+  overflow-y: auto;
+  flex-wrap: wrap;
+}
+
+.legend-action-container {
+  padding: $g 0;
+  min-height: 10 * $g;
+}

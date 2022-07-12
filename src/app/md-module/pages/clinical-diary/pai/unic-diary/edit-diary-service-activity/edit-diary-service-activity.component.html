@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+<mat-dialog-content>
+	<div class="py-6" [formGroup]="diaryServiceActivityForm" *ngIf="diaryServiceActivityForm">
+		<div class="flex flex-wrap justify-between">
+			<input-date class="w-full" formControlName="date" [utc]="true" label="Data" [readonly]="readonly || isPatient" required>
+			</input-date>
+			<select-box [multiple]="false" class="w-full" formControlName="operatorId" label="Operatore"
+				 [items]="operatorsIdItems" [readonly]="readonly || isPatient" required>
+			</select-box>
+			<select-box [multiple]="false" class="w-49-pc" formControlName="professionalId"
+				label="Professionista" [items]="professionalsItems" [readonly] ="readonly || isPatient"></select-box>
+			<select-box [multiple]="true" class="w-49-pc" formControlName="servicesId" label="Prestazioni"
+				[items]="servicesItems" [readonly]="readonly || isPatient || !canChooseServiceActivity"></select-box>
+			<select-box [multiple]="true" class="w-49-pc" formControlName="activitiesId" label="Attività"
+				[items]="activitiesItems" [readonly]="readonly || isPatient || !canChooseServiceActivity"></select-box>
+			<input-decimal class="w-full" formControlName="expectedDuration" label="Durata aspettata"
+				[readonly]="readonly || isPatient">
+			</input-decimal>
+			<input-decimal class="w-full" formControlName="effectiveDuration" label="Durata effettiva"
+				[readonly]="readonly || isPatient">
+			</input-decimal>
+			<input-string class="w-full" formControlName="notes" label="Note" [readonly]="isPatient"></input-string>
+		</div>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]=" !valid   || isPatient">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

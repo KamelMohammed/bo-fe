@@ -1,0 +1,19 @@
+.container{
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.level-box {
+	border: 2px solid #afd6ec;
+    border-radius: 20px;
+    color: #1a9776;
+    margin: 20px;
+	// padding: 20px;
+	
+	width: 350px;
+	// min-width: 150px;
+	// height: 90px;
+	mat-card-title {
+		color: #1a9776;
+	}
+}

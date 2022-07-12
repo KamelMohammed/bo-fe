@@ -1,0 +1,14 @@
+<h1 mat-dialog-title></h1>
+<mat-dialog-content *ngIf="form">
+    <div [formGroup]="form">
+        <input-datetime class="w-full" formControlName="value" label="common.value">
+        </input-datetime>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+    <button mat-raised-button mat-dialog-close class><span>{{'common.undo' | translate}}</span></button>
+    <button mat-raised-button (click)="save()" color="accent" [disabled]="!form" cdkFocusInitial><span>{{'common.save'
+            |
+            translate}}</span></button>
+</mat-dialog-actions>

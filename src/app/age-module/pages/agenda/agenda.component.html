@@ -1,0 +1,35 @@
+<page-content label="age.agenda.agenda">
+  <ng-container header>
+    <p class="text-center text-3xl font-bold uppercase">{{selectedDate | fulldate}}</p>
+  </ng-container>
+  <ng-container content>
+    <div class="sm:absolute sm:inset-0 sm:flex sm:flex-col sm:overflow-hidden">
+      <div class="sm:flex-auto">
+        <div class="sm:absolute sm:inset-0 sm:flex sm:flex-wrap sm:flex-row-reverse">
+          <div class="w-full sm:w-40-pc md:w-30-pc lg:w-25-pc md:pl-8">
+            <mat-calendar [selected]="selectedDate" [startAt]="selectedDate" (selectedChange)="selectedChange($event)">
+            </mat-calendar>
+            <div class="w-full flex flex-wrap justify-center border-t pt-6 " [formGroup]="formGroup">
+              <select-box [items]="templates" itemLabel="name" label="age.agenda.event" formControlName="template"
+                class="w-full">
+              </select-box>
+              <button mat-raised-button color="primary" class="w-full" (click)="addSubmission()"
+                [disabled]="!template.value">{{'age.agenda.addEvent' |
+                translate}}</button>
+            </div>
+
+          </div>
+          <div class="sm:flex-auto sm:relative">
+            <div class="sm:absolute sm:inset-0 sm:flex sm:flex-col sm:overflow-hidden">
+              <div class="sm:flex-auto" fuseScrollbar
+                [fuseScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+                <app-calendar-day-view [selectedDate]="selectedDate" [submissions]="submissions">
+                </app-calendar-day-view>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</page-content>

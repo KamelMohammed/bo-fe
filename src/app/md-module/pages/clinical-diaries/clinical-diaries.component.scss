@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+.filter-action-contaniner {
+  width: 100%;
+}
+
+.diaries-container {
+  overflow: auto;
+}
+
+.diaries-container-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+}
+
+.dairy-container {
+  border: 2px solid #afd6ec;
+  border-radius: 20px;
+  color: #1a9776;
+  margin-bottom: 24px;
+}
+
+.diary-container-grid {
+  margin-right: 24px;
+  flex-grow: 1;
+}
+
+.diary-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.actions-container {
+  border-top: 2px solid #afd6ec;
+}
+
+.pending-status {
+  color: #1a9776;
+}
+
+.closed-status {
+  color: red;
+}
+
+.view-icon {
+  color: gray;
+}
+
+.view-icon-active {
+  color: #1a9776;
+}
+
+.mat-paginator-container {
+  width: 100%;
+}

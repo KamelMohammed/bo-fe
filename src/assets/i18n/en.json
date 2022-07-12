@@ -1,0 +1,38 @@
+{
+    "cultures": {
+        "it": "Italiano",
+        "en": "English"
+    },
+    "profile": {
+        "logout": "Logout"
+    },
+    "common": {
+        "actions": "Actions",
+		"moreActions": "Others actions",
+		"applyFilterButtonLabel": "Filters",
+		"showFilterButtonLabel": "Show filters",
+		"hideFilterButtonLabel": "close filters"
+    },
+    "validation": {
+        "required": "{fieldName} è obbligatorio",
+        "integer": "{fieldName} deve essere un numero intero",
+        "decimal": "{fieldName} deve essere un numero",
+        "date": "{fieldName} deve esere una data valida",
+        "hours": "{fieldName} contiene un ora non valida",
+        "minutes": "{fieldName} contiene minuti non validi",
+        "seconds": "{fieldName} contiene secondi non validi",
+        "decimalInvalidDigits": "{fieldName} deve contenere unnumero con {0} cifre decimali",
+        "confirmPasswordMismatch": "le password non coincidono",
+        "mustBeTrue": "{fieldName} deve essere selezionato",
+        "maximum": "{fieldName} deve essere minore o uguale a {0}",
+        "exclusiveMaximum": "{fieldName} deve minore di {0}",
+        "minimum": "{fieldName} deve essere maggiore o uguale a {0}",
+        "exclusiveMinimum": "{fieldName} deve maggiore di {0}",
+        "minLengthString": "{fieldName} deve contenere almeno {0} caratteri",
+        "lengthString": "{fieldName} deve contenere {0} caratteri",
+        "maxLengthString": "{fieldName} deve contenere al massimo {0} caratteri",
+        "minLengthArray": "{fieldName} deve contenere almeno { {0} elementi",
+        "maxLengthArray": "{fieldName} deve contenere al massimo {0} elementi",
+        "fiscalCode": "{fieldName} non è un codice fisacle valido"
+    }
+}

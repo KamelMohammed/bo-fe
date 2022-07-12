@@ -1,0 +1,11 @@
+<div
+  fxFlex="grow"
+  class="section-field padding-1x"
+>
+  <h2
+    [class]="getClass(field?.label?.position)"
+    *ngIf="!field?.label.hidden"
+  >
+    {{ field?.label?.label }}
+  </h2>
+</div>

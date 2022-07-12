@@ -1,0 +1,12 @@
+[
+  {
+    "uuid": "e4b04428-6236-11eb-ae93-0242ac130002",
+    "role": "doctor",
+    "description": "Dott."
+  },
+  {
+    "uuid": "e4b046e4-6236-11eb-ae93-0242ac130002",
+    "role": "patient",
+    "description": "Patient"
+  }
+]

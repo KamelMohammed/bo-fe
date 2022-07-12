@@ -1,0 +1,9 @@
+<div id="error" class="flex justify-center items-center w-full">
+    <div class="flex flex-col justify-center items-center">
+        <mat-icon svgIcon="heroicons_solid:minus-circle" color="warn"></mat-icon>
+        <h1 class="text-10xl text-center font-bold">{{code}}</h1>
+        <p class="text-4xl  text-center font-bold">{{('errors.' + code) | translate}}</p>
+        <a class="text-2xl text-center" mat-raised-button color="primary" [routerLink]="'/'">{{'common.home' |
+            translate}}</a>
+    </div>
+</div>

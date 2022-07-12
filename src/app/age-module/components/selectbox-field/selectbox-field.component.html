@@ -1,0 +1,52 @@
+<div
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  fxLayoutAlign="space-between center"
+  [formGroup]="form"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <mat-form-field
+    appearance="outline"
+    fxFlex="70"
+  >
+    <mat-select
+      [formControlName]="field.id"
+      multiple
+    >
+      <mat-option
+        disabled="disabled"
+        class="filter-option"
+      >
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="selectAll()"
+        >
+          {{ 'SELECT_ALL' | translate }}
+        </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          class="margin-left-3x"
+          (click)="deselectAll()"
+        >
+          {{ 'DESELECT_ALL' | translate }}
+        </button>
+      </mat-option>
+      <mat-option
+        *ngFor="let option of field.selectBox.options"
+        [value]="option.value"
+        [class.mat-option-text-right]="field.selectBox.position === optionPosition.RIGHT"
+        [class.mat-option-text-center]="field.selectBox.position === optionPosition.CENTER"
+      >
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

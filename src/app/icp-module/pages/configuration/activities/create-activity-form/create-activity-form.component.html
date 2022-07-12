@@ -1,0 +1,26 @@
+<page-content label="{{'icp.activity.createActivity.pageTitle' | translate}}">
+	<ng-container content [formGroup]="createActivityForm" *ngIf="createActivityForm">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-full" formControlName="activity" [readonly]="edit" label="Attività" required="true"></input-string>
+			<select-box class="w-full" formControlName="typeId" label="Tipologia prestazione" required="true" [items]="serviceTypeItems"
+				[readonly]="edit"></select-box>
+			<select-box class="w-full" formControlName="professionalsId" label="Figura Professionale" required="true"
+				[items]="professionalItems" [readonly]="edit" [multiple]="true"></select-box>
+			<input-decimal class="w-full" formControlName="duration" [readonly]="edit" label="Durata (in minuti)" required="true">
+			</input-decimal>
+			<input-decimal class="w-full" formControlName="accessCost" [readonly]="edit" label="Costo per accesso(in euro)">
+			</input-decimal>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button   class="mt-2" (click)="back()">
+				{{'common.back' | translate}}
+			</button>
+			&nbsp;
+			<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="edit">
+				{{'common.save' | translate}}
+			</button>
+		</div>
+	</ng-container>
+</page-content>

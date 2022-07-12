@@ -1,0 +1,22 @@
+<div class="w-full">
+	<div class="flex justify-center items-center w-full " *ngIf="loading">
+		<mat-spinner *ngIf="loading"></mat-spinner>
+	</div>
+	<div class="flex flex-wrap justify-between">
+		<div *ngFor="let data of surveyChart"
+			class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc xl:w-19-pc border rounded-xl mb-6 pb-2">
+			<p class="w-full flex justify-between items-center px-4 border-b m-0">
+				<span class="text-md font-bold uppercase text-primary">{{data.name}}</span>
+				<button mat-icon-button (click)="openChartDialog(data)">
+					<mat-icon color="primary">bar_chart</mat-icon>
+				</button>
+			</p>
+			<div *ngFor="let survey of data.surveys" class="flex justify-between flex-wrap px-4 mt-2 ">
+				<span>{{survey.measurementDate | date}} {{survey.measurementDate | smalltime}}</span>
+				<span class="text-right">
+					{{survey.value}} {{data.symbol}}
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

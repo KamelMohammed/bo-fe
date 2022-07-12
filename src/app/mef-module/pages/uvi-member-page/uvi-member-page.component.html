@@ -1,0 +1,16 @@
+<page-content [label]="'mef.houseAssistance.uviMemberTab' | translate">
+  <ng-container header>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a mat-tab-link (click)="selectedIndex=0" [active]="selectedIndex==0">
+        {{'mef.houseAssistance.uviTab.uviGroup' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=1" [active]="selectedIndex==1">
+        {{'mef.houseAssistance.uviTab.finalEvaluation' | translate }}</a>
+    </nav>
+  </ng-container>
+  <ng-container content>
+    <mat-tab-nav-panel #tabPanel>
+      <app-uvi-group-tab *ngIf="selectedIndex ==0" [medicalRecord]="medicalRecord"></app-uvi-group-tab>
+      <app-final-evaluation-tab *ngIf="selectedIndex ==1" [medicalRecord]="medicalRecord"></app-final-evaluation-tab>
+    </mat-tab-nav-panel>
+  </ng-container>
+</page-content>

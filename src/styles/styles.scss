@@ -1,0 +1,151 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+
+.mat-simple-snackbar-action {
+	color: #fff;
+}
+.snack-text-color {
+	color: #fff;
+}
+.mat-form-field.mat-form-field-invalid {
+    .mat-form-field-outline >*{
+        border-color:var(--fuse-warn);
+    }
+}
+.timepicker-overlay {
+    z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+    z-index: 10000000 !important;
+}
+
+/* Form error */
+mat-form-field.mat-form-field-invalid  .mat-form-field-wrapper{
+    padding-bottom: 5px;    
+}
+mat-error{
+    min-height: 21px;
+    padding-bottom: 15px;
+}
+
+/*Table*/
+
+.mat-paginator .mat-paginator-container{justify-content: right;}
+
+/*Page*/
+page-content{width:100%;}
+page-content-scroll{flex-direction: column !important;flex:1 1 auto !important;display: flex !important;width:100%;}
+
+/*Form*/
+.mat-form-field.mat-form-field-slide .mat-form-field-wrapper .mat-form-field-flex{
+    border:none !important;
+    box-shadow: none !important;
+}
+
+input-slide .mat-form-field-flex{padding: 0 !important;}
+
+.mat-form-field.mat-form-field-appearance-fill.no-borders .mat-form-field-wrapper .mat-form-field-flex{ 
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* Spinner container */
+.spinner-container{background-color:rgba(0,0,0, 0.7);display: flex; justify-content: center;align-items: center;position:fixed;top:0;bottom:0;left:0;right:0;z-index:999999;}
+.spinner-container {
+    .mat-progress-spinner circle, .mat-spinner circle{stroke:#fff !important}
+}
+
+/* Expansion Panel */
+.mat-accordion  .mat-expansion-panel {
+        margin: 0 0 16px !important;
+        border-radius: 0px !important;
+}
+.mat-accordion  .mat-expansion-panel.mat-expanded {
+    margin: 0 0 16px !important;
+}
+.mat-accordion .mat-expansion-panel:last-child{
+    margin-bottom: 0 0 16px!important;
+}
+
+/*Logo*/
+
+.logo {
+    max-height: 48px;
+    width:auto;
+    margin: 0.5rem 0;
+}
+
+/* Chips */
+.mat-standard-chip {
+    .mat-chip-remove,  .mat-chip-trailing-icon {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
+
+/* Square button */
+.mat-button,
+.mat-flat-button,
+.mat-raised-button,
+.mat-stroked-button {
+    padding: 0 20px !important;
+    border-radius: 4px !important;
+}
+
+//Modals
+.modal-sm{width:400px;}
+.modal-md{width:700px;}
+.modal-lg{width:1000px;}
+.modal-xl{width:1300px;}
+
+.mat-dialog-container{
+    padding:0 !important;
+
+    .mat-dialog-title{
+        padding:16px 24px;
+        margin:0;
+        background-color: var(--fuse-primary);
+        @apply text-on-primary;
+
+    }
+    .mat-dialog-content{
+        padding:20px 24px;
+        margin: 0;
+    }
+    .mat-dialog-actions{
+        padding:8px 24px;
+        margin: 0;
+        border-top: 1px solid !important;
+        @apply border-gray-300 #{'!important'};
+    }    
+}
+
+
+/*Scrollbar*/
+.ps__rail-x,
+    .ps__rail-y {
+      opacity: 0.6;
+      z-index:1000 !important;
+    }
+
+    .no-content .mat-tab-body-wrapper{    display: none !important;}
+
+
+.select-14{
+    mat-option    {
+        width:14%;
+    }
+    mat-option:first-child:not(.mat-option-multiple)    {
+        width:100%;
+    }    
+}

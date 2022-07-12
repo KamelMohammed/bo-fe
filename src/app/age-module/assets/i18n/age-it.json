@@ -1,0 +1,32 @@
+{
+	"age": {
+		"agenda": {
+			"agenda": "Agenda",
+			"event": "Evento",
+			"addEvent": "Aggiungi evento"
+		},
+		"makeAdministration": "Effettua somministrazione",
+		"administer": "Somministra",
+		"administrationDate": "Data somministrazione",
+		"administrationTherapy": "Somministrazione terapia",
+		"missingAdministration": "Mancata somministrazione",
+		"cancelAdministrationTitle": "Annulla somministrazione",
+		"cancelAdministrationMessage": "Sei sicuro di annullare l'identificazione del farmaco?",
+		"viewDrugNote": "Visualizza note farmaco",
+		"drugNote": "Note farmaco",
+		"note": "Note",
+		"markAsRead": "Segna come letto",
+		"administrationNote": "Note di somministrazione del farmaco"
+	},
+	"enums": {
+		"AdministrationStatus": {
+			"TO_PREPARE": "Da identificare",
+			"TO_ADMINISTER": "Da somministrare",
+			"NOT_ADMINISTERED_MISSED": "Somministrazione mancata",
+			"NOT_ADMINISTERED_REJECTED": "Somministrazione rifiutata",
+			"NOT_ADMINISTERED_TIME_WINDOW_EXPIRED": "Somministrazione scaduta",
+			"UNKNOWN": "Somministrazione sconosciuta",
+			"ADMINISTERED": "Somministrata"
+		}
+	}
+}

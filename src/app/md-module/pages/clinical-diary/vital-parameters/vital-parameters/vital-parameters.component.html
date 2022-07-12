@@ -1,0 +1,55 @@
+<div class="w-full text-right">
+	<button
+		[disabled]="(closeMRMode && !profile.isPatient) || medicalRecord?.status.toUpperCase() === 'CHIUSA' || readOnly"
+		mat-raised-button color="primary" (click)="openAddDialog()" class="mb-2">
+		{{'common.add' | translate}}
+	</button>
+</div>
+<div class="w-full">
+	<div class="flex justify-center items-center w-full " *ngIf="loading">
+		<mat-spinner *ngIf="loading"></mat-spinner>
+	</div>
+	<div class="flex flex-wrap justify-between">
+		<div *ngFor="let data of validData"
+			class="w-full sm:w-48-pc md:w-31-pc lg:w-24-pc xl:w-19-pc border rounded-xl mb-6 pb-2">
+			<p class="w-full flex justify-between items-center px-4 border-b m-0">
+				<span class="text-md font-bold uppercase text-primary">{{data.parameter.description}}</span>
+				<button mat-icon-button (click)="openChartDialog(data, null)" *ngIf="!data.hasMultipleValues">
+					<mat-icon color="primary">bar_chart</mat-icon>
+				</button>
+			</p>
+			<div *ngFor="let survey of data.surveys" class="flex justify-between flex-wrap px-4 mt-2 "
+				(mouseenter)="over(survey)"
+				(mouseleave)="out()"
+				[mdePopoverTriggerFor]="appPopover"
+				mdePopoverTriggerOn="hover"
+				#popoverTrigger="mdePopoverTrigger"
+			>
+				<span>{{survey.dateTime | date}} {{survey.dateTime | smalltime}}</span>
+				<span class="text-right" *ngIf="!data.hasMultipleValues">
+					{{data.getDefaultValue(survey).values[0]}} {{data.getDefaultValue(survey).measureUnit?.symbol}}
+				</span>
+				<span class="text-right" *ngIf="data.hasMultipleValues">
+					<button
+                      mat-button
+                      (click)="openChartDialog(data, survey)"
+                    >
+                      {{ 'md.OPEN_TRACE' | translate }}
+                    </button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+		<mat-card *ngIf="selectedParameters">
+			<mat-card-content>
+				<div *ngFor="let parameter of (selectedParameters || [])">
+					<span *ngIf="parameter.values && parameter.description !== 'ECG'">
+						{{parameter.description}} : {{parameter.values[0]}} {{parameter.measureUnit?.symbol}}
+					</span>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</mde-popover>
+</div>

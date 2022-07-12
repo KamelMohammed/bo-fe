@@ -1,0 +1,10 @@
+<h1 mat-dialog-title >Respingi richiesta di televisita</h1>
+
+<mat-dialog-content>
+    <input-string  [(ngModel)]="motivazione" [rows]="4" label="common.televisitaMotivazione"  class="w-full" required></input-string>
+
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end" >
+    <button mat-raised-button (click)="close()"><span>{{'common.close' | translate}}</span></button>
+    <button mat-raised-button (click)="save()" color="primary" ><span>{{'common.save' | translate}}</span></button>
+</mat-dialog-actions>

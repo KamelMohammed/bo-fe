@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{ 'mef.accessProposal.uviMembers.addMemberDialogTitle' | translate}}</h1>
+
+<mat-dialog-content>
+
+    <div class="py-6" [formGroup]="userForm" *ngIf="userForm">
+        <div class="flex flex-wrap justify-between">
+			<select-box class="w-full" formControlName="doctor" label="mef.accessProposal.uviMembers.memberFormFieldLabel" required="true"  [items]="doctorListItems" [autocomplete]="true">
+			</select-box>
+			<input-string class="w-full" formControlName="doctorName" label="common.firstName" required="true" [readonly]="true">
+			</input-string>
+			<input-string class="w-full" formControlName="doctorSurname" label="common.lastName" required="true" [readonly]="true">
+			</input-string>
+			<input-string class="w-full" formControlName="doctorEmail" label="common.email" required="true" [readonly]="true">
+			</input-string>
+		</div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+	&nbsp;
+	<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!userForm || !userForm.valid">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

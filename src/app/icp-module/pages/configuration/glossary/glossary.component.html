@@ -1,0 +1,35 @@
+<page-content label="{{'icp.glossary.listGlossary.pageTitle' | translate}}">
+  <ng-container header>
+    <div class="flex flex-row">
+      <div class="basis-9/12">
+        <extended-filter-bar [filterFielsDescription]="filterDef" (requestFilterUpdate)="onFiltersUpdate($event)"
+          [filterValue]="filters"></extended-filter-bar>
+      </div>
+      <div class="basis-3/12  text-right">
+        <add-button-component (onAddButtonClick)="create()" tooltip="icp.glossary.listGlossary.addGlossaryButton">
+        </add-button-component>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container content>
+    <data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+      <div fxLayout="row">
+        <mat-card class="rounded-3xl m-2" *cardItemTable="let item">
+          <mat-card-title>
+            <mat-icon color="primary" svgIcon="heroicons_outline:briefcase"></mat-icon>
+            {{item.name}}
+          </mat-card-title>
+          <mat-card-content>
+            <p>{{'icp.glossary.listGlossary.descriptionLabel' | translate}}: <strong>{{item.description}}</strong></p>
+            <p>{{'icp.glossary.listGlossary.typeLabel' | translate}}: <strong>{{item.type}}
+                &euro;</strong></p>
+          </mat-card-content>
+          <mat-card-footer>
+            <mat-divider inset></mat-divider>
+            <card-actions [actions]="tableActions" [data]="item"></card-actions>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </data-table>
+  </ng-container>
+</page-content>

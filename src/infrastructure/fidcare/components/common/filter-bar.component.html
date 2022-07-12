@@ -1,0 +1,17 @@
+<div class=" flex flex-wrap" [ngClass]="{'py-3':expandable,'bg-card border mb-6 p-6 ':bordered}">
+    <div class="w-full flex justify-between items-center" *ngIf="expandable">
+        <h1 class="text-2xl m-0">{{'common.filter' | translate}}</h1>
+        <button mat-icon-button color="accent" (click)="expanded = !expanded">
+            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:chevron-down'" *ngIf="!expanded"></mat-icon>
+            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:chevron-up'" *ngIf="expanded"></mat-icon>
+        </button>
+    </div>
+    <div class="flex flex-wrap mb-3 md:justify-between w-full" *ngIf="expanded">
+        <div class="flex flex-wrap justify-between w-full">
+            <ng-content></ng-content>
+        </div>
+        <div class="w-full text-right md:mt-3">
+            <ng-content select="[buttons]"></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+<page-content [label]="'Alert' | translate">
+	
+<!--        
+    <ng-container header>
+        pagina di alert
+    </ng-container> -->
+    <ng-container content>
+		<div fxFlex="grow" fxFlexLayout="row" class="accordion-container padding-4x">
+			<div class="loading-shade" *ngIf="loading">
+				<mat-spinner *ngIf="loading"></mat-spinner>
+			</div>
+				<mat-accordion>
+					<mat-expansion-panel *ngFor="let alert of alerts; let i = index" class="margin-bottom-4x" [expanded]="expanded === i" (opened)="setExpanded(i)" >
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+									<div fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+										<mat-icon aria-hidden="false" class="margin-right-4x notification-important">
+											notification_important
+										</mat-icon>
+										<span class="padding-left-2x">
+											{{ alert.alert.alertDate | date:'dd/MM/yyyy HH:mm'}}
+										</span>
+										<span class="padding-left-2x">
+											&nbsp;{{ 'common.patient' | translate }}:&nbsp;<b>{{ alert.medicalRecord.patient?.surname }} {{ alert.medicalRecord.patient?.name }}</b>
+										</span>
+										<span class="padding-left-2x">
+											&nbsp;{{ 'md.alert.vitalParameter' | translate }}:&nbsp;<b>{{ alert.alert.measurementDescription }}</b>
+										</span>
+										<span class="padding-left-2x">
+											&nbsp;{{ 'md.alert.value' | translate }}:&nbsp;[<b>{{ alert.alert.value }} {{ alert.alert.measureUnitSymbol}}</b>]
+										</span>
+									</div>
+									<mat-slide-toggle (click)="$event.stopPropagation();" (change)="change($event, alert)"
+										[checked]="true" color="primary">
+										{{ 'md.alert.deactivate' | translate }}
+									</mat-slide-toggle>
+								</div>
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<md-alert-details [medicalRecord]="getMedicalRecord(alert)" [readOnly]="readonly" [isAlert]="true" *ngIf="expanded === i"> </md-alert-details>
+					</mat-expansion-panel>
+				
+					
+				</mat-accordion>
+
+				<!-- <mat-expansion-panel *ngFor="let alert of alerts; let i = index" class="margin-bottom-4x"
+					(opened)="setExpanded(i)">
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+								<div fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+									<mat-icon aria-hidden="false" class="margin-right-4x notification-important">
+										notification_important
+									</mat-icon>
+									<span class="padding-left-2x">
+										{{ alert.alert.alertDate | date:'dd/MM/yyyy HH:mm'}}
+									</span>
+									<span class="padding-left-2x">
+										{{ 'PATIENT' | translate }}: <b>{{ alert.medicalRecord.patient?.surname }}
+											{{ alert.medicalRecord.patient?.name }}</b>
+									</span>
+									<span class="padding-left-2x">
+										{{ 'VITAL_PARAMETER' | translate }}: <b>{{ alert.alert.measurementDescription }}</b>
+									</span>
+									<span class="padding-left-2x">
+										{{ 'VALUE' | translate }}: [<b>{{ alert.alert.value }} {{ alert.alert.measureUnitSymbol
+											}}</b>]
+									</span>
+								</div>
+								<mat-slide-toggle (click)="$event.stopPropagation();" (change)="change($event, alert)"
+									[checked]="true" color="primary">
+									{{ 'DEACTIVE' | translate }}
+								</mat-slide-toggle>
+							</div>
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<app-clinical-diary [medicalRecord]="getMedicalRecord(alert)" [readOnly]="readonly" [isAlert]="true"
+						*ngIf="expanded === i"></app-clinical-diary>
+				</mat-expansion-panel> -->
+		</div>
+		
+               
+    </ng-container>
+    <ng-container footer>
+        <div fxLayout="row" fxLayoutAlign="end center" class="paginator-container">
+			<mat-paginator (page)="onPageChange($event)" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons>
+			</mat-paginator>
+		</div>
+    </ng-container>
+</page-content>
+<!-- 
+<div fxFlex="grow" fxFlexLayout="row" class="accordion-container padding-4x">
+	<div class="loading-shade" *ngIf="loading">
+		<mat-spinner *ngIf="loading"></mat-spinner>
+	</div>
+	<mat-accordion multi>
+		<mat-expansion-panel *ngFor="let alert of alerts; let i = index" class="margin-bottom-4x"
+			(opened)="setExpanded(i)">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+						<div fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+							<mat-icon aria-hidden="false" class="margin-right-4x notification-important">
+								notification_important
+							</mat-icon>
+							<span class="padding-left-2x">
+								{{ alert.alert.alertDate | date:'dd/MM/yyyy HH:mm'}}
+							</span>
+							<span class="padding-left-2x">
+								{{ 'PATIENT' | translate }}: <b>{{ alert.medicalRecord.patient?.surname }}
+									{{ alert.medicalRecord.patient?.name }}</b>
+							</span>
+							<span class="padding-left-2x">
+								{{ 'VITAL_PARAMETER' | translate }}: <b>{{ alert.alert.measurementDescription }}</b>
+							</span>
+							<span class="padding-left-2x">
+								{{ 'VALUE' | translate }}: [<b>{{ alert.alert.value }} {{ alert.alert.measureUnitSymbol
+									}}</b>]
+							</span>
+						</div>
+						<mat-slide-toggle (click)="$event.stopPropagation();" (change)="change($event, alert)"
+							[checked]="true" color="primary">
+							{{ 'DEACTIVE' | translate }}
+						</mat-slide-toggle>
+					</div>
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<app-clinical-diary [medicalRecord]="getMedicalRecord(alert)" [readOnly]="readonly" [isAlert]="true"
+				*ngIf="expanded === i"></app-clinical-diary>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>
+<div fxLayout="row" fxLayoutAlign="end center" class="paginator-container">
+	<mat-paginator (page)="onPageChange($event)" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons>
+	</mat-paginator>
+</div> -->

@@ -1,0 +1,80 @@
+<div class="absolute inset-0 flex flex-col overflow-hidden">
+  <div class="w-full mb-4 flex justify-between" [formGroup]="form">
+    <input-string label="common.search" formControlName="filter" class="flex-grow mr-4"></input-string>
+    <button [disabled]="closeMRMode || readOnly" mat-raised-button color="primary" (click)="addClinicalDiary()"
+      class="mt-2">
+      {{'common.add' | translate}}
+    </button>
+  </div>
+  <div class="w-full flex-auto pr-2" fuseScrollbar
+    [fuseScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+
+    <div class="w-full border">
+      <div class="w-full flex justify-center" *ngIf="loading">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+      </div>
+      <div class="flex flex-col flex-grow" [hidden]="loading">
+        <table mat-table *ngFor="let dataSource of clinicalDiaryDataSources; let i = index"
+          [dataSource]="dataSource.data" [class]="'table-' + i">
+
+
+
+          <!-- user Column -->
+          <ng-container matColumnDef="USER">
+            <th mat-header-cell *matHeaderCellDef class="bg-primary text-on-primary" colspan="6">
+              {{ dataSource.date}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="w-10-pc">
+              {{ element.operatorName }} {{ element.operatorSurname }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="USER-2">
+            <th mat-header-cell *matHeaderCellDef class="w-10-pc">
+              {{ "common.operator" | translate }}
+            </th>
+          </ng-container>
+          <!-- time Column -->
+          <ng-container matColumnDef="TIME">
+            <th mat-header-cell *matHeaderCellDef class="hidden w-5-pc"></th>
+            <td mat-cell *matCellDef="let element" class="w-5-pc" [ngClass]="{deleted:element.deleted}">
+              {{ element.activityDate | time }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="TIME-2">
+            <th mat-header-cell *matHeaderCellDef class="w-5">
+              {{ "common.time" | translate }}
+            </th>
+          </ng-container>
+          <!-- note Column -->
+          <ng-container matColumnDef="NOTE">
+            <th mat-header-cell *matHeaderCellDef class="hidden w-80-pc"></th>
+            <td mat-cell *matCellDef="let element" class="w-80-pc" [ngClass]="{deleted:element.deleted}">
+              {{ element.activity }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="NOTE-2">
+            <th mat-header-cell *matHeaderCellDef class="w-80-pc">
+              {{ "md.clinicalNote" | translate }}
+            </th>
+          </ng-container>
+
+          <!-- actions Column -->
+          <ng-container matColumnDef="ACTIONS">
+            <th mat-header-cell *matHeaderCellDef class="hidden w-5-pc"></th>
+            <td mat-cell *matCellDef="let element; let i = index" class="w-5-pc">
+              <app-actions [actions]="getActions(element)"></app-actions>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="ACTIONS-2">
+            <th mat-header-cell *matHeaderCellDef class="w-5-pc">
+              {{ "common.actions" | translate }}
+            </th>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

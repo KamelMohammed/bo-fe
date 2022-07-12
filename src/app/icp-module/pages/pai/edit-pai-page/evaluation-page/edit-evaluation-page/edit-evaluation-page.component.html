@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+  <div class="py-6" [formGroup]="createEvaluationForm" *ngIf="createEvaluationForm">
+    <div class="flex flex-wrap justify-between">
+      <select-box class="w-full" formControlName="uviMemberId" label="Mebro UVI" [readonly]="readOnlyUviMember" [items]="doctorListItems"></select-box>
+      <input-date [dateFilter]="dateGTNowFilter"  [utc]="true" class="w-full" formControlName="date" label="Data Valutazione" [readonly]="readOnlyEvaluationDate"></input-date>
+      <input-string class="w-full" formControlName="evaluation" label="valutazione" [readonly]="readOnlyEvaluation">
+      </input-string>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+  <button mat-raised-button class="mt-2" (click)="back()">
+    {{'common.close' | translate}}
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!formValid || history ">
+    {{'common.save' | translate}}
+  </button>
+</mat-dialog-actions>

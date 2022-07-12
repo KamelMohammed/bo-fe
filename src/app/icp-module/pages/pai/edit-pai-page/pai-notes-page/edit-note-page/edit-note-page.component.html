@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+
+<mat-dialog-content>
+  <div class="py-6" [formGroup]="createNoteForm" *ngIf="createNoteForm">
+    <div class="flex flex-wrap justify-between">
+      <input-date [dateFilter]="dateGTNowFilter" class="w-full" formControlName="startDate" label="Data inizio" [readonly]="readonly ||stop" required>
+      </input-date>
+      <input-decimal class="w-full" formControlName="duration" label="Durata" [readonly]="readonly"
+        *ngIf="suspend"></input-decimal>
+      <input-date class="w-full" formControlName="endDate" label="Data fine sospensione" [readonly]="true"
+        *ngIf="suspend" required></input-date>
+      <input-string class="w-full" formControlName="motivationalNote" label="Nota motivazionale" [readonly]="readonly"
+        required></input-string>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+  <button mat-raised-button class="mt-2" (click)="back()">
+    {{'common.close' | translate}}
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="!formValid || readonly">
+    {{'common.save' | translate}}
+  </button>
+</mat-dialog-actions>

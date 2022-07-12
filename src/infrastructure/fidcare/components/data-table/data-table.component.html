@@ -1,0 +1,96 @@
+<div [ngClass]="{'absolute inset-0 flex flex-col overflow-hidden':forPage}">
+    <div class="w-full flex-auto" fuseScrollbar
+        [fuseScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+
+        <div [ngClass]="{'border':bordered}" *ngIf="showList">
+            <mat-table class="table-table" [dataSource]="items" matSort (matSortChange)="changeSort($event)">
+                <!-- ID Column -->
+                <ng-container *ngFor="let column of columns; let i = index">
+                    <ng-container [matColumnDef]="column.name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable"
+                            [style]="getAlignment(column, i)" class="text-primary pr-4">{{column.label | translate}}
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row" [style]="getAlignment(column, i)" class="pr-4">
+                            <ng-container [dataTableCellTemplate]="column" [dataTableCellTemplateRowData]="row">
+                            </ng-container>
+                        </mat-cell>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container matColumnDef="actions" *ngIf="actions.length > 0">
+                    <mat-header-cell *matHeaderCellDef class="text-primary" style="justify-content:flex-end">
+                        {{'common.actions' |
+                        translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let data" style="justify-content:flex-end; overflow: visible;" aria-label="actions">
+                        <ng-container *ngFor="let action of firstActions">
+                            <!-- <button mat-icon-button (click)="action.funcToInvoke(data)"
+                                *ngIf="action.alwaysVisible  || action.enableFunc(data)"
+                                [disabled]="!action.enableFunc(data)" [matTooltip]="action.label | translate">
+                                <mat-icon [svgIcon]="action.icon"></mat-icon>
+                            </button> -->
+							<button mat-icon-button (click)="action.funcToInvoke(data)"
+                                [disabled]="!action.enableFunc(data)" [matTooltip]="action.label | translate">
+                                <mat-icon [svgIcon]="action.icon"></mat-icon>
+                            </button>
+                        </ng-container>
+                        <div *ngIf="otherActions">
+                            <button mat-icon-button [matTooltip]="'common.moreActions' | translate"
+                                [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <ng-container *ngFor="let action of otherActions">
+                                    <!-- <button mat-menu-item (click)="action.funcToInvoke(data)"
+                                        [disabled]="!action.enableFunc(data)"
+                                        *ngIf="action.alwaysVisible || action.enableFunc(data)">
+                                        <mat-icon [svgIcon]="action.icon"></mat-icon>
+                                        <span>{{action.label | translate}}</span>
+                                    </button> -->
+									<button mat-menu-item (click)="action.funcToInvoke(data)"
+                                        [disabled]="!action.enableFunc(data)">
+                                        <mat-icon [svgIcon]="action.icon"></mat-icon>
+                                        <span>{{action.label | translate}}</span>
+                                    </button>
+                                </ng-container>
+                            </mat-menu>
+                        </div>
+
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="columnNames; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let data; columns: columnNames;" matRipple (click)="onRowClick(data)"  [ngClass]="{'row-deleted': deletedRow(data)}">
+                </mat-row>
+            </mat-table>
+        </div>
+        <ng-container *ngIf="!showList">
+            <div class="flex flex-wrap jsutify-start w-full">
+                <ng-container *ngFor="let item of items">
+                    <ng-container *ngTemplateOutlet="cardItemTableTemplate; context:{ $implicit: item }"></ng-container>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+    <div class="w-full mt-4 flex items-center"
+        [ngClass]="{'justify-between':cardItemTableTemplate != null,'justify-end':cardItemTableTemplate == null}">
+        <div *ngIf="cardItemTableTemplate != null">
+            <button mat-icon-button (click)="setShowList(true)">
+                <mat-icon [ngClass]="{'text-gray-600':showList,'text-gray-400':!showList}"
+                    svgIcon="heroicons_solid:view-list">
+                </mat-icon>
+            </button>
+            <button mat-icon-button (click)="setShowList(false)">
+                <mat-icon [ngClass]="{'text-gray-600':!showList,'text-gray-400':showList}"
+                    svgIcon="heroicons_solid:view-grid">
+                </mat-icon>
+            </button>
+        </div>
+        <mat-paginator [length]="totalCount" [pageIndex]="pageIndex" [hidePageSize]="!defaultPager"
+            [ngClass]="{'simple-paginator':!defaultPager}" [pageSize]="pageSize" [pageSizeOptions]="allowedPageSizes"
+            (page)="changePagination($event)">
+        </mat-paginator>
+    </div>
+</div>

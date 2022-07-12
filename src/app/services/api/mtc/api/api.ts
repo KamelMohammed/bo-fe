@@ -1,0 +1,15 @@
+export * from './assistitoController.service';
+import { AssistitoControllerService } from './assistitoController.service';
+export * from './contattoController.service';
+import { ContattoControllerService } from './contattoController.service';
+export * from './diagnosiController.service';
+import { DiagnosiControllerService } from './diagnosiController.service';
+export * from './durataController.service';
+import { DurataControllerService } from './durataController.service';
+export * from './eventoController.service';
+import { EventoControllerService } from './eventoController.service';
+export * from './teleconsultoController.service';
+import { TeleconsultoControllerService } from './teleconsultoController.service';
+export * from './televisitaController.service';
+import { TelevisitaControllerService } from './televisitaController.service';
+export const APIS = [AssistitoControllerService, ContattoControllerService, DiagnosiControllerService, DurataControllerService, EventoControllerService, TeleconsultoControllerService, TelevisitaControllerService];

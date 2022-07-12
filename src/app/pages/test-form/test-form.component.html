@@ -1,0 +1,13 @@
+<page-content label="Test Tabella">
+    <ng-container content [formGroup]="form">
+        <input-string formControlName="name" label="Name"></input-string>
+        <input-string formControlName="description" label="Description"></input-string>
+    </ng-container>
+    <ng-container footer>
+        <div class="w-full text-right">
+            <button mat-raised-button (click)="save()" color="primary" class="mt-2">
+                Salva
+            </button>
+        </div>
+    </ng-container>
+</page-content>

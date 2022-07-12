@@ -1,0 +1,33 @@
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="content-header">titolo : {{title}}</div>
+        <p class="content-sub-header mb-1" *ngIf="description">descrizione: {{description}}</p>
+    </div>
+</div>
+<section>
+    <div class="row">
+        <div class="col-12">
+            <ng-content select="[page-body]"></ng-content>
+        </div>
+    </div>
+</section> -->
+
+
+<page-content label="Test Tabella">
+    <ng-container header>
+        <div class="w-full text-right">
+            <button mat-raised-button color="primary" class="mt-2">
+                Aggiungi
+            </button>
+        </div>
+    </ng-container>
+    <ng-container content>
+        ciaooooooo
+        <!-- <data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+            <div *cardItemTable="let item" class="bg-card w-20-pc border shadow mr-6 mb-6">
+                <p>{{item.firstName}}</p>
+                <p>{{item.lastName}}</p>
+            </div>
+        </data-table> -->
+    </ng-container>
+</page-content>

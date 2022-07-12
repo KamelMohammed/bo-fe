@@ -1,0 +1,39 @@
+<page-content label="{{'mef.accessProposal.listAccessProposals.pageTitle' | translate}}">
+	<ng-container header>
+		<div class="flex flex-row">
+			<div class="basis-9/12">
+				<extended-filter-bar *ngIf="filterDef" [filterFielsDescription]="filterDef"
+					(requestFilterUpdate)="onFiltersUpdate($event)" [filterValue]="filters"></extended-filter-bar>
+			</div>
+			<div class="basis-3/12  text-right" *ngIf="showAddButton">
+				<add-button-component (onAddButtonClick)="create()"
+					tooltip="mef.houseAssistance.listAccessProposals.addProposal">
+				</add-button-component>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container content>
+		<data-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions" [defaultActionsNumberToShow]="2">
+			<div fxLayout="row">
+				<mat-card class="rounded-3xl m-2" *cardItemTable="let item">
+					<mat-card-title>
+						<mat-icon color="primary" svgIcon="heroicons_outline:briefcase"></mat-icon>
+						{{item.patientName}} {{item.patientSurname}}
+					</mat-card-title>
+					<mat-card-content>
+						<p>{{'mef.accessProposal.listAccessProposals.protocolNumberLabel' | translate}}:
+							<strong>{{item.protocolNumber}}</strong>
+						</p>
+						<p>{{'mef.accessProposal.listAccessProposals.lastUpdateLabel' | translate}}:
+							<strong>{{item.lastUpdate}}</strong>
+						</p>
+					</mat-card-content>
+					<mat-card-footer>
+						<mat-divider inset></mat-divider>
+						<card-actions [actions]="tableActions" [data]="item"></card-actions>
+					</mat-card-footer>
+				</mat-card>
+			</div>
+		</data-table>
+	</ng-container>
+</page-content>

@@ -1,0 +1,10 @@
+@mixin app-administration-detail-dialog() {
+    app-administration-detail-dialog {
+      .header-dialog {
+          background-color: #1a9776;
+          color: white;
+          padding: 4px 16px;
+      }
+    }
+  }
+  

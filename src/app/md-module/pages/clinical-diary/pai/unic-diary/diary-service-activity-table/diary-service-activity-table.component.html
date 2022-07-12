@@ -1,0 +1,11 @@
+<div>
+  <ng-container content>
+    <h1 class="w-full bg-primary text-center text-xl text-on-primary py-2 mb-3">{{date | translate
+      |uppercase  | date}}
+    </h1>
+    <list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions" [deletedRow]="myDeletedRow">
+      <div *cardItemTable="let item" class="bg-card w-20-pc border shadow mr-6 mb-6">
+      </div>
+    </list-table>
+  </ng-container>
+</div>

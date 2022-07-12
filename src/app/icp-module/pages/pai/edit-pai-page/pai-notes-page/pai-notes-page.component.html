@@ -1,0 +1,13 @@
+<page-content [label]="'icp.pai.listNotes.pageTitle' | translate">
+  <ng-container content>
+    <list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+    </list-table>
+  </ng-container>
+  <ng-container footer>
+    <div class="w-full text-right">
+      <button mat-raised-button class="mt-2" (click)="goBack()">
+        {{'common.back' | translate}}
+      </button>
+    </div>
+  </ng-container>
+</page-content>

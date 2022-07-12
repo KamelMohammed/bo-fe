@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>
+	{{'age.missingAdministration' | translate}}
+</h1>
+<mat-dialog-content>
+	<div class="flex flex-wrap" [formGroup]="form">
+		<input-string formControlName="note" label="common.note" [rows]="6" class="w-full"></input-string>
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button (click)="close()">
+		{{'common.undo' | translate}}
+	</button>
+	<button mat-raised-button color="primary" (click)="save()">
+		{{'common.save' | translate}}
+	</button>
+</mat-dialog-actions>

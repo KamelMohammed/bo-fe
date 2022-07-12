@@ -1,0 +1,13 @@
+<div *ngFor="let hour of dailyHours" class="mb-4 flex items-center">
+  <p class="w-16 text-md font-semi-bold">{{hour}} </p>
+  <mat-card class="flex-auto mr-4">
+    <ng-container *ngFor="let event of getEventsByHour(hour)">
+      <div *ngIf="getBadgeField(event) as field"
+        class="rounded-xl p-4 w-full sm:w-48-pc md:w-31-pc flex flex-col items-center justify-center cursor-pointer"
+        [style.background-color]="field.badge?.backgroundColor" (click)="onEventClick(event)">
+        <p class="font-bold">{{event.submissionDateTime | smalltime}}</p>
+        <app-badge-field [field]="field"></app-badge-field>
+      </div>
+    </ng-container>
+  </mat-card>
+</div>

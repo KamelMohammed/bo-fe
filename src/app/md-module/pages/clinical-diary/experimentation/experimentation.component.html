@@ -1,0 +1,32 @@
+<div class="flex flex-wrap justify-between" [formGroup]="form">
+	
+	<select-box formControlName="uuidCategory" label="md.experimentation.category" itemKey="uuid"
+		itemLabel="description" [items]="categories" class="w-full sm:w-48-pc"></select-box>
+	<input-slide formControlName="homeCare" label="md.experimentation.homecare" class="w-full sm:w-48-pc"></input-slide>
+	
+	<select-box formControlName="active" label="md.experimentation.active" [items]="activeItems"
+		class="w-full">
+	</select-box>
+
+	<input-string formControlName="partNumber" [readonly]="true" label="md.experimentation.kitPartNumber"
+		class="w-full sm:w-48-pc">
+	</input-string>
+	<input-string formControlName="serialNumber" [readonly]="true" label="md.experimentation.serialNumber"
+		class="w-full sm:w-48-pc">
+	</input-string>
+
+	<input-string formControlName="dispenserNumber" [readonly]="true" label="md.experimentation.dispenserNumber"
+		class="w-full sm:w-48-pc">
+	</input-string>
+	<input-string formControlName="dispenserSeralNumber" [readonly]="true" label="md.experimentation.dispenserSeralNumber"
+		class="w-full sm:w-48-pc">
+	</input-string>
+</div>
+<div class="flex justify-end mt-8">
+	<!-- <button mat-raised-button class="mr-4" (click)="undo()">
+		{{ 'common.cancel' | translate}}
+	</button> -->
+	<button mat-raised-button color="primary" (click)="save()">
+		{{ 'common.save' | translate}}
+	</button>
+</div>

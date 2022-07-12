@@ -1,0 +1,74 @@
+{
+	"mef": {
+		"welcome-back": "Hoşgeldin",
+		"Project": "Proje",
+		"Analytics": "Analitik",
+		"saveOperationResult":"Esito operazione di salvataggio",
+		"updateOperationResult":"Esito operazione di aggiornamento",
+		"templateDocument":{
+			"listTemplateDocuments":{
+				"pageTitle":"Modulistica",
+				"typeLabel":"Tipo di documento",
+				"fileReferenceLabel":"Link file modello",
+				"addTemplateDocument":"Carica un documento"
+			},
+			"uploadFile":{
+				"title":"Carica un documento"
+			}
+		},
+		"accessProposal":{
+			"statesEnum": {
+				"REFUSED": "Rifiutata",
+				"REJECTED": "Rigettata",
+				"CLOSE": "Chiusa",
+				"SAVED": "Salvata",
+				"TO_SEND": "Da inviare",
+				"TO_EVALUATE": "Da valutare",
+				"ACCEPTED_COMPLEX_NEED": "Accettata bisogno complesso",
+				"ACCEPTED_SIMPLE_NEED": "Accettata bisogno semplice"
+			},
+			"listAccessProposals":{
+				"currentLabel":"Correnti",
+				"historyLabel": "Storico",
+				"pageTitle":"Proposte di Accesso",
+				"lastUpdateLabel":"Ultima modifica",
+				"protocolNumberLabel":"Numero di protocollo",
+				"stateLabel":"Stato",
+				"patientSurnameLabel":"Cognome",
+				"patientNameLabel":"Nome",
+				"filterStateLabel":"Filtra per stato"
+			},
+			"log":{
+				"title":"Registro Attività",
+				"activityDateLabel":"Data e Ora",
+				"userLabel":"Utente",
+				"fieldLabel":"Campo",
+				"oldValueLabel":"Valore Precedente",
+				"newValueLabel":"Valore Attuale"
+			}
+		},
+		"houseAssistance":{
+			"uviMemberTab":"Membri uvi",
+			"accessProposalTab":"Proposta di accesso",
+			"evaluationTab":"Schede di valutazioni",
+			"evaluation":{
+				"pageTitle":"Schede di Valutazioni"
+			},
+			"finalEvaluation":{
+				"pageTitle":"Valutazione Finale"
+			},
+			"uviTab":{
+				"uviGroup":"Gruppo UVI",
+				"finalEvaluation":"Valutazione Finale",
+				"nameLabel":"Nome",
+				"surnameLabel":"Cognome",
+				"roleLabel":"Ruolo",
+				"stateLabel":"Stato"
+			},
+			"listAccessProposals":{
+				"addProposal": "Aggiungi proposta di accesso"
+			}
+		}
+	}
+		
+}

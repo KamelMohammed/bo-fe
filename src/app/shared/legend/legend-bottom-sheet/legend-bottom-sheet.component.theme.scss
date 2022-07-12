@@ -1,0 +1,39 @@
+@mixin app-legend-bottom-sheet() {
+  .legend-dialog {
+    background: transparent !important;
+    box-shadow: 0px 0px 0px 0px !important;
+    padding: 0 !important;
+    min-width: 90vw !important;
+  }
+
+  app-legend {
+    .mat-tab-header {
+      border-bottom: 0 !important;
+    }
+
+    .mat-ink-bar {
+      display: none;
+    }
+
+    .mat-tab-body {
+      -webkit-border-top-right-radius: 12px;
+      -moz-border-radius-topright: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .mat-tab-label {
+      background-color: #dbdbdb;
+      opacity: 1 !important;
+      -webkit-border-top-left-radius: 12px;
+      -webkit-border-top-right-radius: 12px;
+      -moz-border-radius-topleft: 12px;
+      -moz-border-radius-topright: 12px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .mat-tab-label-active {
+      background-color: white;
+    }
+  }
+}

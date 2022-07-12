@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{title | translate}} - {{patientFullName}}</h1>
+<mat-dialog-content>
+	<div>
+		{{'mef.accessProposal.log.lastUpdateLabel' | translate}}: {{lastUpdate | datetime}}
+	</div>
+	<list-table [columns]="tableColumns" [manager]="dataTableManager" [actions]="tableActions">
+		<div fxLayout="row">
+		</div>
+	</list-table>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button class="mt-2" (click)="back()">
+		{{'common.close' | translate}}
+	</button>
+</mat-dialog-actions>

@@ -1,0 +1,56 @@
+<page-content *ngIf="formTO$ | async as formTO">
+	<ng-container header [hidden]="closeMRMode">
+		<div class="w-full text-right">
+			<button mat-raised-button color="primary" class="mt-2" (click)="submit(formTO)">
+				{{ 'common.save' | translate }}
+			</button>
+		</div>
+	</ng-container>
+	<ng-container content>
+
+		<form [formGroup]="form" *ngIf="formTO">
+			<app-gridster [options]="options">
+				<app-gridster-item [item]="field" *ngFor="let field of formTO.fields">
+					<app-field-item fxFlex="grow" fxLayout="column" class="m-2" [field]="field" [form]="form">
+					</app-field-item>
+				</app-gridster-item>
+			</app-gridster>
+		</form>
+	</ng-container>
+
+	<ng-container footer>
+		<div fxLayout="row" fxLayoutAlign="space-between center" [hidden]="closeMRMode">
+			<div class="error-message padding-2x" [class.hidden]="form.untouched || form.valid" fxLayout="row"
+				fxLayoutAlign="start center">
+				<mat-icon class="margin-right-3x">warning</mat-icon>
+				<span>{{ 'older.INSERT_FIELDS_BEFORE_SAVING' | translate: { fields: getErrorMessage(formTO) | translate
+					}
+					}}</span>
+			</div>
+		</div>
+	</ng-container>
+</page-content>
+
+<!-- <ng-container *ngIf="formTO$ | async as formTO">
+	<div fxLayout="row" fxLayoutAlign="space-between center" [hidden]="closeMRMode">
+		<div class="error-message padding-2x" [class.hidden]="form.untouched || form.valid" fxLayout="row"
+			fxLayoutAlign="start center">
+			<mat-icon class="margin-right-3x">warning</mat-icon>
+			<span>{{ 'older.INSERT_FIELDS_BEFORE_SAVING' | translate: { fields: getErrorMessage(formTO) | translate }
+				}}</span>
+		</div>
+		<div fxLayout="row" fxLayoutAlign="end center" class="padding-top-4x">
+			<button mat-flat-button color="primary" (click)="submit(formTO)" class="margin-left-3x">
+				{{ 'SAVE' | translate }}
+			</button>
+		</div>
+	</div>
+	<form [formGroup]="form" *ngIf="formTO">
+		<app-gridster [options]="options">
+			<app-gridster-item [item]="field" *ngFor="let field of formTO.fields">
+				<app-field-item fxFlex="grow" fxLayout="column" class="margin-2x" [field]="field" [form]="form">
+				</app-field-item>
+			</app-gridster-item>
+		</app-gridster>
+	</form>
+</ng-container> -->

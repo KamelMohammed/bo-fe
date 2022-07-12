@@ -1,0 +1,89 @@
+<mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" class="w-full" [class.mat-form-field-invalid]="!valid">
+	<mat-label>{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+
+	<div *ngIf="autocomplete">
+		<mat-chip-list #chipList>
+			<mat-chip *ngFor="let item of selectedItems" (removed)="remove(item[itemKey])" >
+				{{item[itemLabel] | translate}}
+				<button matChipRemove *ngIf="!disabled && !readonly">
+					<mat-icon>cancel</mat-icon>
+				</button>
+			</mat-chip>
+			<input
+				placeholder="{{(disabled || readonly)? '': ((localize) ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}"
+				#itemInput
+				[id]="id" [disabled]="disabled || readonly"
+				[formControl]="inputItemCtrl"
+				[matAutocomplete]="auto"
+				[matChipInputFor]="chipList"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="add($event)"
+				>
+		</mat-chip-list>
+		<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+			<mat-option *ngFor="let option of filteredItems | async" [value]="option[itemKey]">
+				{{option[itemLabel] | translate}}
+			</mat-option>
+		</mat-autocomplete>
+	</div>
+	<div *ngIf="!autocomplete">
+		<mat-select [panelClass]="panelClass"
+			placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}"
+			[(ngModel)]="value" [id]="id" [disabled]="disabled || readonly" *ngIf="!multiple">
+			<mat-option *ngIf="showPlaceHolder">{{placeHolder | translate}}</mat-option>
+			<mat-option *ngFor="let item of sortedItems" [value]="item[itemKey]">
+				{{item[itemLabel] | translate}}
+			</mat-option>
+		</mat-select>
+		<mat-select [panelClass]="panelClass"
+			placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}"
+			[(ngModel)]="value" [id]="id" [disabled]="disabled || readonly" *ngIf="multiple" multiple>
+			<mat-option *ngFor="let item of sortedItems" [value]="item[itemKey]">
+				{{item[itemLabel] | translate}}
+			</mat-option>
+		</mat-select>
+	</div>
+	
+
+	<span matSuffix>
+        <button mat-icon-button *ngIf="helpText != null">
+            <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()" #tooltip="matTooltip"
+                [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+            </mat-icon>
+        </button>
+    </span>
+</mat-form-field>
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error>
+
+<!-- 
+<mat-form-field [floatLabel]="floatLabel" [appearance]="appearance" class="w-full" [class.mat-form-field-invalid]="!valid">
+    <mat-label>{{(localize ? (label | translate) : label)}}{{(required)?'*':''}}</mat-label>
+    <mat-select [panelClass]="panelClass"
+        placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}"
+        [(ngModel)]="value" [id]="id" [disabled]="disabled || readonly" *ngIf="!multiple">
+        <mat-option *ngIf="showPlaceHolder">{{placeHolder | translate}}</mat-option>
+        <mat-option *ngFor="let item of sortedItems" [value]="item[itemKey]">
+            {{item[itemLabel]}}
+        </mat-option>
+    </mat-select>
+    <mat-select [panelClass]="panelClass"
+        placeholder="{{(localize ? (correctPlaceHolder | translate) : (placeHolder || label))}}{{(required)?'*':''}}"
+        [(ngModel)]="value" [id]="id" [disabled]="disabled || readonly" *ngIf="multiple" multiple>
+        <mat-option *ngFor="let item of sortedItems" [value]="item[itemKey]">
+            {{item[itemLabel]}}
+        </mat-option>
+    </mat-select>
+    <span matSuffix>
+        <button mat-icon-button *ngIf="helpText != null">
+            <mat-icon svgIcon="heroicons_outline:information-circle" (click)="tooltip.toggle()" #tooltip="matTooltip"
+                [matTooltip]="helpTextLocalize ? (helpText | translate) : helpText">
+            </mat-icon>
+        </button>
+    </span>
+</mat-form-field>
+<mat-error *ngIf="!valid">
+    {{errorMessage}}
+</mat-error> -->
+

@@ -1,0 +1,35 @@
+<page-content label="{{title | translate}}">
+	<ng-container content [formGroup]="sessionForm" *ngIf="sessionForm">
+		<div class="flex flex-wrap justify-between">
+			<input-datetime class="w-full" formControlName="date" label="Erogazione del " [readonly]="true" required>
+			</input-datetime>
+			<input-string class="w-full" formControlName="operator" label="Operatore" [readonly]="true" required>
+			</input-string>
+			<input-string class="w-full" formControlName="patient" label="Paziente" [readonly]="true" required>
+			</input-string>
+			<input-decimal class="w-full" formControlName="duration" label="Durata" [readonly]="true">
+			</input-decimal>
+			<input-time class="w-full" formControlName="entryTime" label="Ora ingresso" [readonly]="true">
+			</input-time>
+			<input-time class="w-full" formControlName="exitTime" label="Ora uscita" [readonly]="true">
+			</input-time>
+			<input-string class="w-full" formControlName="notes" label="Note" [readonly]="readonly"></input-string>
+		</div>
+		<div fxLayoutAlign=" center" >
+			<h1 class="bg-primary text-white">Prestazioni/attività</h1>
+			<app-provisions-table (allSessionClosed)="notifySessionsStatus($event)" [readonly]="readonly" [sessionId]="sessionId"></app-provisions-table>
+			<h1 class="bg-primary text-white">Allegati</h1>
+			<app-session-attachments-table [sessionId]="sessionId"></app-session-attachments-table>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button class="mt-2" (click)="back()">
+				{{'common.back' | translate}}
+			</button>
+			<button mat-raised-button color="primary" (click)="closeSession()" [disabled]="closeSessionButtonDisabled">
+				{{'icp.sessions.closeSessionButtonLabel' | translate}}
+			</button>
+		</div>
+	</ng-container>
+</page-content>

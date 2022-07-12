@@ -1,0 +1,36 @@
+<ng-container *ngIf="profile">
+    <!-- Button -->
+    <div [matMenuTriggerFor]="userActions" class="cursor-pointer">
+        <div class="flex justify-between items-center">
+            <button mat-icon-button class="bg-card text-primary mr-1">
+                <span class="relative font-extrabold">
+                    {{profile?.firstName?.substring(0,1)}} {{profile?.lastName?.substring(0,1)}}
+                </span>
+            </button>
+            <!-- <span class="hidden sm:inline text-on-primary">{{profile?.firstName}} {{profile?.lastName}}</span> -->
+        </div>
+    </div>
+    <mat-menu [xPosition]="'before'" #userActions="matMenu">
+        <button mat-menu-item routerLink="/profile">
+            <mat-icon svgIcon="heroicons_outline:user"></mat-icon>
+            <span>{{'profile.profile' | translate}}</span>
+        </button>
+        <mat-divider class="my-2"></mat-divider>
+        <button mat-menu-item [matMenuTriggerFor]="culture" *ngIf="cultureCodes.length>1">
+            <img [src]="cultureFlag" class="w-6 mr-3" />
+            <span>{{('cultures.' + cultureCode) | translate }}</span>
+        </button>
+        <mat-divider class="my-2"></mat-divider>
+        <button mat-menu-item (click)="signOut()">
+            <mat-icon [svgIcon]="'heroicons_outline:logout'"></mat-icon>
+            <span>{{'profile.logout' | translate}}</span>
+        </button>
+    </mat-menu>
+</ng-container>
+
+<mat-menu class="user-cultures-menu" #culture="matMenu">
+    <button mat-menu-item (click)="changeCulture(cultureCode)" *ngFor="let cultureCode of cultureCodes">
+        <img [src]="'assets/images/flags/' + cultureCode + '.png'" class="w-6 mr-3" />
+        <span>{{('cultures.' + cultureCode) | translate }}</span>
+    </button>
+</mat-menu>

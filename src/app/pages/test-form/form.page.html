@@ -1,0 +1,36 @@
+<page-content label="Test Tabella">
+	<ng-container content [formGroup]="form">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-full" formControlName="text" label="text"></input-string>
+			<input-string class="w-full" formControlName="multiline" label="multiline" [rows]="10">
+			</input-string>
+			<input-date class="w-full md:w-32-pc" formControlName="dateUTC" label="date"></input-date>
+			<input-date class="w-full md:w-32-pc" formControlName="dateNoUTC" label="date" [utc]="false"></input-date>
+			<input-int class="w-full md:w-32-pc" formControlName="int" label="formPage.int"></input-int>
+			<input-decimal class="w-full md:w-49-pc" formControlName="decimal" label="formPage.decimal"></input-decimal>
+			<input-slide class="w-full" formControlName="horizontal" label="formPage.horizontal" [horizontal]="true">
+			</input-slide>
+			<input-slide class="w-full" formControlName="vertical" label="formPage.vertical" [horizontal]="false">
+			</input-slide>
+			<select-box class="w-full" formControlName="single" label="formPage.singleSelect" [items]="selectItems">
+			</select-box>
+			<select-box class="w-full" class="w-full" formControlName="multiple" label="formPage.multipleSelect"
+				[items]="selectItems" [multiple]="true">
+			</select-box>
+			<input-tags class="w-full" formControlName="tags" label="formPage.tags">
+			</input-tags>
+			<autocomplete class="w-full" formControlName="autocomplete" label="formPage.autocomplete"
+				[initialItem]="initialItem" [loader]="getCities">
+			</autocomplete>
+
+		</div>
+
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button color="primary" class="mt-2">
+				Salva
+			</button>
+		</div>
+	</ng-container>
+</page-content>

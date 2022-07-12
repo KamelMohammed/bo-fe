@@ -1,0 +1,26 @@
+<page-content label="{{'icp.service.createService.pageTitle' | translate}}">
+	<ng-container content [formGroup]="createServiceForm" *ngIf="createServiceForm">
+		<div class="flex flex-wrap justify-between">
+			<input-string class="w-full" formControlName="service" [readonly]="edit" label="Prestazione" required="true"></input-string>
+			<input-decimal class="w-full" formControlName="duration" [readonly]="edit" label="Durata (in minuti)">
+			</input-decimal>
+			<input-decimal class="w-full" formControlName="accessCost" [readonly]="edit" label="Costo per accesso (in euro)" >
+			</input-decimal>
+			<select-box class="w-full" formControlName="typeId" label="Tipologia di prestazione" required="true"
+				[items]="serviceTypeItems" [readonly]="edit"></select-box>
+			<select-box class="w-full" formControlName="professionalsId" label="Figura professionale" [multiple]="true" required="true"
+				[items]="professionalItems" [readonly]="edit"></select-box>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="w-full text-right">
+			<button mat-raised-button class="mt-2" (click)="back()">
+				{{'common.back' | translate}}
+			</button>
+			&nbsp;
+			<button mat-raised-button color="primary" class="mt-2" (click)="save()" [disabled]="edit">
+				{{'common.save' | translate}}
+			</button>
+		</div>
+	</ng-container>
+</page-content>

@@ -1,0 +1,105 @@
+<h1 mat-dialog-title>
+  {{ submission?.template?.name }}
+</h1>
+<div
+  mat-dialog-content
+  class="no-overflow"
+>
+  <form
+    [formGroup]="form"
+    *ngIf="formTO"
+    fxFlex="grow"
+    fxLayout="column"
+  >
+    <app-section-field
+      [field]="sectionField1"
+      class="margin-bottom-4x"
+    ></app-section-field>
+    <app-datetimepicker-field
+      fxLayout="row"
+      class="margin-left-2x"
+      [field]="datetimepickerField"
+      [form]="form"
+    ></app-datetimepicker-field>
+    <div
+      fxLayout="row"
+      class="margin-left-2x"
+    >
+      <app-text-field
+        fxFlex="50"
+        [field]="textTitle"
+        [form]="form"
+        class="margin-right-4x"
+      ></app-text-field>
+    </div>
+    <div
+      fxLayout="row"
+      class="margin-left-2x"
+    >
+      <app-text-field
+        *ngIf="badge?.badge?.description1?.hidden"
+        fxFlex="33"
+        [field]="textDescription1"
+        [form]="form"
+      ></app-text-field>
+      <app-text-field
+        *ngIf="badge?.badge?.description2?.hidden"
+        fxFlex="33"
+        [field]="textDescription2"
+        [form]="form"
+      ></app-text-field>
+      <app-text-field
+        *ngIf="badge?.badge?.description3?.hidden"
+        fxFlex="33"
+        [field]="textDescription3"
+        [form]="form"
+      ></app-text-field>
+    </div>
+    <app-section-field
+      [field]="sectionField2"
+      class="margin-bottom-4x"
+    ></app-section-field>
+    <app-gridster [options]="options">
+      <app-gridster-item
+        [item]="field"
+        *ngFor="let field of getFields(formTO.fields)"
+      >
+        <app-field-item
+          fxFlex="grow"
+          fxLayout="column"
+          class="margin-2x"
+          [field]="field"
+          [form]="form"
+        ></app-field-item>
+      </app-gridster-item>
+    </app-gridster>
+  </form>
+</div>
+<div
+  mat-dialog-actions
+  fxLayoutAlign="flex-end center"
+>
+  <button
+    mat-button
+    (click)="close()"
+  >
+    {{ 'CANCEL' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    *ngIf="button as field; else saveButton"
+    (click)="submitButton(field)"
+  >
+    {{ field?.label?.label || 'SAVE' | translate }}
+  </button>
+  <ng-template #saveButton>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="submit()"
+    >
+      {{ 'SAVE' | translate }}
+    </button>
+  </ng-template>
+</div>

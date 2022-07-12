@@ -1,0 +1,23 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  fxFlex="grow"
+  class="badge padding-2x"
+  [style.background-color]="backgroundColor"
+>
+  <div
+    fxFlex
+    class="badge-title padding-top-2x padding-bottom-2x"
+    [style.color]="titleColor"
+  >
+    {{ title }}
+  </div>
+  <div
+    fxFlex
+    class="badge-description padding-bottom-2x"
+  >
+    <span [style.color]="descriptionColor1">{{ description1 }} </span>
+    <span [style.color]="descriptionColor2">{{ description2 }} </span>
+    <span [style.color]="descriptionColor3">{{ description3 }}</span>
+  </div>
+</div>

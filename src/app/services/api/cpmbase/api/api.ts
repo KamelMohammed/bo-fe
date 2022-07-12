@@ -1,0 +1,13 @@
+export * from './basicErrorController.service';
+import { BasicErrorControllerService } from './basicErrorController.service';
+export * from './operation.service';
+import { OperationService } from './operation.service';
+export * from './operationHandler.service';
+import { OperationHandlerService } from './operationHandler.service';
+export * from './survey.service';
+import { SurveyService } from './survey.service';
+export * from './vitalParameters.service';
+import { VitalParametersService } from './vitalParameters.service';
+export * from './webMvcLinksHandler.service';
+import { WebMvcLinksHandlerService } from './webMvcLinksHandler.service';
+export const APIS = [BasicErrorControllerService, OperationService, OperationHandlerService, SurveyService, VitalParametersService, WebMvcLinksHandlerService];

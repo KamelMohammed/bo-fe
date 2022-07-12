@@ -1,0 +1,11 @@
+{
+  "uuid": "b2746729-448e-4fd8-8b13-11e80f7aa80f",
+  "name": "template anamnesi",
+  "schema": "sdo-data.json",
+  "type": "ANAMNESI",
+  "department": {
+    "uuid": "e36e4763-8155-4f95-bef6-e1c35dc8ca9a",
+    "id": 5,
+    "name": "Ginecologia"
+  }
+}

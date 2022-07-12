@@ -1,0 +1,35 @@
+@mixin app-clinical-diary() {
+  app-clinical-diary {
+    .mat-tab-body-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .mat-tab-body-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      overflow: auto;
+    }
+
+    .mat-tab-body.mat-tab-body-active {
+      overflow: hidden;
+    }
+
+    .threshold .mat-form-field-flex {
+      align-items: center;
+    }
+
+    .agenda-content {
+      margin: 20px;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      margin: 0;
+    }
+  }
+  .custom-snackbar {
+    white-space: pre-wrap;
+  }
+}

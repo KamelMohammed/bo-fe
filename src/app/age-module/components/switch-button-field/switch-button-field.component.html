@@ -1,0 +1,27 @@
+<div
+  [fxLayout]="getFxLayout(field?.label?.position)"
+  fxLayoutAlign="space-between center"
+  [formGroup]="form"
+>
+  <mat-label
+    *ngIf="!field?.label?.hidden"
+    class="margin-right-5x"
+    fxFlex="20"
+  >
+    {{ field?.label?.label }}<span *ngIf="field.required"> *</span>
+  </mat-label>
+  <div fxFlex="10"></div>
+  <div
+    fxFlex="70"
+    fxLayout="row"
+    [fxLayoutAlign]="getToggleFxLayoutAlign(field?.label?.position)"
+  >
+    <span *ngIf="firstOption && !firstOption.labelHidden">{{ firstOption.label }}</span>
+    <mat-slide-toggle
+      class="margin-left-2x margin-right-2x"
+      color="primary"
+      [formControlName]="field.id"
+    ></mat-slide-toggle>
+    <span *ngIf="secondOption && !secondOption.labelHidden">{{ secondOption.label }}</span>
+  </div>
+</div>

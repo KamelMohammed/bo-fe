@@ -1,0 +1,84 @@
+<h1 mat-dialog-title>
+	{{ 'md.AddVitalParamter' | translate}}
+</h1>
+
+<mat-dialog-content>
+	<ng-container *ngIf="form" [formGroup]="form">
+		<div class="w-full justify-between">
+			<select-box formControlName="operationId" [items]="operations" itemLabel="description" class="w-full" label="md.selectMeasurementLabel" required="true">
+			</select-box>
+		</div>
+		<ng-container [formGroup]="form.controls.values">
+			<div *ngFor="let parameter of parameters" class="flex items-center">
+				<input-decimal [formControlName]="parameter.uuid" [label]="parameter.description" class="w-90-pc">
+				</input-decimal>
+				<span class="w-10-pc pl-4"> {{parameter.measureUnit.symbol}}</span>
+			</div>
+		</ng-container>
+	</ng-container>
+</mat-dialog-content>
+<mat-dialog-actions class="flex justify-end">
+	<button mat-raised-button mat-dialog-close>{{'common.close' | translate}}</button>
+	<button mat-raised-button color="primary" (click)="save()">{{'common.save' | translate}}</button>
+</mat-dialog-actions>
+<!-- 
+
+<h1 mat-dialog-title>
+	Inserisci Parametro Vitale
+</h1>
+<div mat-dialog-content class="no-overflow">
+	<form [formGroup]="form" fxLayout="column">
+		<div>
+			<mat-label fxFlex="20" class="margin-right-5x">
+				{{ 'SELECT_DEVICE' | translate }} *
+			</mat-label>
+			<div fxFlex="10"></div>
+			<mat-form-field appearance="outline" fxFlex="70">
+				<mat-select formControlName="operation">
+					<mat-option *ngFor="let operation of operations$ | async" [value]="operation">
+						{{ operation.description }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div fxLayout="column" fxFlex="grow" class="scroll-container fid-default-table">
+			<table mat-table [dataSource]="dataSource">
+				<ng-container matColumnDef="description">
+					<th mat-header-cell *matHeaderCellDef>
+						Descrizione
+					</th>
+					<td mat-cell *matCellDef="let element">
+						{{element.description}} <span *ngIf="element.primaryParameter"> *</span>
+					</td>
+				</ng-container>
+				<ng-container matColumnDef="uuid">
+					<th mat-header-cell *matHeaderCellDef>
+						Valore
+					</th>
+					<td fxFlexAlign="center center" mat-cell *matCellDef="let element">
+						<mat-form-field appearance="outline">
+							<input matInput formControlName={{element.uuid}} autocomplete="off">
+							<mat-error *ngIf="form.get(element.uuid)?.hasError('required')">{{ 'MANDATORY_FIELD'
+								| translate }}
+							</mat-error>
+						</mat-form-field>
+						{{element.measureUnit?.symbol}}
+					</td>
+				</ng-container>
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+		</div>
+		<!-- <mat-error *ngIf="form.touched && form.hasError('oneFieldMandatory')">
+      {{'ALERT_MIN_MAX_VELUE_ERROR' | translate }}
+    </mat-error> 
+</form>
+</div>
+<div mat-dialog-actions fxLayoutAlign="flex-end center">
+	<button mat-button (click)="close()">
+		{{ 'CANCEL' | translate }}
+	</button>
+	<button mat-flat-button color="primary" (click)="submit()">
+		{{ 'SAVE' | translate }}
+	</button>
+</div> -->
