@@ -22,7 +22,7 @@ export class QuesitiDiagnosticiComponent implements OnInit {
   @Input() isNew: boolean;
   @Input() alreadySelected?: string =null ;
   @Input() quesiti: string[]=[];
-  @Input() isDoctor: boolean;
+  @Input()  isDoctor: boolean;
   @Input() valid: boolean=true;
   @Input() label: string;
   @Input() readonly:boolean;

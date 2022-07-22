@@ -3,8 +3,8 @@
 <h1 mat-dialog-title *ngIf="!isNew && respinta">Richiesta televisita respinta</h1>
 
 <mat-dialog-content>
-    <div class="flex flex-wrap justify-between items-center" [formGroup]="form" *ngIf="respinta">
-        <input-string [value]="_data.televisitaItem.motivazioneMedico" [readonly]=" true" [rows]="4" label="common.televisitaMotivazione" class="w-full">
+            <div class="flex flex-wrap justify-between items-center" [formGroup]="form" *ngIf="respinta">
+            <input-string [value]="_data.televisitaItem.motivazioneMedico" [readonly]=" true" [rows]="4" label="common.televisitaMotivazione" class="w-full">
         </input-string>
     </div>
 
