@@ -60,6 +60,20 @@ import {
 	TelevisitAddComponent
 } from "./pages/clinical-diary/televisita/televisit-list/televisit-add/televisit-add.component";
 import { RespingiTelevisitaComponent } from './pages/clinical-diary/televisita/televisit-list/respingi-televisita/respingi-televisita.component';
+import { DashboardPazienteComponent } from './pages/clinical-diary/dashboard-paziente/dashboard-paziente.component';
+import {NestedTableComponent} from "./pages/clinical-diary/nested-table/nested-table.component";
+import {TableModalComponent} from "./pages/clinical-diary/table-modal/table-modal.component";
+import {ClassicTableComponent} from "./pages/clinical-diary/classic-table/classic-table.component";
+import {RadialChartComponent} from "./pages/clinical-diary/radial-chart/radial-chart.component";
+import {LineChartComponent} from "./pages/clinical-diary/line-chart/line-chart.component";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FlexModule} from "@angular/flex-layout";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {DashboardPazienteControllerService} from "../services/api/msd/api/dashboardPazienteController.service";
+import {NgApexchartsModule} from "ng-apexcharts";
 
 @NgModule({
 	declarations: [
@@ -95,6 +109,13 @@ import { RespingiTelevisitaComponent } from './pages/clinical-diary/televisita/t
 		AltriPartecipantiComponent,
 		QuesitiDiagnosticiComponent,
 RespingiTelevisitaComponent,
+DashboardPazienteComponent,
+		NestedTableComponent,
+		TableModalComponent,
+		ClassicTableComponent,
+		RadialChartComponent,
+		LineChartComponent
+
 	],
 	imports: [
 		CommonModule,
@@ -110,7 +131,14 @@ RespingiTelevisitaComponent,
 		PaiModule,
 		MEFModule,
 		TctModuleModule,
-		MeasurementModule
+		MeasurementModule,
+		MatGridListModule,
+		MatMenuModule,
+		NgApexchartsModule,
+		MatFormFieldModule,
+		FlexModule,
+		MatTableModule,
+		MatSortModule,
 	],
 	providers: [
 		MedicalRecordService,
@@ -126,7 +154,8 @@ RespingiTelevisitaComponent,
 		UnicDiaryService,
 		AdministrationService,
 		TelevisitaControllerService,
-		DurataControllerService
+		DurataControllerService,
+		DashboardPazienteControllerService
 	],
 })
 export class MdModule {

@@ -1,0 +1,17 @@
+.demo-table {
+    width: 100%;
+}
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+.example-container {
+    height: 250px;
+    max-width: 100%;
+    overflow: scroll;
+}
+
+.mat-row:hover {
+    background-color: #94A3B8;
+    cursor: pointer;
+}

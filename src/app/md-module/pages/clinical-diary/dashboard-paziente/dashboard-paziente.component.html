@@ -1,0 +1,70 @@
+<div class="grid-container">
+    <h1 class="mat-h1">Dashboard Paziente</h1>
+    <mat-grid-list cols="2" rowHeight="350px">
+        <mat-grid-tile *ngFor="let card of cards | async; let i=index" [colspan]="card.cols" [rowspan]="card.rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title *ngIf="i==1">
+                        PERSISTENZA ALLA TERAPIA
+                    </mat-card-title>
+                    <mat-card-title *ngIf="i!=3 && i!=1">
+                        {{card.title}}
+                    </mat-card-title>
+                    <mat-card-title *ngIf="i==3">
+                        ADERENZA DEL PAZIENTE
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content  *ngIf="i==0" class="dashboard-card-content">
+                    <div fxLayout="row">
+                        <div fxFlex="25%" style="text-align: -webkit-center">
+                            <img style="width:25% !important;" src="/assets/corpo-umano.jpg" >
+                        </div>
+                        <div fxFlex="75%" >
+                            <div *ngIf="renderPatologie">
+                                <div  *ngFor="let pato of patologiePaziente" class="divLabel" >
+                                    <mat-label>{{pato.patologia}}</mat-label>
+                                </div>
+                            </div>
+                            <mat-spinner *ngIf="!renderPatologie" color="primary"  mode="indeterminate" class="spinner"  ></mat-spinner>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-content style="text-align: -webkit-center" *ngIf="i==1">
+
+                    <app-line-chart *ngIf="renderPersistenza" [multipleSeries]="persistenza" [annotations]="annotations" ></app-line-chart>
+
+                    <mat-spinner *ngIf="!renderPersistenza" color="primary"  mode="indeterminate" class="spinner" ></mat-spinner>
+                </mat-card-content>
+                <mat-card-content  *ngIf="i==2" class="dashboard-card-content">
+                    <app-nested-table *ngIf="responseTable" [series]="responseTable" ></app-nested-table>
+                    <mat-spinner *ngIf="!renderTable" color="primary"  mode="indeterminate" class="spinner"  ></mat-spinner>
+
+                </mat-card-content>
+
+                <mat-card-content  *ngIf="i==3"  class="dashboard-card-content">
+                    <app-radial-chart  *ngIf="renderAderenza" [param]="aderenzaPaziente" [nameChart]="aderenzaName"></app-radial-chart>
+                    <mat-spinner *ngIf="!renderAderenza" color="primary"  mode="indeterminate" class="spinner"  ></mat-spinner>
+                </mat-card-content>
+                <mat-card-content  *ngIf="i==5" class="dashboard-card-content">
+                    <app-radial-chart *ngIf="renderRilevazione" [param]="rilevazionePaziente" nameChart="rilevazioni"></app-radial-chart>
+                    <mat-spinner *ngIf="!renderRilevazione" color="primary"  mode="indeterminate"  class="spinner"  ></mat-spinner>
+                </mat-card-content>
+                <mat-card-content style="align-items: center" *ngIf="i==1">
+
+                </mat-card-content>
+                <mat-card-content style="align-items: center" *ngIf="i==6">
+
+                    <app-classic-table *ngIf="renderAlert" [series]="alert" ></app-classic-table>
+
+                    <mat-spinner *ngIf="!renderAlert" color="primary"  mode="indeterminate"  class="spinner"></mat-spinner>
+                </mat-card-content>
+                <mat-card-content style="text-align: -webkit-center" *ngIf="i==4">
+
+                    <app-line-chart *ngIf="renderParametriVitali" [series]="parametriVitali" [categories]="categories"></app-line-chart>
+
+                    <mat-spinner *ngIf="!renderParametriVitali" color="primary"  mode="indeterminate" class="spinner" ></mat-spinner>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

@@ -49,6 +49,9 @@
       <a mat-tab-link (click)="selectedIndex=15" [active]="selectedIndex==15"
          [disabled]="medicalRecord === undefined">{{
         'common.tlv' | translate }}</a>
+      <a mat-tab-link (click)="selectedIndex=16" [active]="selectedIndex==16"
+         [disabled]="medicalRecord === undefined">{{
+        'common.dashP' | translate }}</a>
     </nav>
   </ng-container>
   <ng-container content>
@@ -93,6 +96,8 @@
         *ngIf="selectedIndex === 14" class="w-full">
         </app-tct-home>
       <app-televisit *ngIf="selectedIndex===15" [medicalRecord]="medicalRecord"></app-televisit>
+      <app-dashboard-paziente *ngIf="selectedIndex===16"></app-dashboard-paziente>
+
     </mat-tab-nav-panel>
   </ng-container>
   <!-- <mat-tab-group #tabs selectedIndex="selectedIndex" (selectedTabChange)="selectedTabChange($event)"
